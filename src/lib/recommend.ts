@@ -2,6 +2,7 @@ import { products, type Product } from "@/data/products";
 
 export type RecommendationInput = {
   recipient: string;
+  ageGroup: string;
   occasion: string;
   budget: string;
   interests: string;
@@ -23,6 +24,7 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
   const haystack = normalize(
     [
       input.recipient,
+      input.ageGroup,
       input.occasion,
       input.budget,
       input.interests,
@@ -42,7 +44,7 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
       const score = terms.reduce(
         (sum, term) => sum + (haystack.includes(term) ? 2 : 0),
         0
-      );
+      ) + budgetScore(product, input.budget);
 
       return {
         ...product,
@@ -57,4 +59,22 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
 function buildReason(product: Product, input: RecommendationInput) {
   const interest = input.interests || "os interesses da pessoa";
   return `Combina com ${interest} e tem perfil ${product.categories.slice(0, 2).join(" + ")}.`;
+}
+
+function budgetScore(product: Product, budget: string) {
+  const normalizedBudget = normalize(budget);
+
+  if (!normalizedBudget.includes("ate")) {
+    return 0;
+  }
+
+  const budgetLimit = Number(normalizedBudget.match(/\d+/)?.[0] ?? 0);
+  const prices = product.priceRange.match(/\d+/g)?.map(Number) ?? [];
+  const minPrice = Math.min(...prices);
+
+  if (!budgetLimit || !Number.isFinite(minPrice)) {
+    return 0;
+  }
+
+  return minPrice <= budgetLimit ? 1 : -2;
 }

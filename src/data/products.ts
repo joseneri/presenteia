@@ -195,5 +195,161 @@ export const products: Product[] = [
     personas: ["pai", "namorada", "namorado", "amigo", "gamer"],
     occasions: ["amigo secreto", "aniversario"],
     interests: ["tecnologia", "trabalho", "estudo", "setup"]
+  },
+  {
+    id: "lego-classic",
+    title: "Blocos de montar criativos",
+    description:
+      "Presente educativo e divertido para criancas que gostam de construir e imaginar.",
+    priceRange: "R$80-R$220",
+    amazonUrl: `https://www.amazon.com.br/s?k=blocos+de+montar+criancas&tag=${affiliateTag}`,
+    image: "/products/jogo-tabuleiro.svg",
+    categories: ["brinquedo", "educativo"],
+    personas: ["filho", "filha", "crianca"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["criatividade", "brinquedo", "educativo", "familia"]
+  },
+  {
+    id: "livro-infantil",
+    title: "Livro infantil ilustrado",
+    description:
+      "Boa opcao para estimular leitura, imaginacao e momentos em familia.",
+    priceRange: "R$25-R$80",
+    amazonUrl: `https://www.amazon.com.br/s?k=livro+infantil+ilustrado&tag=${affiliateTag}`,
+    image: "/products/kindle.svg",
+    categories: ["leitura", "educativo"],
+    personas: ["filho", "filha", "crianca", "bebe"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["livros", "educativo", "familia", "criatividade"]
+  },
+  {
+    id: "pelucia-bebe",
+    title: "Pelucia macia",
+    description:
+      "Presente delicado para bebe, crianca pequena ou lembranca carinhosa.",
+    priceRange: "R$40-R$120",
+    amazonUrl: `https://www.amazon.com.br/s?k=pelucia+bebe&tag=${affiliateTag}`,
+    image: "/products/skincare-kit.svg",
+    categories: ["brinquedo", "fofo"],
+    personas: ["bebe", "filho", "filha", "crianca"],
+    occasions: ["cha de bebe", "aniversario", "natal", "dia das criancas"],
+    interests: ["fofo", "brinquedo", "bebe"]
+  },
+  {
+    id: "quebra-cabeca",
+    title: "Quebra-cabeca",
+    description:
+      "Ideia acessivel para criancas, adolescentes e familias que gostam de desafio.",
+    priceRange: "R$35-R$100",
+    amazonUrl: `https://www.amazon.com.br/s?k=quebra+cabe%C3%A7a&tag=${affiliateTag}`,
+    image: "/products/jogo-tabuleiro.svg",
+    categories: ["brinquedo", "educativo"],
+    personas: ["filho", "filha", "crianca", "adolescente", "familia"],
+    occasions: ["aniversario", "natal", "dia das criancas", "amigo secreto"],
+    interests: ["jogos", "educativo", "familia", "criatividade"]
+  },
+  {
+    id: "kit-desenho",
+    title: "Kit desenho e pintura",
+    description:
+      "Combina com criancas criativas, estudantes e pessoas que gostam de arte.",
+    priceRange: "R$40-R$150",
+    amazonUrl: `https://www.amazon.com.br/s?k=kit+desenho+pintura&tag=${affiliateTag}`,
+    image: "/products/luminaria-led.svg",
+    categories: ["criativo", "educativo"],
+    personas: ["filho", "filha", "crianca", "adolescente", "amigo"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["arte", "desenho", "criatividade", "educativo"]
+  },
+  {
+    id: "porta-retrato-casal",
+    title: "Porta-retrato decorativo",
+    description:
+      "Presente simbolico para casal, casa nova, casamento ou lembranca afetiva.",
+    priceRange: "R$40-R$120",
+    amazonUrl: `https://www.amazon.com.br/s?k=porta+retrato+decorativo&tag=${affiliateTag}`,
+    image: "/products/luminaria-led.svg",
+    categories: ["decoracao", "casa"],
+    personas: ["casal", "esposa", "marido", "namorada", "namorado"],
+    occasions: ["casamento", "casa nova", "dia dos namorados", "aniversario"],
+    interests: ["decoracao", "casa", "romantico"]
+  },
+  {
+    id: "planner",
+    title: "Planner de mesa",
+    description:
+      "Opcao elegante para colega, chefe, professor ou alguem em fase de estudos.",
+    priceRange: "R$35-R$120",
+    amazonUrl: `https://www.amazon.com.br/s?k=planner+mesa&tag=${affiliateTag}`,
+    image: "/products/kindle.svg",
+    categories: ["util", "trabalho"],
+    personas: ["colega", "chefe", "professor", "amigo", "amiga"],
+    occasions: ["amigo secreto", "formatura", "aniversario"],
+    interests: ["trabalho", "estudo", "organizacao", "rotina"]
+  },
+  {
+    id: "kit-ciencia",
+    title: "Kit ciencia infantil",
+    description:
+      "Presente educativo para criancas curiosas que gostam de experimentar e descobrir.",
+    priceRange: "R$60-R$180",
+    amazonUrl: `https://www.amazon.com.br/s?k=kit+ciencia+infantil&tag=${affiliateTag}`,
+    image: "/products/jogo-tabuleiro.svg",
+    categories: ["educativo", "brinquedo"],
+    personas: ["filho", "filha", "crianca"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["ciencia", "educativo", "criatividade", "brinquedo"]
+  },
+  {
+    id: "brinquedo-musical",
+    title: "Brinquedo musical",
+    description:
+      "Boa ideia para bebe ou crianca pequena que responde bem a sons, cores e movimento.",
+    priceRange: "R$45-R$140",
+    amazonUrl: `https://www.amazon.com.br/s?k=brinquedo+musical+bebe&tag=${affiliateTag}`,
+    image: "/products/skincare-kit.svg",
+    categories: ["brinquedo", "bebe"],
+    personas: ["bebe", "filho", "filha", "crianca"],
+    occasions: ["cha de bebe", "aniversario", "natal", "dia das criancas"],
+    interests: ["musica", "bebe", "brinquedo", "sensorial"]
+  },
+  {
+    id: "fone-infantil",
+    title: "Fone infantil",
+    description:
+      "Opcao para criancas e adolescentes que usam tablet, estudam ou gostam de musica.",
+    priceRange: "R$60-R$180",
+    amazonUrl: `https://www.amazon.com.br/s?k=fone+infantil&tag=${affiliateTag}`,
+    image: "/products/fone-bluetooth.svg",
+    categories: ["tecnologia", "musica"],
+    personas: ["filho", "filha", "crianca", "adolescente"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["musica", "tecnologia", "estudo", "games"]
+  },
+  {
+    id: "mochila-escolar",
+    title: "Mochila escolar",
+    description:
+      "Presente util para criancas e adolescentes em fase de escola, curso ou viagem.",
+    priceRange: "R$70-R$220",
+    amazonUrl: `https://www.amazon.com.br/s?k=mochila+escolar&tag=${affiliateTag}`,
+    image: "/products/organizador-cabos.svg",
+    categories: ["util", "escola"],
+    personas: ["filho", "filha", "crianca", "adolescente"],
+    occasions: ["aniversario", "natal", "volta as aulas"],
+    interests: ["escola", "estudo", "organizacao", "viagem"]
+  },
+  {
+    id: "tablet-infantil",
+    title: "Tablet infantil",
+    description:
+      "Sugestao premium para estudos, jogos educativos e entretenimento com supervisao.",
+    priceRange: "R$300-R$700",
+    amazonUrl: `https://www.amazon.com.br/s?k=tablet+infantil&tag=${affiliateTag}`,
+    image: "/products/kindle.svg",
+    categories: ["tecnologia", "educativo"],
+    personas: ["filho", "filha", "crianca"],
+    occasions: ["aniversario", "natal", "dia das criancas"],
+    interests: ["tecnologia", "educativo", "jogos", "estudo"]
   }
 ];

@@ -6,6 +6,7 @@ import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
 const initialForm: RecommendationInput = {
   recipient: "mae",
+  ageGroup: "adulto",
   occasion: "aniversario",
   budget: "ate 200 reais",
   interests: "",
@@ -77,10 +78,40 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
             >
               <option value="mae">Mae</option>
               <option value="pai">Pai</option>
+              <option value="filho">Filho</option>
+              <option value="filha">Filha</option>
+              <option value="crianca">Crianca</option>
+              <option value="bebe">Bebe</option>
               <option value="namorada">Namorada</option>
               <option value="namorado">Namorado</option>
+              <option value="esposa">Esposa</option>
+              <option value="marido">Marido</option>
               <option value="amigo">Amigo</option>
+              <option value="amiga">Amiga</option>
+              <option value="colega">Colega de trabalho</option>
+              <option value="chefe">Chefe</option>
+              <option value="professor">Professor(a)</option>
+              <option value="avos">Avos</option>
+              <option value="casal">Casal</option>
               <option value="gamer">Gamer</option>
+            </select>
+          </div>
+
+          <div className="field">
+            <label htmlFor="ageGroup">Faixa etaria</label>
+            <select
+              id="ageGroup"
+              value={form.ageGroup}
+              onChange={(event) =>
+                setForm({ ...form, ageGroup: event.target.value })
+              }
+            >
+              <option value="bebe 0 a 2 anos">Bebe: 0 a 2 anos</option>
+              <option value="crianca 3 a 7 anos">Crianca: 3 a 7 anos</option>
+              <option value="crianca 8 a 12 anos">Crianca: 8 a 12 anos</option>
+              <option value="adolescente">Adolescente</option>
+              <option value="adulto">Adulto</option>
+              <option value="idoso">Idoso</option>
             </select>
           </div>
 
@@ -97,20 +128,33 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
               <option value="natal">Natal</option>
               <option value="amigo secreto">Amigo secreto</option>
               <option value="dia dos namorados">Dia dos Namorados</option>
+              <option value="dia das maes">Dia das Maes</option>
+              <option value="dia dos pais">Dia dos Pais</option>
+              <option value="dia das criancas">Dia das Criancas</option>
+              <option value="cha de bebe">Cha de bebe</option>
+              <option value="formatura">Formatura</option>
+              <option value="casamento">Casamento</option>
               <option value="casa nova">Casa nova</option>
             </select>
           </div>
 
           <div className="field">
             <label htmlFor="budget">Orcamento</label>
-            <input
+            <select
               id="budget"
-              placeholder="ex: ate 150 reais"
               value={form.budget}
               onChange={(event) =>
                 setForm({ ...form, budget: event.target.value })
               }
-            />
+            >
+              <option value="ate 50 reais">Ate R$50</option>
+              <option value="ate 100 reais">Ate R$100</option>
+              <option value="ate 150 reais">Ate R$150</option>
+              <option value="ate 200 reais">Ate R$200</option>
+              <option value="ate 300 reais">Ate R$300</option>
+              <option value="ate 500 reais">Ate R$500</option>
+              <option value="acima de 500 reais">Acima de R$500</option>
+            </select>
           </div>
 
           <div className="field">
@@ -127,10 +171,15 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
               <option value="tecnologia">Tecnologia</option>
               <option value="bem-estar">Bem-estar</option>
               <option value="barato">Barato</option>
+              <option value="educativo">Educativo</option>
+              <option value="brinquedo">Brinquedo</option>
+              <option value="premium">Premium</option>
+              <option value="romantico">Romantico</option>
+              <option value="casa">Casa</option>
             </select>
           </div>
 
-          <div className="field">
+          <div className="field field-full">
             <label htmlFor="interests">Do que a pessoa gosta?</label>
             <textarea
               id="interests"
@@ -142,7 +191,7 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
             />
           </div>
 
-          <button className="button cta-button" disabled={isLoading} type="submit">
+          <button className="button cta-button form-submit" disabled={isLoading} type="submit">
             {isLoading ? <Loader2 size={16} /> : <Sparkles size={16} />}
             {isLoading ? "Pensando..." : "Ver meu Top 10"}
           </button>
