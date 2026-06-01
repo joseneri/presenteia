@@ -432,6 +432,15 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.results-section {
+  padding-top: 36px;
+  background: linear-gradient(180deg, rgba(251, 249, 245, 0), #fbf9f5 28%);
+}
+
+.results-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .grid.two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -620,10 +629,14 @@ p {
 
 .status {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: #fff;
   padding: 14px 16px;
   color: var(--muted);
+}
+
+.quiz-status {
+  margin-top: 14px;
 }
 
 .page-title {
@@ -673,6 +686,7 @@ p {
   .hero-grid,
   .grid.three,
   .grid.two,
+  .results-grid,
   .feature-grid {
     grid-template-columns: 1fr;
   }

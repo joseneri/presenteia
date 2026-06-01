@@ -1,8 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Loader2, Sparkles, Trophy } from "lucide-react";
-import { ProductCard } from "@/components/ProductCard";
+import { Loader2, Sparkles } from "lucide-react";
 import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
 const initialForm: RecommendationInput = {
@@ -13,9 +12,12 @@ const initialForm: RecommendationInput = {
   style: "util"
 };
 
-export function GiftQuiz() {
+type GiftQuizProps = {
+  onRecommendations?: (recommendations: Recommendation[]) => void;
+};
+
+export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
   const [form, setForm] = useState(initialForm);
-  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -38,7 +40,7 @@ export function GiftQuiz() {
       const data = (await response.json()) as {
         recommendations: Recommendation[];
       };
-      setRecommendations(data.recommendations);
+      onRecommendations?.(data.recommendations);
     } catch (requestError) {
       setError(
         requestError instanceof Error
@@ -151,33 +153,7 @@ export function GiftQuiz() {
           qualificadas, sem custo extra para voce.
         </p>
       </form>
-
-      <div className="recommendations" aria-live="polite">
-        {error ? <div className="status">{error}</div> : null}
-        {recommendations.length > 0 ? (
-          <>
-            <div className="results-head">
-              <div>
-                <p className="eyebrow">Resultado</p>
-                <h2>Top {recommendations.length} ideias para esse perfil</h2>
-              </div>
-              <span className="result-pill">
-                <Trophy size={16} />
-                Ranqueado por afinidade
-              </span>
-            </div>
-            <div className="grid three">
-              {recommendations.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  rank={index + 1}
-                />
-              ))}
-            </div>
-          </>
-        ) : null}
-      </div>
+      {error ? <div className="status quiz-status">{error}</div> : null}
     </div>
   );
 }
