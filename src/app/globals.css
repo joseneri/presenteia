@@ -435,6 +435,7 @@ p {
 .results-section {
   padding-top: 36px;
   background: linear-gradient(180deg, rgba(251, 249, 245, 0), #fbf9f5 28%);
+  scroll-margin-top: 86px;
 }
 
 .results-grid {
@@ -611,6 +612,10 @@ p {
 .results-head h2 {
   margin: 0;
   font-size: clamp(1.45rem, 2vw, 2rem);
+}
+
+.results-head h2:focus {
+  outline: none;
 }
 
 .result-pill {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -23,6 +23,26 @@ import type { Recommendation } from "@/lib/recommend";
 
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const resultsSectionRef = useRef<HTMLElement | null>(null);
+  const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (recommendations.length === 0) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    window.requestAnimationFrame(() => {
+      resultsSectionRef.current?.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start"
+      });
+      resultsHeadingRef.current?.focus({ preventScroll: true });
+    });
+  }, [recommendations.length]);
 
   return (
     <>
@@ -69,12 +89,19 @@ export function HomeExperience() {
       </section>
 
       {recommendations.length > 0 ? (
-        <section className="section results-section" aria-live="polite">
+        <section
+          className="section results-section"
+          id="resultado"
+          ref={resultsSectionRef}
+          aria-live="polite"
+        >
           <div className="container">
             <div className="results-head">
               <div>
                 <p className="eyebrow">Resultado</p>
-                <h2>Top {recommendations.length} ideias para esse perfil</h2>
+                <h2 ref={resultsHeadingRef} tabIndex={-1}>
+                  Top {recommendations.length} ideias para esse perfil
+                </h2>
               </div>
               <span className="result-pill">
                 <Trophy size={16} />
