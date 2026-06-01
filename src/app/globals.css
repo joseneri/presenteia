@@ -16,6 +16,318 @@
   --radius-sm: 12px;
 }
 
+html[data-theme="jardim"] {
+  --bg: #f6faf4;
+  --surface-strong: #eaf4e4;
+  --ink: #152119;
+  --muted: #60705f;
+  --line: #d8e7d1;
+  --brand: #2f7d4b;
+  --brand-strong: #1d5d36;
+  --accent: #f2a65a;
+  --gold: #ffd66b;
+  --wine: #153d2b;
+}
+
+html[data-theme="oceano"] {
+  --bg: #f3fbfc;
+  --surface-strong: #e4f3f5;
+  --ink: #102027;
+  --muted: #5f6e76;
+  --line: #d4e8ec;
+  --brand: #007c89;
+  --brand-strong: #005e66;
+  --accent: #ff7a59;
+  --gold: #ffd36a;
+  --wine: #123b45;
+}
+
+html[data-theme="oceano-claro"] {
+  --bg: #f5fcfd;
+  --surface-strong: #e9f7f8;
+  --ink: #11242a;
+  --muted: #61757b;
+  --line: #d7edf0;
+  --brand: #1492a1;
+  --brand-strong: #0d6f7a;
+  --accent: #ff9a72;
+  --gold: #ffd979;
+  --wine: #154b54;
+}
+
+html[data-theme="oceano-coral"] {
+  --bg: #fff8f5;
+  --surface-strong: #f6ebe6;
+  --ink: #15242a;
+  --muted: #667177;
+  --line: #e7d9d3;
+  --brand: #008894;
+  --brand-strong: #006672;
+  --accent: #e65f4e;
+  --gold: #f3c969;
+  --wine: #15454d;
+}
+
+html[data-theme="oceano-menta"] {
+  --bg: #f3fbf8;
+  --surface-strong: #e1f2ed;
+  --ink: #112521;
+  --muted: #5f746f;
+  --line: #cfe7e3;
+  --brand: #087f7b;
+  --brand-strong: #055e5c;
+  --accent: #f08b63;
+  --gold: #f6d66c;
+  --wine: #164943;
+}
+
+html[data-theme="oceano-areia"] {
+  --bg: #fbfaf4;
+  --surface-strong: #eee9dc;
+  --ink: #172327;
+  --muted: #6b6f67;
+  --line: #e0dccd;
+  --brand: #0d7b86;
+  --brand-strong: #075963;
+  --accent: #c98452;
+  --gold: #dec16a;
+  --wine: #174047;
+}
+
+html[data-theme="oceano-profundo"] {
+  --bg: #f5f9fb;
+  --surface-strong: #e4edf2;
+  --ink: #101d27;
+  --muted: #5d6975;
+  --line: #d4e0e7;
+  --brand: #07596b;
+  --brand-strong: #083f50;
+  --accent: #f16f58;
+  --gold: #e8c45d;
+  --wine: #123642;
+}
+
+html[data-theme="oceano-ceu"] {
+  --bg: #f4fbff;
+  --surface-strong: #e4f2fb;
+  --ink: #11212a;
+  --muted: #5d717c;
+  --line: #d1e6ef;
+  --brand: #167fa3;
+  --brand-strong: #0f5f7b;
+  --accent: #ff806d;
+  --gold: #f7d56f;
+  --wine: #164357;
+}
+
+html[data-theme="oceano-rose"] {
+  --bg: #fff8fa;
+  --surface-strong: #f5e8eb;
+  --ink: #1c2029;
+  --muted: #70666d;
+  --line: #e8d7dc;
+  --brand: #087f8c;
+  --brand-strong: #075d68;
+  --accent: #cf6f87;
+  --gold: #edc86e;
+  --wine: #164a56;
+}
+
+html[data-theme="oceano-dourado"] {
+  --bg: #fffaf0;
+  --surface-strong: #f3ead4;
+  --ink: #1b211d;
+  --muted: #706b5f;
+  --line: #e5dac3;
+  --brand: #0b7881;
+  --brand-strong: #075960;
+  --accent: #d99b2f;
+  --gold: #f1c75f;
+  --wine: #174147;
+}
+
+html[data-theme="oceano-fresco"] {
+  --bg: #f2fbfb;
+  --surface-strong: #dff2f1;
+  --ink: #102423;
+  --muted: #607371;
+  --line: #cde6e5;
+  --brand: #00918a;
+  --brand-strong: #006d69;
+  --accent: #ff735c;
+  --gold: #ffd26f;
+  --wine: #124844;
+}
+
+html[data-theme="oceano-pedra"] {
+  --bg: #f6f8f8;
+  --surface-strong: #e6ecec;
+  --ink: #171f22;
+  --muted: #626d70;
+  --line: #d7dfdf;
+  --brand: #3b7b83;
+  --brand-strong: #2a5b62;
+  --accent: #d96d55;
+  --gold: #ddbf66;
+  --wine: #29494f;
+}
+
+html[data-theme="grafite"] {
+  --bg: #f7f7f2;
+  --surface-strong: #ecece4;
+  --ink: #17181c;
+  --muted: #62656c;
+  --line: #deded5;
+  --brand: #2c2f36;
+  --brand-strong: #111318;
+  --accent: #b7d33f;
+  --gold: #f7cf58;
+  --wine: #24262d;
+}
+
+html[data-theme="lavanda"] {
+  --bg: #fbf7fc;
+  --surface-strong: #f0e8f4;
+  --ink: #241b2f;
+  --muted: #71637a;
+  --line: #e5d8ea;
+  --brand: #7653a6;
+  --brand-strong: #573882;
+  --accent: #ee8f7a;
+  --gold: #f7c76b;
+  --wine: #43245f;
+}
+
+html[data-theme="cereja"] {
+  --bg: #fff7f8;
+  --surface-strong: #f9e4e8;
+  --ink: #29171a;
+  --muted: #735d62;
+  --line: #ecd2d8;
+  --brand: #b82132;
+  --brand-strong: #7e1523;
+  --accent: #f6a04d;
+  --gold: #ffd37a;
+  --wine: #5d1721;
+}
+
+html[data-theme="champagne"] {
+  --bg: #fbfaf4;
+  --surface-strong: #f1eadb;
+  --ink: #252018;
+  --muted: #71695c;
+  --line: #e3d8c3;
+  --brand: #9b6a2f;
+  --brand-strong: #67441d;
+  --accent: #c85c44;
+  --gold: #e9bf63;
+  --wine: #57361d;
+}
+
+html[data-theme="aurora"] {
+  --bg: #f8fbff;
+  --surface-strong: #e8f1fb;
+  --ink: #1b1d2a;
+  --muted: #646b7a;
+  --line: #d9e3ef;
+  --brand: #3d6ec9;
+  --brand-strong: #28488a;
+  --accent: #ff8da1;
+  --gold: #ffd76f;
+  --wine: #28345f;
+}
+
+html[data-theme="menta"] {
+  --bg: #f5fbf8;
+  --surface-strong: #e2f3eb;
+  --ink: #15231f;
+  --muted: #5f716a;
+  --line: #cfe7dc;
+  --brand: #15836b;
+  --brand-strong: #0b5f4c;
+  --accent: #e8a33a;
+  --gold: #f7d56b;
+  --wine: #174137;
+}
+
+html[data-theme="rose"] {
+  --bg: #fff8f7;
+  --surface-strong: #f7e6e2;
+  --ink: #291b1c;
+  --muted: #756466;
+  --line: #ecd5d1;
+  --brand: #c05b67;
+  --brand-strong: #903d49;
+  --accent: #8b6fcb;
+  --gold: #f2c268;
+  --wine: #66313a;
+}
+
+html[data-theme="noite"] {
+  --bg: #f6f7fb;
+  --surface-strong: #e7eaf2;
+  --ink: #151826;
+  --muted: #5e6477;
+  --line: #d8dce8;
+  --brand: #243b73;
+  --brand-strong: #17274f;
+  --accent: #d8a43f;
+  --gold: #f0cf70;
+  --wine: #202c52;
+}
+
+html[data-theme="solar"] {
+  --bg: #fffaf2;
+  --surface-strong: #f6ecd9;
+  --ink: #251c14;
+  --muted: #746657;
+  --line: #eadcc5;
+  --brand: #d06b22;
+  --brand-strong: #974914;
+  --accent: #3f7d7a;
+  --gold: #f2c14e;
+  --wine: #653316;
+}
+
+html[data-theme="papel"] {
+  --bg: #f9f8f2;
+  --surface-strong: #ebe8dc;
+  --ink: #20211d;
+  --muted: #686a61;
+  --line: #dddbcf;
+  --brand: #5f6f52;
+  --brand-strong: #3e4c35;
+  --accent: #bd6a4c;
+  --gold: #d9b95f;
+  --wine: #394130;
+}
+
+html[data-theme="floresta"] {
+  --bg: #f4f8f1;
+  --surface-strong: #e3ecdc;
+  --ink: #172014;
+  --muted: #62705d;
+  --line: #d3e0cb;
+  --brand: #355f2e;
+  --brand-strong: #23441e;
+  --accent: #c98733;
+  --gold: #ecc866;
+  --wine: #263b22;
+}
+
+html[data-theme="coral"] {
+  --bg: #fff7f3;
+  --surface-strong: #f8e6dc;
+  --ink: #281b18;
+  --muted: #74635e;
+  --line: #ecd5ca;
+  --brand: #d4513f;
+  --brand-strong: #9d3428;
+  --accent: #257c8a;
+  --gold: #f4c96a;
+  --wine: #66291f;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -66,7 +378,7 @@ textarea {
 }
 
 .nav {
-  height: 68px;
+  min-height: 82px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,9 +388,9 @@ textarea {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 13px;
   font-weight: 900;
-  font-size: 1.28rem;
+  font-size: 1.58rem;
   letter-spacing: 0;
 }
 
@@ -92,9 +404,9 @@ textarea {
 }
 
 .brand-mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 13px;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
   display: grid;
   place-items: center;
   position: relative;
@@ -105,6 +417,11 @@ textarea {
   box-shadow:
     0 12px 28px rgba(178, 31, 45, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.brand-mark svg {
+  width: 27px;
+  height: 27px;
 }
 
 .brand-spark {
@@ -137,15 +454,15 @@ textarea {
 
 .header-search {
   flex: 1;
-  max-width: 520px;
-  height: 44px;
+  max-width: 640px;
+  height: 54px;
   display: flex;
   align-items: center;
   gap: 9px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
-  padding: 0 16px;
+  padding: 0 20px;
   color: var(--muted);
   box-shadow: 0 8px 22px rgba(36, 24, 23, 0.04);
 }
@@ -177,36 +494,27 @@ textarea {
 }
 
 .hero {
-  padding: 62px 0 46px;
+  padding: 56px 0 50px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 76% 16%, rgba(255, 209, 102, 0.24), transparent 28%),
-    linear-gradient(120deg, rgba(193, 18, 31, 0.1), transparent 44%),
-    linear-gradient(330deg, rgba(242, 183, 5, 0.14), transparent 36%);
+    linear-gradient(120deg, color-mix(in srgb, var(--brand) 10%, transparent), transparent 45%),
+    linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--accent) 10%, var(--bg)));
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 0.78fr) minmax(500px, 1.22fr);
-  gap: 34px;
+  grid-template-columns: minmax(250px, 0.72fr) minmax(220px, 0.56fr) minmax(480px, 1.42fr);
+  gap: 24px;
   align-items: center;
+}
+
+.hero .container {
+  width: min(1280px, calc(100% - 32px));
 }
 
 .hero-copy-column {
   position: relative;
   isolation: isolate;
-}
-
-.hero-glow {
-  position: absolute;
-  inset: -120px auto auto -120px;
-  z-index: -1;
-  width: 520px;
-  height: 520px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(60px);
-  opacity: 0.7;
 }
 
 .eyebrow {
@@ -225,10 +533,10 @@ p {
 }
 
 .hero h1 {
-  max-width: 520px;
+  max-width: 470px;
   margin-bottom: 18px;
-  font-size: clamp(2.25rem, 4vw, 3.7rem);
-  line-height: 1.02;
+  font-size: clamp(2rem, 3.2vw, 3.05rem);
+  line-height: 1.05;
   letter-spacing: 0;
 }
 
@@ -237,6 +545,59 @@ p {
   color: var(--muted);
   font-size: 1.08rem;
   line-height: 1.78;
+}
+
+.hero-visual {
+  min-height: 500px;
+  position: relative;
+}
+
+.hero-photo {
+  display: block;
+  object-fit: cover;
+  border: 7px solid rgba(255, 255, 255, 0.86);
+  box-shadow: 0 20px 46px rgba(36, 24, 23, 0.14);
+}
+
+.hero-photo-large {
+  width: 82%;
+  height: 430px;
+  border-radius: 28px;
+}
+
+.hero-photo-small {
+  position: absolute;
+  width: 46%;
+  height: 150px;
+  border-radius: 22px;
+}
+
+.hero-photo-top {
+  top: 42px;
+  right: 0;
+}
+
+.hero-photo-bottom {
+  right: 14px;
+  bottom: 18px;
+}
+
+.hero-note {
+  position: absolute;
+  left: 14px;
+  bottom: 52px;
+  max-width: 230px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--wine);
+  padding: 10px 13px;
+  font-size: 0.9rem;
+  font-weight: 820;
+  box-shadow: var(--soft-shadow);
 }
 
 .proof-row {
@@ -259,6 +620,150 @@ p {
   font-weight: 760;
 }
 
+.theme-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.theme-switcher > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.theme-options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.theme-dot {
+  width: 38px;
+  height: 38px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.72);
+}
+
+.theme-dot span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.theme-dot[aria-pressed="true"] {
+  border-color: var(--ink);
+}
+
+.theme-amora {
+  background: linear-gradient(135deg, #c1121f 0 50%, #f2b705 50%);
+}
+
+.theme-jardim {
+  background: linear-gradient(135deg, #2f7d4b 0 50%, #f2a65a 50%);
+}
+
+.theme-oceano {
+  background: linear-gradient(135deg, #007c89 0 50%, #ff7a59 50%);
+}
+
+.theme-oceano-claro {
+  background: linear-gradient(135deg, #1492a1 0 50%, #ff9a72 50%);
+}
+
+.theme-oceano-coral {
+  background: linear-gradient(135deg, #008894 0 50%, #e65f4e 50%);
+}
+
+.theme-oceano-menta {
+  background: linear-gradient(135deg, #087f7b 0 50%, #f08b63 50%);
+}
+
+.theme-oceano-areia {
+  background: linear-gradient(135deg, #0d7b86 0 50%, #c98452 50%);
+}
+
+.theme-oceano-profundo {
+  background: linear-gradient(135deg, #07596b 0 50%, #f16f58 50%);
+}
+
+.theme-oceano-ceu {
+  background: linear-gradient(135deg, #167fa3 0 50%, #ff806d 50%);
+}
+
+.theme-oceano-rose {
+  background: linear-gradient(135deg, #087f8c 0 50%, #cf6f87 50%);
+}
+
+.theme-oceano-dourado {
+  background: linear-gradient(135deg, #0b7881 0 50%, #d99b2f 50%);
+}
+
+.theme-oceano-fresco {
+  background: linear-gradient(135deg, #00918a 0 50%, #ff735c 50%);
+}
+
+.theme-oceano-pedra {
+  background: linear-gradient(135deg, #3b7b83 0 50%, #d96d55 50%);
+}
+
+.theme-grafite {
+  background: linear-gradient(135deg, #2c2f36 0 50%, #b7d33f 50%);
+}
+
+.theme-lavanda {
+  background: linear-gradient(135deg, #7653a6 0 50%, #ee8f7a 50%);
+}
+
+.theme-cereja {
+  background: linear-gradient(135deg, #b82132 0 50%, #f6a04d 50%);
+}
+
+.theme-champagne {
+  background: linear-gradient(135deg, #9b6a2f 0 50%, #c85c44 50%);
+}
+
+.theme-aurora {
+  background: linear-gradient(135deg, #3d6ec9 0 50%, #ff8da1 50%);
+}
+
+.theme-menta {
+  background: linear-gradient(135deg, #15836b 0 50%, #e8a33a 50%);
+}
+
+.theme-rose {
+  background: linear-gradient(135deg, #c05b67 0 50%, #8b6fcb 50%);
+}
+
+.theme-noite {
+  background: linear-gradient(135deg, #243b73 0 50%, #d8a43f 50%);
+}
+
+.theme-solar {
+  background: linear-gradient(135deg, #d06b22 0 50%, #3f7d7a 50%);
+}
+
+.theme-papel {
+  background: linear-gradient(135deg, #5f6f52 0 50%, #bd6a4c 50%);
+}
+
+.theme-floresta {
+  background: linear-gradient(135deg, #355f2e 0 50%, #c98733 50%);
+}
+
+.theme-coral {
+  background: linear-gradient(135deg, #d4513f 0 50%, #257c8a 50%);
+}
+
 .hero-actions,
 .section-actions {
   display: flex;
@@ -276,7 +781,7 @@ p {
   justify-content: center;
   gap: 8px;
   padding: 0 20px;
-  background: linear-gradient(135deg, var(--brand), #e01e2d);
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
   color: white;
   font-weight: 750;
   cursor: pointer;
@@ -306,7 +811,7 @@ p {
 .cta-button {
   min-height: 52px;
   font-size: 1rem;
-  background: linear-gradient(135deg, var(--brand), #e01e2d 62%, #f25c54);
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong) 62%, var(--accent));
   border-radius: var(--radius-sm);
   box-shadow: 0 18px 34px rgba(178, 31, 45, 0.24);
 }
@@ -474,7 +979,7 @@ p {
   inset: auto 18px 0 18px;
   height: 4px;
   border-radius: 999px 999px 0 0;
-  background: linear-gradient(90deg, var(--brand), #e01e2d, var(--accent), var(--gold));
+  background: linear-gradient(90deg, var(--brand), var(--brand-strong), var(--accent), var(--gold));
 }
 
 .feature-card svg {
@@ -707,6 +1212,24 @@ p {
     padding-top: 34px;
   }
 
+  .hero-visual {
+    min-height: 420px;
+    order: 2;
+  }
+
+  #recomendador {
+    order: 3;
+  }
+
+  .hero-photo-large {
+    width: 74%;
+    height: 350px;
+  }
+
+  .hero-photo-small {
+    width: 36%;
+  }
+
   .nav-links {
     gap: 12px;
     font-size: 0.86rem;
@@ -729,6 +1252,10 @@ p {
     width: min(100% - 24px, 1120px);
   }
 
+  .hero .container {
+    width: min(100% - 24px, 1120px);
+  }
+
   .nav {
     height: auto;
     padding: 14px 0;
@@ -739,6 +1266,43 @@ p {
   .nav-links {
     flex-wrap: wrap;
     justify-content: flex-end;
+  }
+
+  .brand {
+    font-size: 1.34rem;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  .hero-visual {
+    min-height: 330px;
+  }
+
+  .hero-photo-large {
+    width: 78%;
+    height: 280px;
+    border-radius: 22px;
+  }
+
+  .hero-photo-small {
+    width: 42%;
+    height: 112px;
+  }
+
+  .hero-photo-top {
+    top: 30px;
+  }
+
+  .hero-photo-bottom {
+    bottom: 12px;
+  }
+
+  .hero-note {
+    bottom: 34px;
+    font-size: 0.82rem;
   }
 
   .button {

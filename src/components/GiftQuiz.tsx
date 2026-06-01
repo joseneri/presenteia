@@ -62,7 +62,7 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
           </span>
           <div>
             <h2>Conte sobre a pessoa</h2>
-            <p>A IA monta um Top 10 com ideias para comprar agora.</p>
+            <p>Receba um Top 10 com ideias para comprar agora.</p>
           </div>
         </div>
 

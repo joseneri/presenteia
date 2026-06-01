@@ -39,7 +39,7 @@ export default function RootLayout({
                 <input
                   name="q"
                   type="search"
-                  placeholder="Search gifts (e.g., headphones, Mother's Day)..."
+                  placeholder="Busque por pessoa, data ou ideia de presente..."
                   aria-label="Pesquisar presentes"
                 />
               </form>

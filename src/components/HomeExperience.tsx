@@ -1,17 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
-  Brain,
   HeartHandshake,
   MousePointerClick,
+  Palette,
   Search,
-  ShieldCheck,
   Sparkles,
-  Timer,
   Trophy
 } from "lucide-react";
 import { GiftQuiz } from "@/components/GiftQuiz";
@@ -21,10 +20,29 @@ import { articles } from "@/data/articles";
 import { guides } from "@/data/guides";
 import type { Recommendation } from "@/lib/recommend";
 
+const themes = [
+  { id: "oceano", label: "Oceano" },
+  { id: "oceano-claro", label: "Oceano claro" },
+  { id: "oceano-coral", label: "Oceano coral" },
+  { id: "oceano-menta", label: "Oceano menta" },
+  { id: "oceano-areia", label: "Oceano areia" },
+  { id: "oceano-profundo", label: "Oceano profundo" },
+  { id: "oceano-ceu", label: "Oceano ceu" },
+  { id: "oceano-rose", label: "Oceano rose" },
+  { id: "oceano-dourado", label: "Oceano dourado" },
+  { id: "oceano-fresco", label: "Oceano fresco" },
+  { id: "oceano-pedra", label: "Oceano pedra" }
+];
+
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const [theme, setTheme] = useState("oceano");
   const resultsSectionRef = useRef<HTMLElement | null>(null);
   const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   useEffect(() => {
     if (recommendations.length === 0) {
@@ -49,27 +67,46 @@ export function HomeExperience() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy-column">
-            <div className="hero-glow" aria-hidden="true" />
-            <p className="eyebrow">IA que entende o presente antes da compra</p>
-            <h1>Presentes certeiros, escolhidos por IA.</h1>
+            <p className="eyebrow">Escolhas com mais afeto e menos duvida</p>
+            <h1>Acerte no presente com mais carinho.</h1>
             <p className="hero-copy">
-              Diga quem vai ganhar, o orcamento e alguns gostos da pessoa. O
-              Presenteia monta um Top 10 com ideias explicadas e prontas para
-              comprar.
+              Conte quem vai receber, o momento e o carinho que voce quer
+              entregar. O Presenteia transforma pistas simples em ideias com
+              alma, utilidade e motivo para sorrir.
             </p>
             <div className="proof-row" aria-label="Diferenciais">
               <span>
-                <Timer size={16} />
-                menos de 1 minuto
+                <Sparkles size={16} />
+                IA para inspirar sem perder o toque humano
               </span>
               <span>
-                <ShieldCheck size={16} />
-                sem cadastro
+                <HeartHandshake size={16} />
+                ideias com contexto, carinho e utilidade
               </span>
               <span>
                 <MousePointerClick size={16} />
-                pronto para comprar
+                escolha por pessoa, data e estilo
               </span>
+            </div>
+            <div className="theme-switcher" aria-label="Escolher tema de cor">
+              <span>
+                <Palette size={16} />
+                Tema
+              </span>
+              <div className="theme-options">
+                {themes.map((option) => (
+                  <button
+                    aria-pressed={theme === option.id}
+                    className={`theme-dot theme-${option.id}`}
+                    key={option.id}
+                    onClick={() => setTheme(option.id)}
+                    title={option.label}
+                    type="button"
+                  >
+                    <span>{option.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="hero-actions">
               <a className="button" href="#recomendador">
@@ -80,6 +117,33 @@ export function HomeExperience() {
                 Explorar ideias
                 <ArrowRight size={16} />
               </Link>
+            </div>
+          </div>
+          <div className="hero-visual" aria-hidden="true">
+            <Image
+              className="hero-photo hero-photo-large"
+              src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=920&q=82"
+              alt=""
+              width={920}
+              height={780}
+            />
+            <Image
+              className="hero-photo hero-photo-small hero-photo-top"
+              src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=520&q=82"
+              alt=""
+              width={520}
+              height={420}
+            />
+            <Image
+              className="hero-photo hero-photo-small hero-photo-bottom"
+              src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=520&q=82"
+              alt=""
+              width={520}
+              height={420}
+            />
+            <div className="hero-note">
+              <Sparkles size={18} />
+              <span>Ideias com historia, nao so preco.</span>
             </div>
           </div>
           <div id="recomendador">
@@ -124,8 +188,8 @@ export function HomeExperience() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Como a IA ajuda</p>
-            <h2>Menos chute, mais presente com contexto</h2>
+            <p className="eyebrow">Como o Presenteia ajuda</p>
+            <h2>Menos chute, mais contexto e carinho</h2>
             <p>
               Em vez de mostrar uma vitrine aleatoria, o Presenteia combina
               perfil, momento e orcamento para priorizar opcoes com mais chance
@@ -134,15 +198,15 @@ export function HomeExperience() {
           </div>
           <div className="feature-grid">
             <article className="feature-card">
-              <Brain size={24} />
+              <HeartHandshake size={24} />
               <h3>Entende a pessoa</h3>
               <p>
-                A IA considera gostos, rotina, ocasiao e estilo para sair do
-                presente generico.
+                Considera gostos, rotina, ocasiao e estilo para sair do presente
+                generico.
               </p>
             </article>
             <article className="feature-card">
-              <HeartHandshake size={24} />
+              <Sparkles size={24} />
               <h3>Explica o motivo</h3>
               <p>
                 Cada sugestao vem com uma razao simples, para voce decidir sem
