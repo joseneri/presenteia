@@ -5,11 +5,11 @@
   --ink: #241817;
   --muted: #74625d;
   --line: #e8ded6;
-  --brand: #a9263a;
-  --brand-strong: #7f1b2b;
-  --accent: #d9563b;
-  --gold: #d99a30;
-  --wine: #5f1724;
+  --brand: #b21f2d;
+  --brand-strong: #861421;
+  --accent: #d4a11d;
+  --gold: #f2c14e;
+  --wine: #5c111c;
   --soft-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.02);
   --shadow: var(--soft-shadow);
   --radius: 16px;
@@ -99,11 +99,11 @@ textarea {
   place-items: center;
   position: relative;
   background:
-    radial-gradient(circle at 72% 22%, rgba(255, 238, 168, 0.9) 0 7%, transparent 17%),
-    linear-gradient(145deg, #d9563b, var(--brand) 58%, #6f1826);
+    radial-gradient(circle at 72% 22%, rgba(255, 231, 137, 0.95) 0 7%, transparent 17%),
+    linear-gradient(145deg, #f2c14e 0 12%, var(--brand) 42%, #6f101a);
   color: white;
   box-shadow:
-    0 12px 28px rgba(169, 38, 58, 0.22),
+    0 12px 28px rgba(178, 31, 45, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.34);
 }
 
@@ -113,7 +113,7 @@ textarea {
   top: 5px;
   width: 9px;
   height: 9px;
-  background: #fff1a8;
+  background: #ffe789;
   clip-path: polygon(
     50% 0,
     61% 37%,
@@ -124,7 +124,7 @@ textarea {
     0 50%,
     39% 37%
   );
-  filter: drop-shadow(0 0 7px rgba(255, 241, 168, 0.9));
+  filter: drop-shadow(0 0 7px rgba(255, 231, 137, 0.9));
 }
 
 .nav-links {
@@ -180,15 +180,15 @@ textarea {
   padding: 62px 0 46px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 76% 16%, rgba(169, 38, 58, 0.1), transparent 28%),
-    linear-gradient(120deg, rgba(217, 86, 59, 0.08), transparent 44%),
-    linear-gradient(330deg, rgba(169, 38, 58, 0.07), transparent 36%);
+    radial-gradient(circle at 76% 16%, rgba(242, 193, 78, 0.18), transparent 28%),
+    linear-gradient(120deg, rgba(178, 31, 45, 0.08), transparent 44%),
+    linear-gradient(330deg, rgba(212, 161, 29, 0.1), transparent 36%);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
-  gap: 44px;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(500px, 1.22fr);
+  gap: 34px;
   align-items: center;
 }
 
@@ -225,15 +225,15 @@ p {
 }
 
 .hero h1 {
-  max-width: 620px;
+  max-width: 520px;
   margin-bottom: 18px;
-  font-size: clamp(2.35rem, 4.6vw, 4.25rem);
+  font-size: clamp(2.25rem, 4vw, 3.7rem);
   line-height: 1.02;
   letter-spacing: 0;
 }
 
 .hero-copy {
-  max-width: 620px;
+  max-width: 520px;
   color: var(--muted);
   font-size: 1.08rem;
   line-height: 1.78;
@@ -280,7 +280,7 @@ p {
   color: white;
   font-weight: 750;
   cursor: pointer;
-  box-shadow: 0 12px 24px rgba(169, 38, 58, 0.16);
+  box-shadow: 0 12px 24px rgba(178, 31, 45, 0.16);
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
@@ -306,13 +306,13 @@ p {
 .cta-button {
   min-height: 52px;
   font-size: 1rem;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
   border-radius: var(--radius-sm);
-  box-shadow: 0 18px 34px rgba(169, 38, 58, 0.24);
+  box-shadow: 0 18px 34px rgba(178, 31, 45, 0.24);
 }
 
 .cta-button:hover {
-  box-shadow: 0 22px 42px rgba(169, 38, 58, 0.3);
+  box-shadow: 0 22px 42px rgba(178, 31, 45, 0.3);
 }
 
 .quiz-panel {
@@ -337,8 +337,8 @@ p {
   border-radius: var(--radius-sm);
   display: grid;
   place-items: center;
-  background: #fff2de;
-  color: var(--accent);
+  background: #fff4cf;
+  color: #9a6d05;
 }
 
 .quiz-panel h2 {
@@ -394,7 +394,7 @@ p {
 .field select:focus,
 .field textarea:focus {
   border-color: var(--brand);
-  box-shadow: 0 0 0 4px rgba(169, 38, 58, 0.12);
+  box-shadow: 0 0 0 4px rgba(178, 31, 45, 0.12);
 }
 
 .disclosure {
@@ -515,7 +515,7 @@ p {
 .guide-card:hover,
 .feature-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(169, 38, 58, 0.24);
+  border-color: rgba(178, 31, 45, 0.24);
   box-shadow: var(--soft-shadow);
 }
 
@@ -525,7 +525,7 @@ p {
   left: 14px;
   z-index: 1;
   border-radius: 999px;
-  background: var(--wine);
+  background: linear-gradient(135deg, var(--wine), var(--brand));
   color: #fff;
   padding: 6px 10px;
   font-size: 0.78rem;
@@ -594,7 +594,7 @@ p {
 }
 
 .product-meta {
-  color: var(--ink);
+  color: var(--brand-strong);
   font-weight: 800;
   margin-bottom: 14px;
 }
