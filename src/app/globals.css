@@ -1,19 +1,557 @@
 :root {
-  --bg: #fbf9f5;
+  --bg: #fbf8f3;
+  --hero-bg: #eaf8fb;
   --surface: #ffffff;
-  --surface-strong: #f4efe9;
-  --ink: #241817;
-  --muted: #74625d;
-  --line: #e8ded6;
-  --brand: #c1121f;
-  --brand-strong: #8f0f1a;
-  --accent: #f2b705;
-  --gold: #ffd166;
-  --wine: #5a0b14;
+  --surface-strong: #f3ece5;
+  --ink: #122129;
+  --muted: #58707a;
+  --line: #cfe7ed;
+  --brand: #f26a2e;
+  --brand-strong: #cf2d32;
+  --accent: #f58a57;
+  --gold: #ffd06a;
+  --wine: #7d1d28;
+  --logo-hot: #f26a2e;
+  --logo-warm: #ffc45a;
+  --button: #d63c35;
+  --button-strong: #9f1f2f;
+  --button-accent: #f58a57;
   --soft-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.02);
   --shadow: var(--soft-shadow);
   --radius: 16px;
   --radius-sm: 12px;
+}
+
+html[data-theme="brisa-coral"] {
+  --bg: #fbf8f3;
+  --hero-bg: #eaf8fb;
+  --surface-strong: #f3ece5;
+  --ink: #122129;
+  --muted: #58707a;
+  --line: #cfe7ed;
+  --brand: #f26a2e;
+  --brand-strong: #cf2d32;
+  --accent: #f58a57;
+  --gold: #ffd06a;
+  --wine: #7d1d28;
+  --logo-hot: #f26a2e;
+  --logo-warm: #ffc45a;
+  --button: #d63c35;
+  --button-strong: #9f1f2f;
+  --button-accent: #f58a57;
+}
+
+html[data-theme="brisa-tangerina"] {
+  --bg: #fcf8f1;
+  --hero-bg: #edf9fc;
+  --surface-strong: #f7eadc;
+  --ink: #14232a;
+  --muted: #5b717a;
+  --line: #d2e7ec;
+  --brand: #ef7a22;
+  --brand-strong: #c3302b;
+  --accent: #ff9a4a;
+  --gold: #ffd36c;
+  --wine: #842821;
+  --logo-hot: #ef7a22;
+  --logo-warm: #ffd36c;
+  --button: #c9432f;
+  --button-strong: #8f211f;
+  --button-accent: #ff9557;
+}
+
+html[data-theme="brisa-cereja"] {
+  --bg: #fbf7f6;
+  --hero-bg: #e8f7fb;
+  --surface-strong: #f5e9e6;
+  --ink: #132129;
+  --muted: #5d7078;
+  --line: #cfe5ea;
+  --brand: #f3702f;
+  --brand-strong: #b9152e;
+  --accent: #e94743;
+  --gold: #ffc857;
+  --wine: #741528;
+  --logo-hot: #f3702f;
+  --logo-warm: #ffc857;
+  --button: #b9152e;
+  --button-strong: #7f1020;
+  --button-accent: #ef754f;
+}
+
+html[data-theme="brisa-terracota"] {
+  --bg: #fbf7f2;
+  --hero-bg: #edf8fa;
+  --surface-strong: #f2e6dc;
+  --ink: #172227;
+  --muted: #637178;
+  --line: #d3e5e9;
+  --brand: #e9712e;
+  --brand-strong: #a94731;
+  --accent: #c65d42;
+  --gold: #eec25f;
+  --wine: #6d3329;
+  --logo-hot: #e9712e;
+  --logo-warm: #f4c35f;
+  --button: #b44a34;
+  --button-strong: #743021;
+  --button-accent: #e3834e;
+}
+
+html[data-theme="brisa-pessego"] {
+  --bg: #fff8f2;
+  --hero-bg: #eef9fb;
+  --surface-strong: #f7e8dc;
+  --ink: #172329;
+  --muted: #64747b;
+  --line: #d6e9ed;
+  --brand: #f47f35;
+  --brand-strong: #d24a3a;
+  --accent: #ffad73;
+  --gold: #ffd778;
+  --wine: #88342d;
+  --logo-hot: #f47f35;
+  --logo-warm: #ffd778;
+  --button: #d24a3a;
+  --button-strong: #963027;
+  --button-accent: #ff9f68;
+}
+
+html[data-theme="brisa-rubi"] {
+  --bg: #fbf7f7;
+  --hero-bg: #eaf7fb;
+  --surface-strong: #f3e4e6;
+  --ink: #13212a;
+  --muted: #5c6e78;
+  --line: #cfe4eb;
+  --brand: #f26b2f;
+  --brand-strong: #971937;
+  --accent: #ce2c49;
+  --gold: #f8c65e;
+  --wine: #5f1230;
+  --logo-hot: #f26b2f;
+  --logo-warm: #f8c65e;
+  --button: #971937;
+  --button-strong: #641025;
+  --button-accent: #dc4b3d;
+}
+
+html[data-theme="brisa-ambar"] {
+  --bg: #fcf8f0;
+  --hero-bg: #ecf8fb;
+  --surface-strong: #f1e8d7;
+  --ink: #172320;
+  --muted: #697267;
+  --line: #d5e7e9;
+  --brand: #e78323;
+  --brand-strong: #b73826;
+  --accent: #d99b2f;
+  --gold: #f3c761;
+  --wine: #773321;
+  --logo-hot: #e78323;
+  --logo-warm: #f3c761;
+  --button: #b73826;
+  --button-strong: #7f2319;
+  --button-accent: #e79745;
+}
+
+html[data-theme="brisa-goiaba"] {
+  --bg: #fff7f4;
+  --hero-bg: #eaf8fb;
+  --surface-strong: #f8e5dd;
+  --ink: #16222a;
+  --muted: #65717a;
+  --line: #d4e6eb;
+  --brand: #f17432;
+  --brand-strong: #c9444e;
+  --accent: #ec7967;
+  --gold: #ffd16c;
+  --wine: #7c2634;
+  --logo-hot: #f17432;
+  --logo-warm: #ffd16c;
+  --button: #c9444e;
+  --button-strong: #8e2632;
+  --button-accent: #f1865e;
+}
+
+html[data-theme="brisa-rose"] {
+  --bg: #fff8f7;
+  --hero-bg: #eef8fb;
+  --surface-strong: #f5e5e3;
+  --ink: #172127;
+  --muted: #696f77;
+  --line: #d8e7ec;
+  --brand: #ed7632;
+  --brand-strong: #b9485c;
+  --accent: #d86d76;
+  --gold: #f4c869;
+  --wine: #743444;
+  --logo-hot: #ed7632;
+  --logo-warm: #f4c869;
+  --button: #b9485c;
+  --button-strong: #7e2a3d;
+  --button-accent: #e78457;
+}
+
+html[data-theme="brisa-telha"] {
+  --bg: #fbf7f4;
+  --hero-bg: #eaf7fa;
+  --surface-strong: #f0e3dc;
+  --ink: #172226;
+  --muted: #657177;
+  --line: #d2e4e8;
+  --brand: #e66d2e;
+  --brand-strong: #9d3428;
+  --accent: #c65a3e;
+  --gold: #ecc363;
+  --wine: #652a24;
+  --logo-hot: #e66d2e;
+  --logo-warm: #ecc363;
+  --button: #9d3428;
+  --button-strong: #6c2119;
+  --button-accent: #d77245;
+}
+
+html[data-theme="mix-presente"] {
+  --bg: #fbf8f3;
+  --hero-bg: #eaf8fb;
+  --surface-strong: #f3ece5;
+  --ink: #122129;
+  --muted: #58707a;
+  --line: #cfe7ed;
+  --brand: #f26a2e;
+  --brand-strong: #cf2d32;
+  --accent: #008894;
+  --gold: #ffd06a;
+  --wine: #7d1d28;
+  --logo-hot: #f26a2e;
+  --logo-warm: #ffd06a;
+  --button: #cf2d32;
+  --button-strong: #8f1c28;
+  --button-accent: #f58a57;
+}
+
+html[data-theme="mix-verde"] {
+  --bg: #f6fbf5;
+  --hero-bg: #e8f8f1;
+  --surface-strong: #e5f1e3;
+  --ink: #14231a;
+  --muted: #5f7465;
+  --line: #cfe6d4;
+  --brand: #2f8f53;
+  --brand-strong: #176236;
+  --accent: #f17a3d;
+  --gold: #f6ca58;
+  --wine: #9d2633;
+  --logo-hot: #2f8f53;
+  --logo-warm: #f6ca58;
+  --button: #d84b34;
+  --button-strong: #92271f;
+  --button-accent: #f17a3d;
+}
+
+html[data-theme="mix-azul"] {
+  --bg: #f5f9ff;
+  --hero-bg: #e8f4ff;
+  --surface-strong: #e3eff9;
+  --ink: #122033;
+  --muted: #5b6f84;
+  --line: #cfe1f2;
+  --brand: #2775c8;
+  --brand-strong: #154c8c;
+  --accent: #ef6b43;
+  --gold: #f3c85d;
+  --wine: #9f2637;
+  --logo-hot: #2775c8;
+  --logo-warm: #f3c85d;
+  --button: #e15a36;
+  --button-strong: #9f2f24;
+  --button-accent: #f1954d;
+}
+
+html[data-theme="mix-laranja"] {
+  --bg: #fff8f0;
+  --hero-bg: #fff0dd;
+  --surface-strong: #f6e5d1;
+  --ink: #261b12;
+  --muted: #796757;
+  --line: #ead8c2;
+  --brand: #ed7926;
+  --brand-strong: #bd3c22;
+  --accent: #1c8f8c;
+  --gold: #ffd05d;
+  --wine: #8a2a25;
+  --logo-hot: #ed7926;
+  --logo-warm: #ffd05d;
+  --button: #bd3c22;
+  --button-strong: #7e2418;
+  --button-accent: #f08d3e;
+}
+
+html[data-theme="mix-vermelho"] {
+  --bg: #fff7f7;
+  --hero-bg: #fff0ef;
+  --surface-strong: #f6e1e1;
+  --ink: #27171a;
+  --muted: #786268;
+  --line: #e9d0d3;
+  --brand: #c9182e;
+  --brand-strong: #850f22;
+  --accent: #f1782e;
+  --gold: #f9c75f;
+  --wine: #641020;
+  --logo-hot: #c9182e;
+  --logo-warm: #f9c75f;
+  --button: #c9182e;
+  --button-strong: #850f22;
+  --button-accent: #f1782e;
+}
+
+html[data-theme="mix-roxo"] {
+  --bg: #fbf7ff;
+  --hero-bg: #f1ecff;
+  --surface-strong: #eee4f5;
+  --ink: #23172f;
+  --muted: #71627d;
+  --line: #e2d3eb;
+  --brand: #7653c8;
+  --brand-strong: #4d2f91;
+  --accent: #ef7547;
+  --gold: #f4c96a;
+  --wine: #9f264b;
+  --logo-hot: #7653c8;
+  --logo-warm: #f4c96a;
+  --button: #c7444d;
+  --button-strong: #812636;
+  --button-accent: #ef7547;
+}
+
+html[data-theme="mix-floresta"] {
+  --bg: #f5f8f0;
+  --hero-bg: #edf6e7;
+  --surface-strong: #e3ecda;
+  --ink: #172016;
+  --muted: #66715e;
+  --line: #d2dfca;
+  --brand: #365f2e;
+  --brand-strong: #243f1f;
+  --accent: #d97035;
+  --gold: #e8bf5d;
+  --wine: #9b2f2a;
+  --logo-hot: #365f2e;
+  --logo-warm: #e8bf5d;
+  --button: #b84a2e;
+  --button-strong: #783020;
+  --button-accent: #d97035;
+}
+
+html[data-theme="mix-solar"] {
+  --bg: #fffaf0;
+  --hero-bg: #fff6d9;
+  --surface-strong: #f4ead0;
+  --ink: #241f12;
+  --muted: #746b55;
+  --line: #e5dac0;
+  --brand: #d99b1f;
+  --brand-strong: #a95b16;
+  --accent: #118c97;
+  --gold: #f2c74f;
+  --wine: #b1342f;
+  --logo-hot: #d99b1f;
+  --logo-warm: #ffe083;
+  --button: #c6472d;
+  --button-strong: #8c2a1f;
+  --button-accent: #ef8f3e;
+}
+
+html[data-theme="mix-rose"] {
+  --bg: #fff8fa;
+  --hero-bg: #fff0f5;
+  --surface-strong: #f6e4e9;
+  --ink: #281a22;
+  --muted: #76636d;
+  --line: #ecd3dc;
+  --brand: #d45f77;
+  --brand-strong: #943246;
+  --accent: #258a98;
+  --gold: #f2c76a;
+  --wine: #76283a;
+  --logo-hot: #d45f77;
+  --logo-warm: #f2c76a;
+  --button: #b8424c;
+  --button-strong: #7d2733;
+  --button-accent: #ed7d56;
+}
+
+html[data-theme="mix-grafite"] {
+  --bg: #f7f7f2;
+  --hero-bg: #eff5f5;
+  --surface-strong: #e7e7df;
+  --ink: #171b20;
+  --muted: #62686d;
+  --line: #d9dfdf;
+  --brand: #2b3038;
+  --brand-strong: #11151a;
+  --accent: #f0773a;
+  --gold: #d7bc58;
+  --wine: #a72b35;
+  --logo-hot: #2b3038;
+  --logo-warm: #f0773a;
+  --button: #b53a33;
+  --button-strong: #742320;
+  --button-accent: #f0773a;
+}
+
+html[data-theme="mix-arco"] {
+  --bg: #fbf8f6;
+  --hero-bg: #eaf7fb;
+  --surface-strong: #eeeae1;
+  --ink: #132129;
+  --muted: #667077;
+  --line: #d7e4e8;
+  --brand: #008894;
+  --brand-strong: #c92334;
+  --accent: #f57932;
+  --gold: #f2c84b;
+  --wine: #6d2d76;
+  --logo-hot: #f57932;
+  --logo-warm: #f2c84b;
+  --button: #c92334;
+  --button-strong: #6d2d76;
+  --button-accent: #008894;
+}
+
+html[data-theme="verde-azul-classico"] {
+  --bg: #fbf8f3;
+  --hero-bg: #eaf8fb;
+  --surface-strong: #e5f1f1;
+  --ink: #122129;
+  --muted: #58707a;
+  --line: #cfe7ed;
+  --brand: #008894;
+  --brand-strong: #00636c;
+  --accent: #f26a4e;
+  --gold: #ffd06a;
+  --wine: #10535b;
+  --logo-hot: #008894;
+  --logo-warm: #42b8ad;
+  --button: #008894;
+  --button-strong: #00636c;
+  --button-accent: #f26a4e;
+}
+
+html[data-theme="verde-azul-claro"] {
+  --bg: #f7fbfa;
+  --hero-bg: #edf9fb;
+  --surface-strong: #e8f4f3;
+  --ink: #13232a;
+  --muted: #5d737b;
+  --line: #d2e9ee;
+  --brand: #1595a3;
+  --brand-strong: #0b707d;
+  --accent: #ff8a66;
+  --gold: #ffd878;
+  --wine: #175963;
+  --logo-hot: #1595a3;
+  --logo-warm: #76d0c5;
+  --button: #0b8793;
+  --button-strong: #08636e;
+  --button-accent: #ff8a66;
+}
+
+html[data-theme="verde-azul-profundo"] {
+  --bg: #f4f8f8;
+  --hero-bg: #e7f4f7;
+  --surface-strong: #deecef;
+  --ink: #101f28;
+  --muted: #596b75;
+  --line: #c9dfe6;
+  --brand: #006b78;
+  --brand-strong: #064a56;
+  --accent: #e75f48;
+  --gold: #eec55f;
+  --wine: #0d3d49;
+  --logo-hot: #006b78;
+  --logo-warm: #35a99f;
+  --button: #006b78;
+  --button-strong: #064a56;
+  --button-accent: #e75f48;
+}
+
+html[data-theme="verde-azul-menta"] {
+  --bg: #f5fbf8;
+  --hero-bg: #e8f8f3;
+  --surface-strong: #dff2eb;
+  --ink: #12241f;
+  --muted: #5f746f;
+  --line: #cfe7e3;
+  --brand: #168a78;
+  --brand-strong: #0d6659;
+  --accent: #f47a52;
+  --gold: #f6d66c;
+  --wine: #164943;
+  --logo-hot: #168a78;
+  --logo-warm: #7bd3bd;
+  --button: #087f7b;
+  --button-strong: #055e5c;
+  --button-accent: #f47a52;
+}
+
+html[data-theme="verde-azul-petroleo"] {
+  --bg: #f5f8f7;
+  --hero-bg: #e8f2f3;
+  --surface-strong: #dfe9e8;
+  --ink: #111f22;
+  --muted: #5f6e70;
+  --line: #cfdddd;
+  --brand: #285f68;
+  --brand-strong: #193f47;
+  --accent: #d96d55;
+  --gold: #ddbf66;
+  --wine: #29494f;
+  --logo-hot: #285f68;
+  --logo-warm: #55aaa3;
+  --button: #285f68;
+  --button-strong: #193f47;
+  --button-accent: #d96d55;
+}
+
+html[data-theme="verde-azul-vivo"] {
+  --bg: #f4fbfb;
+  --hero-bg: #e4f8fa;
+  --surface-strong: #daf0ef;
+  --ink: #102428;
+  --muted: #5d7377;
+  --line: #c7e5e8;
+  --brand: #00918a;
+  --brand-strong: #006d69;
+  --accent: #ff735c;
+  --gold: #ffd26f;
+  --wine: #124844;
+  --logo-hot: #00918a;
+  --logo-warm: #58cfc0;
+  --button: #008894;
+  --button-strong: #00636c;
+  --button-accent: #ff735c;
+}
+
+html[data-theme="verde-azul-vivo-amarelo"] {
+  --bg: #f4fbfb;
+  --hero-bg: #e4f8fa;
+  --surface-strong: #daf0ef;
+  --ink: #102428;
+  --muted: #5d7377;
+  --line: #c7e5e8;
+  --brand: #00918a;
+  --brand-strong: #006d69;
+  --accent: #38b8ad;
+  --gold: #ffd84d;
+  --wine: #124844;
+  --logo-hot: #00918a;
+  --logo-warm: #ffd84d;
+  --button: #008894;
+  --button-strong: #006d69;
+  --button-accent: #36aaa4;
 }
 
 html[data-theme="jardim"] {
@@ -400,37 +938,34 @@ textarea {
 }
 
 .brand-ai {
-  color: var(--brand);
+  color: var(--logo-hot);
 }
 
 .brand-mark {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+  width: 54px;
+  height: 54px;
+  border-radius: 0;
   display: grid;
   place-items: center;
   position: relative;
-  background:
-    radial-gradient(circle at 72% 22%, rgba(255, 209, 102, 0.98) 0 7%, transparent 17%),
-    linear-gradient(145deg, #ffd166 0 16%, #e01e2d 42%, #7a0c17);
-  color: white;
-  box-shadow:
-    0 12px 28px rgba(178, 31, 45, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  background: transparent;
+  color: var(--logo-hot);
+  filter: drop-shadow(0 12px 20px color-mix(in srgb, var(--brand-strong) 28%, transparent));
 }
 
 .brand-mark svg {
-  width: 27px;
-  height: 27px;
+  width: 42px;
+  height: 42px;
+  stroke-width: 2.35;
 }
 
 .brand-spark {
   position: absolute;
-  right: 5px;
+  right: 4px;
   top: 5px;
-  width: 9px;
-  height: 9px;
-  background: #ffd166;
+  width: 11px;
+  height: 11px;
+  background: var(--logo-warm);
   clip-path: polygon(
     50% 0,
     61% 37%,
@@ -441,7 +976,7 @@ textarea {
     0 50%,
     39% 37%
   );
-  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.95));
+  filter: drop-shadow(0 0 9px color-mix(in srgb, var(--logo-warm) 86%, transparent));
 }
 
 .nav-links {
@@ -497,8 +1032,8 @@ textarea {
   padding: 56px 0 50px;
   overflow: hidden;
   background:
-    linear-gradient(120deg, color-mix(in srgb, var(--brand) 10%, transparent), transparent 45%),
-    linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--accent) 10%, var(--bg)));
+    linear-gradient(120deg, color-mix(in srgb, var(--hero-bg) 90%, white), transparent 48%),
+    linear-gradient(180deg, var(--hero-bg), color-mix(in srgb, var(--accent) 8%, var(--bg)));
 }
 
 .hero-grid {
@@ -664,6 +1199,118 @@ p {
   border-color: var(--ink);
 }
 
+.theme-verde-azul-classico {
+  background: conic-gradient(#eaf8fb 0 25%, #008894 0 50%, #42b8ad 0 75%, #f26a4e 0);
+}
+
+.theme-verde-azul-claro {
+  background: conic-gradient(#edf9fb 0 25%, #1595a3 0 50%, #76d0c5 0 75%, #ff8a66 0);
+}
+
+.theme-verde-azul-profundo {
+  background: conic-gradient(#e7f4f7 0 25%, #006b78 0 50%, #35a99f 0 75%, #e75f48 0);
+}
+
+.theme-verde-azul-menta {
+  background: conic-gradient(#e8f8f3 0 25%, #168a78 0 50%, #7bd3bd 0 75%, #f47a52 0);
+}
+
+.theme-verde-azul-petroleo {
+  background: conic-gradient(#e8f2f3 0 25%, #285f68 0 50%, #55aaa3 0 75%, #d96d55 0);
+}
+
+.theme-verde-azul-vivo {
+  background: conic-gradient(#e4f8fa 0 25%, #00918a 0 50%, #58cfc0 0 75%, #ff735c 0);
+}
+
+.theme-verde-azul-vivo-amarelo {
+  background: conic-gradient(#e4f8fa 0 25%, #00918a 0 50%, #ffd84d 0 75%, #36aaa4 0);
+}
+
+.theme-mix-presente {
+  background: conic-gradient(#eaf8fb 0 25%, #f26a2e 0 50%, #cf2d32 0 75%, #008894 0);
+}
+
+.theme-mix-verde {
+  background: conic-gradient(#e8f8f1 0 25%, #2f8f53 0 50%, #d84b34 0 75%, #f6ca58 0);
+}
+
+.theme-mix-azul {
+  background: conic-gradient(#e8f4ff 0 25%, #2775c8 0 50%, #e15a36 0 75%, #f3c85d 0);
+}
+
+.theme-mix-laranja {
+  background: conic-gradient(#fff0dd 0 25%, #ed7926 0 50%, #bd3c22 0 75%, #1c8f8c 0);
+}
+
+.theme-mix-vermelho {
+  background: conic-gradient(#fff0ef 0 25%, #c9182e 0 50%, #f1782e 0 75%, #f9c75f 0);
+}
+
+.theme-mix-roxo {
+  background: conic-gradient(#f1ecff 0 25%, #7653c8 0 50%, #c7444d 0 75%, #ef7547 0);
+}
+
+.theme-mix-floresta {
+  background: conic-gradient(#edf6e7 0 25%, #365f2e 0 50%, #b84a2e 0 75%, #e8bf5d 0);
+}
+
+.theme-mix-solar {
+  background: conic-gradient(#fff6d9 0 25%, #d99b1f 0 50%, #c6472d 0 75%, #118c97 0);
+}
+
+.theme-mix-rose {
+  background: conic-gradient(#fff0f5 0 25%, #d45f77 0 50%, #b8424c 0 75%, #258a98 0);
+}
+
+.theme-mix-grafite {
+  background: conic-gradient(#eff5f5 0 25%, #2b3038 0 50%, #b53a33 0 75%, #f0773a 0);
+}
+
+.theme-mix-arco {
+  background: conic-gradient(#eaf7fb 0 20%, #008894 0 40%, #f57932 0 60%, #c92334 0 80%, #6d2d76 0);
+}
+
+.theme-brisa-coral {
+  background: conic-gradient(#eaf8fb 0 25%, #f26a2e 0 50%, #d63c35 0 75%, #ffd06a 0);
+}
+
+.theme-brisa-tangerina {
+  background: conic-gradient(#edf9fc 0 25%, #ef7a22 0 50%, #c9432f 0 75%, #ffd36c 0);
+}
+
+.theme-brisa-cereja {
+  background: conic-gradient(#e8f7fb 0 25%, #f3702f 0 50%, #b9152e 0 75%, #ffc857 0);
+}
+
+.theme-brisa-terracota {
+  background: conic-gradient(#edf8fa 0 25%, #e9712e 0 50%, #b44a34 0 75%, #eec25f 0);
+}
+
+.theme-brisa-pessego {
+  background: conic-gradient(#eef9fb 0 25%, #f47f35 0 50%, #d24a3a 0 75%, #ffd778 0);
+}
+
+.theme-brisa-rubi {
+  background: conic-gradient(#eaf7fb 0 25%, #f26b2f 0 50%, #971937 0 75%, #f8c65e 0);
+}
+
+.theme-brisa-ambar {
+  background: conic-gradient(#ecf8fb 0 25%, #e78323 0 50%, #b73826 0 75%, #f3c761 0);
+}
+
+.theme-brisa-goiaba {
+  background: conic-gradient(#eaf8fb 0 25%, #f17432 0 50%, #c9444e 0 75%, #ffd16c 0);
+}
+
+.theme-brisa-rose {
+  background: conic-gradient(#eef8fb 0 25%, #ed7632 0 50%, #b9485c 0 75%, #f4c869 0);
+}
+
+.theme-brisa-telha {
+  background: conic-gradient(#eaf7fa 0 25%, #e66d2e 0 50%, #9d3428 0 75%, #ecc363 0);
+}
+
 .theme-amora {
   background: linear-gradient(135deg, #c1121f 0 50%, #f2b705 50%);
 }
@@ -781,7 +1428,7 @@ p {
   justify-content: center;
   gap: 8px;
   padding: 0 20px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  background: linear-gradient(135deg, var(--button), var(--button-strong));
   color: white;
   font-weight: 750;
   cursor: pointer;
@@ -793,7 +1440,7 @@ p {
 }
 
 .button:hover {
-  background: var(--brand-strong);
+  background: var(--button-strong);
   transform: translateY(-1px);
 }
 
@@ -811,7 +1458,7 @@ p {
 .cta-button {
   min-height: 52px;
   font-size: 1rem;
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong) 62%, var(--accent));
+  background: linear-gradient(135deg, var(--button), var(--button-strong) 62%, var(--button-accent));
   border-radius: var(--radius-sm);
   box-shadow: 0 18px 34px rgba(178, 31, 45, 0.24);
 }
@@ -842,8 +1489,8 @@ p {
   border-radius: var(--radius-sm);
   display: grid;
   place-items: center;
-  background: #fff3bf;
-  color: #8f0f1a;
+  background: color-mix(in srgb, var(--gold) 34%, white);
+  color: var(--brand-strong);
 }
 
 .quiz-panel h2 {
@@ -1273,8 +1920,13 @@ p {
   }
 
   .brand-mark {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .brand-mark svg {
+    width: 38px;
+    height: 38px;
   }
 
   .hero-visual {

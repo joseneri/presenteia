@@ -21,22 +21,18 @@ import { guides } from "@/data/guides";
 import type { Recommendation } from "@/lib/recommend";
 
 const themes = [
-  { id: "oceano", label: "Oceano" },
-  { id: "oceano-claro", label: "Oceano claro" },
-  { id: "oceano-coral", label: "Oceano coral" },
-  { id: "oceano-menta", label: "Oceano menta" },
-  { id: "oceano-areia", label: "Oceano areia" },
-  { id: "oceano-profundo", label: "Oceano profundo" },
-  { id: "oceano-ceu", label: "Oceano ceu" },
-  { id: "oceano-rose", label: "Oceano rose" },
-  { id: "oceano-dourado", label: "Oceano dourado" },
-  { id: "oceano-fresco", label: "Oceano fresco" },
-  { id: "oceano-pedra", label: "Oceano pedra" }
+  { id: "verde-azul-vivo", label: "Vivo" },
+  { id: "verde-azul-vivo-amarelo", label: "Vivo amarelo" },
+  { id: "verde-azul-classico", label: "Classico" },
+  { id: "verde-azul-claro", label: "Claro" },
+  { id: "verde-azul-profundo", label: "Profundo" },
+  { id: "verde-azul-menta", label: "Menta" },
+  { id: "verde-azul-petroleo", label: "Petroleo" }
 ];
 
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [theme, setTheme] = useState("oceano");
+  const [theme, setTheme] = useState("verde-azul-vivo-amarelo");
   const resultsSectionRef = useRef<HTMLElement | null>(null);
   const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
 
