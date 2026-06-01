@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Organizador">
+  <rect width="640" height="460" fill="#ffe1d9"/>
+  <path d="M160 180h320l-28 160H188z" fill="#4c3c3a" stroke="#2d1517" stroke-width="10"/>
+  <path d="M185 170h270v70H185z" fill="#b8784e" stroke="#2d1517" stroke-width="10"/>
+  <path d="M235 175v150M320 175v150M405 175v150" stroke="#2d1517" stroke-width="8"/>
+  <path d="M220 350h200" stroke="#f6b73c" stroke-width="10" stroke-linecap="round"/>
+</svg>

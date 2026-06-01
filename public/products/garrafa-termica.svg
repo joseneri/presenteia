@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Garrafa termica">
+  <rect width="640" height="460" fill="#ffe7df"/>
+  <rect x="260" y="90" width="120" height="285" rx="44" fill="#c83245" stroke="#2d1517" stroke-width="10"/>
+  <rect x="282" y="55" width="76" height="48" rx="14" fill="#f06a3a" stroke="#2d1517" stroke-width="10"/>
+  <path d="M280 190h80" stroke="#fff8f4" stroke-width="14" stroke-linecap="round"/>
+</svg>

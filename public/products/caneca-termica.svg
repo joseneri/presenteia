@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Caneca termica">
+  <rect width="640" height="460" fill="#ffe8e1"/>
+  <rect x="220" y="135" width="170" height="205" rx="32" fill="#fff8f4" stroke="#2d1517" stroke-width="10"/>
+  <path d="M390 185h42c45 0 45 85 0 85h-42" fill="none" stroke="#2d1517" stroke-width="14"/>
+  <rect x="238" y="118" width="134" height="32" rx="16" fill="#c83245" stroke="#2d1517" stroke-width="10"/>
+  <path d="M250 225h110" stroke="#f2b544" stroke-width="14" stroke-linecap="round"/>
+</svg>

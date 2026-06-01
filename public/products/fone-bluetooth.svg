@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Fone bluetooth">
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#ffe2dc"/><stop offset="1" stop-color="#ffd1c8"/></linearGradient></defs>
+  <rect width="640" height="460" fill="url(#bg)"/>
+  <path d="M170 265c0-94 66-162 150-162s150 68 150 162" fill="none" stroke="#5b2229" stroke-width="24" stroke-linecap="round"/>
+  <rect x="140" y="240" width="96" height="135" rx="42" fill="#c83245" stroke="#5b2229" stroke-width="10"/>
+  <rect x="404" y="240" width="96" height="135" rx="42" fill="#c83245" stroke="#5b2229" stroke-width="10"/>
+  <rect x="166" y="260" width="44" height="90" rx="22" fill="#f7b0a5"/>
+  <rect x="430" y="260" width="44" height="90" rx="22" fill="#f7b0a5"/>
+</svg>

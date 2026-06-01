@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Kit skincare">
+  <rect width="640" height="460" fill="#ffe4df"/>
+  <rect x="190" y="170" width="92" height="170" rx="24" fill="#fff8f4" stroke="#2d1517" stroke-width="10"/>
+  <rect x="310" y="120" width="112" height="220" rx="28" fill="#f7b0a5" stroke="#2d1517" stroke-width="10"/>
+  <rect x="335" y="82" width="62" height="48" rx="14" fill="#c83245" stroke="#2d1517" stroke-width="10"/>
+  <path d="M210 245h52M335 230h62" stroke="#f2b544" stroke-width="12" stroke-linecap="round"/>
+</svg>

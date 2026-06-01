@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Cafeteira moka">
+  <rect width="640" height="460" fill="#ffe6df"/>
+  <path d="M250 120h140l-25 105h-90z" fill="#d7d2cc" stroke="#2d1517" stroke-width="10"/>
+  <path d="M270 225h100l42 120H228z" fill="#b8b0aa" stroke="#2d1517" stroke-width="10"/>
+  <path d="M392 245h48c34 0 34 70-8 70h-22" fill="none" stroke="#2d1517" stroke-width="12"/>
+  <path d="M280 180h80" stroke="#c83245" stroke-width="10" stroke-linecap="round"/>
+</svg>

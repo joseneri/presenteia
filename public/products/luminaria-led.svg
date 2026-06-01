@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Luminaria">
+  <rect width="640" height="460" fill="#fff0e9"/>
+  <path d="M230 330h180" stroke="#2d1517" stroke-width="18" stroke-linecap="round"/>
+  <path d="M320 330V220" stroke="#2d1517" stroke-width="14" stroke-linecap="round"/>
+  <path d="M250 205h140l-35-85h-70z" fill="#f2b544" stroke="#2d1517" stroke-width="10"/>
+  <circle cx="320" cy="210" r="72" fill="none" stroke="#fff1a8" stroke-width="18" opacity=".8"/>
+</svg>

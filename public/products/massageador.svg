@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Massageador">
+  <rect width="640" height="460" fill="#ffe8e1"/>
+  <rect x="220" y="145" width="200" height="95" rx="48" fill="#c83245" stroke="#2d1517" stroke-width="10"/>
+  <rect x="285" y="220" width="70" height="135" rx="32" fill="#f06a3a" stroke="#2d1517" stroke-width="10"/>
+  <circle cx="260" cy="190" r="18" fill="#fff8f4"/><circle cx="320" cy="190" r="18" fill="#fff8f4"/><circle cx="380" cy="190" r="18" fill="#fff8f4"/>
+</svg>

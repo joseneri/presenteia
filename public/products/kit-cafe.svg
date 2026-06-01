@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Kit cafe">
+  <rect width="640" height="460" fill="#ffe6de"/>
+  <rect x="160" y="190" width="200" height="120" rx="20" fill="#fff8f4" stroke="#2d1517" stroke-width="10"/>
+  <path d="M360 220h40c38 0 38 60 0 60h-40" fill="none" stroke="#2d1517" stroke-width="12"/>
+  <path d="M250 165c-28-26 28-34 0-62M305 165c-28-26 28-34 0-62" stroke="#c83245" stroke-width="10" stroke-linecap="round"/>
+  <ellipse cx="260" cy="320" rx="150" ry="24" fill="#f2b544"/>
+</svg>
