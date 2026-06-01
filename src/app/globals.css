@@ -5,11 +5,11 @@
   --ink: #241817;
   --muted: #74625d;
   --line: #e8ded6;
-  --brand: #b21f2d;
-  --brand-strong: #861421;
-  --accent: #d4a11d;
-  --gold: #f2c14e;
-  --wine: #5c111c;
+  --brand: #c1121f;
+  --brand-strong: #8f0f1a;
+  --accent: #f2b705;
+  --gold: #ffd166;
+  --wine: #5a0b14;
   --soft-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.02);
   --shadow: var(--soft-shadow);
   --radius: 16px;
@@ -99,8 +99,8 @@ textarea {
   place-items: center;
   position: relative;
   background:
-    radial-gradient(circle at 72% 22%, rgba(255, 231, 137, 0.95) 0 7%, transparent 17%),
-    linear-gradient(145deg, #f2c14e 0 12%, var(--brand) 42%, #6f101a);
+    radial-gradient(circle at 72% 22%, rgba(255, 209, 102, 0.98) 0 7%, transparent 17%),
+    linear-gradient(145deg, #ffd166 0 16%, #e01e2d 42%, #7a0c17);
   color: white;
   box-shadow:
     0 12px 28px rgba(178, 31, 45, 0.22),
@@ -113,7 +113,7 @@ textarea {
   top: 5px;
   width: 9px;
   height: 9px;
-  background: #ffe789;
+  background: #ffd166;
   clip-path: polygon(
     50% 0,
     61% 37%,
@@ -124,7 +124,7 @@ textarea {
     0 50%,
     39% 37%
   );
-  filter: drop-shadow(0 0 7px rgba(255, 231, 137, 0.9));
+  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.95));
 }
 
 .nav-links {
@@ -180,9 +180,9 @@ textarea {
   padding: 62px 0 46px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 76% 16%, rgba(242, 193, 78, 0.18), transparent 28%),
-    linear-gradient(120deg, rgba(178, 31, 45, 0.08), transparent 44%),
-    linear-gradient(330deg, rgba(212, 161, 29, 0.1), transparent 36%);
+    radial-gradient(circle at 76% 16%, rgba(255, 209, 102, 0.24), transparent 28%),
+    linear-gradient(120deg, rgba(193, 18, 31, 0.1), transparent 44%),
+    linear-gradient(330deg, rgba(242, 183, 5, 0.14), transparent 36%);
 }
 
 .hero-grid {
@@ -250,9 +250,9 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  border: 1px solid rgba(234, 210, 204, 0.9);
+  border: 1px solid rgba(242, 183, 5, 0.32);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 248, 220, 0.92);
   color: var(--wine);
   padding: 8px 12px;
   font-size: 0.9rem;
@@ -276,7 +276,7 @@ p {
   justify-content: center;
   gap: 8px;
   padding: 0 20px;
-  background: var(--brand);
+  background: linear-gradient(135deg, var(--brand), #e01e2d);
   color: white;
   font-weight: 750;
   cursor: pointer;
@@ -295,7 +295,7 @@ p {
 .button.secondary {
   background: white;
   color: var(--ink);
-  border-color: var(--line);
+  border-color: rgba(242, 183, 5, 0.35);
   box-shadow: 0 8px 20px rgba(101, 23, 33, 0.06);
 }
 
@@ -306,7 +306,7 @@ p {
 .cta-button {
   min-height: 52px;
   font-size: 1rem;
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  background: linear-gradient(135deg, var(--brand), #e01e2d 62%, #f25c54);
   border-radius: var(--radius-sm);
   box-shadow: 0 18px 34px rgba(178, 31, 45, 0.24);
 }
@@ -337,8 +337,8 @@ p {
   border-radius: var(--radius-sm);
   display: grid;
   place-items: center;
-  background: #fff4cf;
-  color: #9a6d05;
+  background: #fff3bf;
+  color: #8f0f1a;
 }
 
 .quiz-panel h2 {
@@ -474,7 +474,7 @@ p {
   inset: auto 18px 0 18px;
   height: 4px;
   border-radius: 999px 999px 0 0;
-  background: linear-gradient(90deg, var(--brand), var(--accent), var(--gold));
+  background: linear-gradient(90deg, var(--brand), #e01e2d, var(--accent), var(--gold));
 }
 
 .feature-card svg {
@@ -526,6 +526,7 @@ p {
   z-index: 1;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--wine), var(--brand));
+  box-shadow: 0 8px 18px rgba(193, 18, 31, 0.2);
   color: #fff;
   padding: 6px 10px;
   font-size: 0.78rem;
@@ -571,8 +572,8 @@ p {
 
 .tag {
   border-radius: 999px;
-  background: #f5eee8;
-  color: #4d3835;
+  background: #fff3bf;
+  color: #5a0b14;
   padding: 6px 10px;
   font-size: 0.78rem;
   font-weight: 760;
