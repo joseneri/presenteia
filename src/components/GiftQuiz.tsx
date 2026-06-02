@@ -6,12 +6,12 @@ import { trackEvent } from "@/lib/analytics";
 import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
 const initialForm: RecommendationInput = {
-  recipient: "mae",
-  ageGroup: "adulto",
-  occasion: "aniversario",
-  budget: "ate 200 reais",
+  recipient: "",
+  ageGroup: "",
+  occasion: "",
+  budget: "",
   interests: "",
-  style: "util"
+  style: ""
 };
 
 type GiftQuizProps = {
@@ -131,7 +131,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <p>
               {isPurchase
                 ? "Receba ideias explicadas com link para conferir na Amazon."
-                : "Receba um Top 10 explicado para decidir com mais calma."}
+                : "Receba ideias explicadas para decidir com mais calma."}
             </p>
           </div>
         </div>
@@ -147,6 +147,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 setForm({ ...form, recipient: event.target.value })
               }
             >
+              <option value="">Opcional</option>
               <option value="mae">Mae</option>
               <option value="pai">Pai</option>
               <option value="filho">Filho</option>
@@ -178,6 +179,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 setForm({ ...form, ageGroup: event.target.value })
               }
             >
+              <option value="">Opcional</option>
               <option value="bebe 0 a 2 anos">Bebe: 0 a 2 anos</option>
               <option value="crianca 3 a 7 anos">Crianca: 3 a 7 anos</option>
               <option value="crianca 8 a 12 anos">Crianca: 8 a 12 anos</option>
@@ -197,6 +199,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 setForm({ ...form, occasion: event.target.value })
               }
             >
+              <option value="">Opcional</option>
               <option value="aniversario">Aniversario</option>
               <option value="natal">Natal</option>
               <option value="amigo secreto">Amigo secreto</option>
@@ -221,6 +224,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 setForm({ ...form, budget: event.target.value })
               }
             >
+              <option value="">Opcional</option>
               <option value="ate 50 reais">Ate R$50</option>
               <option value="ate 100 reais">Ate R$100</option>
               <option value="ate 150 reais">Ate R$150</option>
@@ -241,6 +245,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 setForm({ ...form, style: event.target.value })
               }
             >
+              <option value="">Opcional</option>
               <option value="util">Util</option>
               <option value="criativo">Criativo</option>
               <option value="tecnologia">Tecnologia</option>
@@ -272,7 +277,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             disabled={isLoading}
             onClick={() =>
               trackEvent("cta_click", {
-                label: isPurchase ? "Ver ideias para comprar" : "Ver meu Top 10",
+                label: isPurchase ? "Ver ideias para comprar" : "Ver ideias",
                 location: "quiz",
                 variant,
                 recipient: form.recipient,
@@ -287,7 +292,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               ? "Pensando..."
               : isPurchase
                 ? "Ver ideias para comprar"
-                : "Ver meu Top 10"}
+                : "Ver ideias"}
           </button>
         </div>
 
