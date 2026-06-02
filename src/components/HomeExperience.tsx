@@ -8,7 +8,6 @@ import {
   BookOpen,
   HeartHandshake,
   MousePointerClick,
-  Palette,
   Search,
   Sparkles,
   Trophy
@@ -20,25 +19,10 @@ import { articles } from "@/data/articles";
 import { guides } from "@/data/guides";
 import type { Recommendation } from "@/lib/recommend";
 
-const themes = [
-  { id: "verde-azul-vivo", label: "Vivo" },
-  { id: "verde-azul-vivo-amarelo", label: "Vivo amarelo" },
-  { id: "verde-azul-classico", label: "Classico" },
-  { id: "verde-azul-claro", label: "Claro" },
-  { id: "verde-azul-profundo", label: "Profundo" },
-  { id: "verde-azul-menta", label: "Menta" },
-  { id: "verde-azul-petroleo", label: "Petroleo" }
-];
-
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
-  const [theme, setTheme] = useState("verde-azul-vivo-amarelo");
   const resultsSectionRef = useRef<HTMLElement | null>(null);
   const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
 
   useEffect(() => {
     if (recommendations.length === 0) {
@@ -63,12 +47,12 @@ export function HomeExperience() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy-column">
-            <p className="eyebrow">Escolhas com mais afeto e menos duvida</p>
+            <p className="eyebrow">Escolhas com afeto e menos duvida</p>
             <h1>Acerte no presente com mais carinho.</h1>
             <p className="hero-copy">
-              Conte quem vai receber, o momento e o carinho que voce quer
-              entregar. O Presenteia transforma pistas simples em ideias com
-              alma, utilidade e motivo para sorrir.
+              Conte quem vai receber, a data e o jeito da pessoa. O PresenteIA
+              transforma pistas simples em ideias com alma, utilidade e motivo
+              para sorrir.
             </p>
             <div className="proof-row" aria-label="Diferenciais">
               <span>
@@ -77,32 +61,12 @@ export function HomeExperience() {
               </span>
               <span>
                 <HeartHandshake size={16} />
-                ideias com contexto, carinho e utilidade
+                ideias com motivo, carinho e utilidade
               </span>
               <span>
                 <MousePointerClick size={16} />
-                escolha por pessoa, data e estilo
+                escolha por pessoa, data e momento
               </span>
-            </div>
-            <div className="theme-switcher" aria-label="Escolher tema de cor">
-              <span>
-                <Palette size={16} />
-                Tema
-              </span>
-              <div className="theme-options">
-                {themes.map((option) => (
-                  <button
-                    aria-pressed={theme === option.id}
-                    className={`theme-dot theme-${option.id}`}
-                    key={option.id}
-                    onClick={() => setTheme(option.id)}
-                    title={option.label}
-                    type="button"
-                  >
-                    <span>{option.label}</span>
-                  </button>
-                ))}
-              </div>
             </div>
             <div className="hero-actions">
               <a className="button" href="#recomendador">
@@ -137,10 +101,6 @@ export function HomeExperience() {
               width={520}
               height={420}
             />
-            <div className="hero-note">
-              <Sparkles size={18} />
-              <span>Ideias com historia, nao so preco.</span>
-            </div>
           </div>
           <div id="recomendador">
             <GiftQuiz onRecommendations={setRecommendations} />
@@ -151,6 +111,7 @@ export function HomeExperience() {
       {recommendations.length > 0 ? (
         <section
           className="section results-section"
+          data-card-theme="amazon"
           id="resultado"
           ref={resultsSectionRef}
           aria-live="polite"
@@ -187,9 +148,9 @@ export function HomeExperience() {
             <p className="eyebrow">Como o Presenteia ajuda</p>
             <h2>Menos chute, mais contexto e carinho</h2>
             <p>
-              Em vez de mostrar uma vitrine aleatoria, o Presenteia combina
-              perfil, momento e orcamento para priorizar opcoes com mais chance
-              de agradar.
+              Em vez de abrir uma vitrine aleatoria, o PresenteIA organiza
+              perfil, momento e orcamento para priorizar opcoes que fazem
+              sentido de verdade.
             </p>
           </div>
           <div className="feature-grid">
@@ -205,15 +166,15 @@ export function HomeExperience() {
               <Sparkles size={24} />
               <h3>Explica o motivo</h3>
               <p>
-                Cada sugestao vem com uma razao simples, para voce decidir sem
-                ficar pulando de aba em aba.
+                Cada sugestao vem com uma razao simples, para voce entender por
+                que aquele presente combina com a pessoa.
               </p>
             </article>
             <article className="feature-card">
               <MousePointerClick size={24} />
               <h3>Vai direto para a compra</h3>
               <p>
-                Gostou de uma ideia? Abra o link, compare na Amazon e compre no
+                Gostou de uma ideia? Confira os detalhes, compare e compre no
                 seu tempo.
               </p>
             </article>

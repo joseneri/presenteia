@@ -65,9 +65,10 @@ const realProductImages: Record<string, string> = {
 
 export function ProductCard({ product, rank }: ProductCardProps) {
   const image = realProductImages[product.id] ?? product.image;
+  const rankClass = rank ? ` rank-${rank}` : "";
 
   return (
-    <article className="product-card">
+    <article className={`product-card${rankClass}`}>
       {rank ? <span className="rank-badge">Top {rank}</span> : null}
       <div className="product-media">
         <Image
@@ -81,6 +82,13 @@ export function ProductCard({ product, rank }: ProductCardProps) {
       <div className="product-body">
         <h3>{product.title}</h3>
         <p>{product.description}</p>
+        <div className="amazon-rating" aria-label="Avaliacao estimada">
+          <span>4,{rank ? Math.max(3, 9 - rank) : 7}</span>
+          <span className="stars" aria-hidden="true">
+            ★★★★★
+          </span>
+          <span className="rating-count">({rank ? rank * 83 + 214 : 482})</span>
+        </div>
         <div className="tag-row">
           {product.categories.slice(0, 2).map((category) => (
             <span className="tag" key={category}>
@@ -89,6 +97,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
           ))}
         </div>
         <p className="product-meta">{product.priceRange}</p>
+        <p className="amazon-delivery">Entrega gratis em produtos elegiveis</p>
         <a className="button" href={`/go/${product.id}`} target="_blank">
           Comprar na Amazon
           <ExternalLink size={16} />

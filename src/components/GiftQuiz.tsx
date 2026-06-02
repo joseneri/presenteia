@@ -15,12 +15,14 @@ const initialForm: RecommendationInput = {
 
 type GiftQuizProps = {
   onRecommendations?: (recommendations: Recommendation[]) => void;
+  variant?: "default" | "purchase";
 };
 
-export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
+export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizProps) {
   const [form, setForm] = useState(initialForm);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const isPurchase = variant === "purchase";
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -62,7 +64,11 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
           </span>
           <div>
             <h2>Conte sobre a pessoa</h2>
-            <p>Receba um Top 10 com ideias para comprar agora.</p>
+            <p>
+              {isPurchase
+                ? "Receba ideias explicadas com link para conferir na Amazon."
+                : "Receba um Top 10 explicado para decidir com mais calma."}
+            </p>
           </div>
         </div>
 
@@ -191,15 +197,23 @@ export function GiftQuiz({ onRecommendations }: GiftQuizProps) {
             />
           </div>
 
-          <button className="button cta-button form-submit" disabled={isLoading} type="submit">
+          <button
+            className={`button cta-button form-submit${isPurchase ? " cta-button-purchase" : ""}`}
+            disabled={isLoading}
+            type="submit"
+          >
             {isLoading ? <Loader2 size={16} /> : <Sparkles size={16} />}
-            {isLoading ? "Pensando..." : "Ver meu Top 10"}
+            {isLoading
+              ? "Pensando..."
+              : isPurchase
+                ? "Ver ideias para comprar"
+                : "Ver meu Top 10"}
           </button>
         </div>
 
         <p className="disclosure">
-          Como Associado Amazon, podemos receber comissao por compras
-          qualificadas, sem custo extra para voce.
+          Podemos receber comissao por compras qualificadas, sem custo extra
+          para voce.
         </p>
       </form>
       {error ? <div className="status quiz-status">{error}</div> : null}
