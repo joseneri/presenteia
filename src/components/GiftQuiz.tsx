@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { track } from "@vercel/analytics/react";
 import { Loader2, Sparkles } from "lucide-react";
 import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
@@ -44,6 +45,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         recommendations: Recommendation[];
       };
       onRecommendations?.(data.recommendations);
+      track("quiz_submitted", { ...form });
     } catch (requestError) {
       setError(
         requestError instanceof Error

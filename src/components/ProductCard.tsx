@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { track } from "@vercel/analytics/react";
 import type { Recommendation } from "@/lib/recommend";
 import type { Product } from "@/data/products";
 
@@ -98,7 +101,18 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         </div>
         <p className="product-meta">{product.priceRange}</p>
         <p className="amazon-delivery">Entrega gratis em produtos elegiveis</p>
-        <a className="button" href={`/go/${product.id}`} target="_blank">
+        <a
+          className="button"
+          href={`/go/${product.id}`}
+          target="_blank"
+          onClick={() =>
+            track("product_click", {
+              id: product.id,
+              title: product.title,
+              priceRange: product.priceRange
+            })
+          }
+        >
           Comprar na Amazon
           <ExternalLink size={16} />
         </a>
