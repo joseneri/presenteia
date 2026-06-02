@@ -85,17 +85,8 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
 }
 
 export function getRecommendationCount(input: RecommendationInput) {
-  const interestWordCount = input.interests.trim().split(/\s+/).filter(Boolean).length;
-
-  if (interestWordCount === 0) {
-    return 4;
-  }
-
-  if (interestWordCount < 3) {
-    return 5;
-  }
-
-  return budgetAboveTwoHundred(input.budget) ? 7 : 5;
+  void input;
+  return 8;
 }
 
 function buildReason(product: Product, input: RecommendationInput) {
@@ -109,6 +100,7 @@ function limitCategoryRepetition(
 ) {
   const categoryCounts = new Map<string, number>();
   const selected: Recommendation[] = [];
+  const selectedIds = new Set<string>();
 
   for (const recommendation of recommendations) {
     const category = normalize(recommendation.categories[0] ?? "");
@@ -119,6 +111,7 @@ function limitCategoryRepetition(
     }
 
     selected.push(recommendation);
+    selectedIds.add(recommendation.id);
 
     if (category) {
       categoryCounts.set(category, count + 1);
@@ -126,6 +119,30 @@ function limitCategoryRepetition(
 
     if (selected.length === desiredCount) {
       return selected;
+    }
+  }
+
+  for (const recommendation of recommendations) {
+    if (selected.length === desiredCount) {
+      return selected;
+    }
+
+    if (selectedIds.has(recommendation.id)) {
+      continue;
+    }
+
+    const category = normalize(recommendation.categories[0] ?? "");
+    const count = categoryCounts.get(category) ?? 0;
+
+    if (category && count >= 3) {
+      continue;
+    }
+
+    selected.push(recommendation);
+    selectedIds.add(recommendation.id);
+
+    if (category) {
+      categoryCounts.set(category, count + 1);
     }
   }
 
@@ -148,16 +165,4 @@ function budgetScore(product: Product, budget: string) {
   }
 
   return minPrice <= budgetLimit ? 1 : -2;
-}
-
-function budgetAboveTwoHundred(budget: string) {
-  const normalizedBudget = normalize(budget);
-  const values = normalizedBudget.match(/\d+/g)?.map(Number) ?? [];
-  const highestValue = Math.max(0, ...values);
-
-  if (normalizedBudget.includes("acima")) {
-    return highestValue >= 200;
-  }
-
-  return highestValue > 200;
 }

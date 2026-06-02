@@ -48,14 +48,49 @@ type RecommendationResponse = {
   mode?: string;
 };
 
+type FieldLabelProps = {
+  children: string;
+  htmlFor: keyof RecommendationInput;
+  required?: boolean;
+};
+
+function FieldLabel({ children, htmlFor, required = false }: FieldLabelProps) {
+  return (
+    <div className="field-label-row">
+      <label htmlFor={htmlFor}>
+        {children}
+        {required ? (
+          <>
+            <span className="required-mark" aria-hidden="true">
+              *
+            </span>
+            <span className="sr-only"> obrigatorio</span>
+          </>
+        ) : null}
+      </label>
+    </div>
+  );
+}
+
 export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizProps) {
   const [form, setForm] = useState(initialForm);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [validationError, setValidationError] = useState("");
   const [loadingStep, setLoadingStep] = useState(0);
+  const activeRequestRef = useRef<AbortController | null>(null);
   const hasTrackedStart = useRef(false);
+  const isMountedRef = useRef(true);
+  const requestIdRef = useRef(0);
   const isPurchase = variant === "purchase";
   const activeLoadingStep = loadingSteps[loadingStep];
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+      activeRequestRef.current?.abort();
+    };
+  }, []);
 
   useEffect(() => {
     if (!isLoading) {
@@ -99,6 +134,74 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
     trackQuizStart(fieldName);
   }
 
+  function updateFormField<FieldName extends keyof RecommendationInput>(
+    fieldName: FieldName,
+    value: RecommendationInput[FieldName]
+  ) {
+    setForm((currentForm) => ({
+      ...currentForm,
+      [fieldName]: value
+    }));
+
+    if (validationError) {
+      setValidationError("");
+    }
+  }
+
+  function validateForm() {
+    const requiredMissingFields = [
+      !form.recipient ? "recipient" : ""
+    ].filter(Boolean);
+    const filledContextFields = [
+      form.recipient,
+      form.ageGroup,
+      form.occasion,
+      form.budget,
+      form.style,
+      form.interests
+    ].filter((value) => value.trim().length > 0);
+
+    if (requiredMissingFields.length > 0) {
+      setValidationError(
+        "Preencha para quem. Depois complete pelo menos 4 pistas no total."
+      );
+      document.getElementById(requiredMissingFields[0])?.focus();
+      trackEvent("quiz_validation_failed", {
+        variant,
+        missing_fields: requiredMissingFields.join(","),
+        filled_context_fields: filledContextFields.length
+      });
+
+      return false;
+    }
+
+    if (filledContextFields.length >= 4) {
+      return true;
+    }
+
+    setValidationError(
+      "Preencha pelo menos 4 pistas para a IA acertar melhor. Ex: faixa etaria, estilo, ocasiao ou gostos."
+    );
+    document
+      .getElementById(
+        !form.ageGroup
+          ? "ageGroup"
+          : !form.style
+            ? "style"
+            : !form.interests
+              ? "interests"
+              : "occasion"
+      )
+      ?.focus();
+    trackEvent("quiz_validation_failed", {
+      variant,
+      missing_fields: "minimum_context_fields",
+      filled_context_fields: filledContextFields.length
+    });
+
+    return false;
+  }
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -106,18 +209,36 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
       return;
     }
 
+    if (!validateForm()) {
+      return;
+    }
+
     setLoadingStep(0);
     setIsLoading(true);
     setError("");
+    onRecommendations?.([]);
+
+    activeRequestRef.current?.abort();
+
+    const requestId = requestIdRef.current + 1;
+    const controller = new AbortController();
+
+    requestIdRef.current = requestId;
+    activeRequestRef.current = controller;
 
     try {
       const response = await fetch("/api/recommendations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
+        signal: controller.signal
       });
 
       const data = (await response.json()) as RecommendationResponse;
+
+      if (controller.signal.aborted || requestId !== requestIdRef.current) {
+        return;
+      }
 
       if (!response.ok || !data.recommendations) {
         const detail = data.debugId ? ` Codigo: ${data.debugId}` : "";
@@ -146,6 +267,14 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         result_count: data.recommendations.length
       });
     } catch (requestError) {
+      if (
+        controller.signal.aborted ||
+        (requestError instanceof DOMException &&
+          requestError.name === "AbortError")
+      ) {
+        return;
+      }
+
       trackEvent("quiz_failed", {
         variant,
         recipient: form.recipient,
@@ -158,7 +287,13 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           : "Algo saiu do esperado."
       );
     } finally {
-      setIsLoading(false);
+      if (requestId === requestIdRef.current) {
+        activeRequestRef.current = null;
+
+        if (isMountedRef.current) {
+          setIsLoading(false);
+        }
+      }
     }
   }
 
@@ -168,6 +303,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         aria-busy={isLoading}
         aria-describedby={isLoading ? "quiz-loading-status" : undefined}
         className={`quiz-panel${isLoading ? " quiz-panel-loading" : ""}`}
+        noValidate
         onFocus={onFormFocus}
         onSubmit={onSubmit}
       >
@@ -185,70 +321,99 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           </div>
         </div>
 
+        {validationError ? (
+          <div className="status form-error" role="alert">
+            {validationError}
+          </div>
+        ) : null}
+
         <fieldset className="form-grid" disabled={isLoading}>
           <div className="field">
-            <label htmlFor="recipient">Para quem e?</label>
+            <FieldLabel htmlFor="recipient" required>
+              Para quem e?
+            </FieldLabel>
             <select
+              aria-invalid={validationError && !form.recipient ? true : undefined}
               id="recipient"
               name="recipient"
+              required
               value={form.recipient}
               onChange={(event) =>
-                setForm({ ...form, recipient: event.target.value })
+                updateFormField("recipient", event.target.value)
               }
             >
-              <option value="">Opcional</option>
-              <option value="mae">Mae</option>
-              <option value="pai">Pai</option>
-              <option value="filho">Filho</option>
-              <option value="filha">Filha</option>
-              <option value="crianca">Crianca</option>
-              <option value="bebe">Bebe</option>
-              <option value="namorada">Namorada</option>
-              <option value="namorado">Namorado</option>
-              <option value="esposa">Esposa</option>
-              <option value="marido">Marido</option>
-              <option value="amigo">Amigo</option>
-              <option value="amiga">Amiga</option>
-              <option value="colega">Colega de trabalho</option>
-              <option value="chefe">Chefe</option>
-              <option value="professor">Professor(a)</option>
-              <option value="avos">Avos</option>
-              <option value="casal">Casal</option>
-              <option value="gamer">Gamer</option>
+              <option value="">Escolha a pessoa</option>
+              <optgroup label="Familia">
+                <option value="mae">Mae</option>
+                <option value="pai">Pai</option>
+                <option value="avos">Avo ou avo</option>
+                <option value="filho">Filho</option>
+                <option value="filha">Filha</option>
+                <option value="irma">Irma</option>
+                <option value="irmao">Irmao</option>
+                <option value="sogra">Sogra</option>
+              </optgroup>
+              <optgroup label="Relacionamento">
+                <option value="namorada">Namorada</option>
+                <option value="namorado">Namorado</option>
+                <option value="esposa">Esposa</option>
+                <option value="marido">Marido</option>
+                <option value="casal">Casal</option>
+              </optgroup>
+              <optgroup label="Social e trabalho">
+                <option value="amiga">Amiga</option>
+                <option value="amigo">Amigo</option>
+                <option value="colega">Colega de trabalho</option>
+                <option value="chefe">Chefe</option>
+                <option value="professor">Professor(a)</option>
+              </optgroup>
+              <optgroup label="Criancas e jovens">
+                <option value="bebe">Bebe</option>
+                <option value="crianca">Crianca</option>
+                <option value="adolescente">Adolescente</option>
+              </optgroup>
+              <optgroup label="Outros">
+                <option value="gamer">Gamer</option>
+                <option value="pessoa dificil">Pessoa dificil de presentear</option>
+              </optgroup>
             </select>
           </div>
 
           <div className="field">
-            <label htmlFor="ageGroup">Faixa etaria</label>
+            <FieldLabel htmlFor="ageGroup">Faixa etaria</FieldLabel>
             <select
               id="ageGroup"
               name="ageGroup"
               value={form.ageGroup}
               onChange={(event) =>
-                setForm({ ...form, ageGroup: event.target.value })
+                updateFormField("ageGroup", event.target.value)
               }
             >
-              <option value="">Opcional</option>
+              <option value="">Nao sei / nao importa</option>
               <option value="bebe 0 a 2 anos">Bebe: 0 a 2 anos</option>
-              <option value="crianca 3 a 7 anos">Crianca: 3 a 7 anos</option>
-              <option value="crianca 8 a 12 anos">Crianca: 8 a 12 anos</option>
-              <option value="adolescente">Adolescente</option>
-              <option value="adulto">Adulto</option>
-              <option value="idoso">Idoso</option>
+              <option value="crianca 3 a 5 anos">Crianca: 3 a 5 anos</option>
+              <option value="crianca 6 a 9 anos">Crianca: 6 a 9 anos</option>
+              <option value="pre-adolescente 10 a 12 anos">10 a 12 anos</option>
+              <option value="adolescente 13 a 17 anos">13 a 17 anos</option>
+              <option value="jovem adulto 18 a 25 anos">18 a 25 anos</option>
+              <option value="adulto 26 a 59 anos">26 a 59 anos</option>
+              <option value="idoso 60 anos ou mais">60 anos ou mais</option>
             </select>
           </div>
 
           <div className="field">
-            <label htmlFor="occasion">Ocasiao</label>
+            <FieldLabel htmlFor="occasion">
+              Ocasiao
+            </FieldLabel>
             <select
               id="occasion"
               name="occasion"
               value={form.occasion}
               onChange={(event) =>
-                setForm({ ...form, occasion: event.target.value })
+                updateFormField("occasion", event.target.value)
               }
             >
-              <option value="">Opcional</option>
+              <option value="">Escolha a ocasiao</option>
               <option value="aniversario">Aniversario</option>
               <option value="natal">Natal</option>
               <option value="amigo secreto">Amigo secreto</option>
@@ -260,63 +425,71 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               <option value="formatura">Formatura</option>
               <option value="casamento">Casamento</option>
               <option value="casa nova">Casa nova</option>
+              <option value="agradecimento">Agradecimento</option>
+              <option value="sem data surpresa">Sem data / surpresa</option>
             </select>
           </div>
 
           <div className="field">
-            <label htmlFor="budget">Orcamento</label>
+            <FieldLabel htmlFor="budget">
+              Orcamento
+            </FieldLabel>
             <select
               id="budget"
               name="budget"
               value={form.budget}
               onChange={(event) =>
-                setForm({ ...form, budget: event.target.value })
+                updateFormField("budget", event.target.value)
               }
             >
-              <option value="">Opcional</option>
+              <option value="">Escolha uma faixa</option>
               <option value="ate 50 reais">Ate R$50</option>
-              <option value="ate 100 reais">Ate R$100</option>
-              <option value="ate 150 reais">Ate R$150</option>
-              <option value="ate 200 reais">Ate R$200</option>
-              <option value="ate 300 reais">Ate R$300</option>
-              <option value="ate 500 reais">Ate R$500</option>
+              <option value="ate 100 reais">R$50 a R$100</option>
+              <option value="ate 150 reais">R$100 a R$150</option>
+              <option value="ate 200 reais">R$150 a R$200</option>
+              <option value="ate 300 reais">R$200 a R$300</option>
+              <option value="ate 500 reais">R$300 a R$500</option>
               <option value="acima de 500 reais">Acima de R$500</option>
+              <option value="varias faixas de preco">Quero ver varias faixas</option>
             </select>
           </div>
 
           <div className="field">
-            <label htmlFor="style">Estilo</label>
+            <FieldLabel htmlFor="style">Estilo do presente</FieldLabel>
             <select
               id="style"
               name="style"
               value={form.style}
               onChange={(event) =>
-                setForm({ ...form, style: event.target.value })
+                updateFormField("style", event.target.value)
               }
             >
-              <option value="">Opcional</option>
-              <option value="util">Util</option>
-              <option value="criativo">Criativo</option>
-              <option value="tecnologia">Tecnologia</option>
-              <option value="bem-estar">Bem-estar</option>
-              <option value="barato">Barato</option>
-              <option value="educativo">Educativo</option>
-              <option value="brinquedo">Brinquedo</option>
-              <option value="premium">Premium</option>
+              <option value="">Surpreenda-me</option>
+              <option value="util e pratico">Util e pratico</option>
+              <option value="criativo e diferente">Criativo e diferente</option>
+              <option value="tecnologia e gadget">Tecnologia e gadget</option>
+              <option value="bem-estar e autocuidado">Bem-estar e autocuidado</option>
+              <option value="casa e decoracao">Casa e decoracao</option>
+              <option value="gastronomia e cafe">Gastronomia e cafe</option>
+              <option value="livros e estudo">Livros e estudo</option>
+              <option value="experiencia">Experiencia</option>
               <option value="romantico">Romantico</option>
-              <option value="casa">Casa</option>
+              <option value="premium">Premium</option>
+              <option value="barato e lembranca">Barato e lembranca</option>
             </select>
           </div>
 
           <div className="field field-full">
-            <label htmlFor="interests">Do que a pessoa gosta?</label>
+            <FieldLabel htmlFor="interests">
+              Do que a pessoa gosta?
+            </FieldLabel>
             <textarea
               id="interests"
               name="interests"
-              placeholder="ex: cafe, leitura, games, academia, decoracao..."
+              placeholder="Opcional: cafe, leitura, games, academia, plantas..."
               value={form.interests}
               onChange={(event) =>
-                setForm({ ...form, interests: event.target.value })
+                updateFormField("interests", event.target.value)
               }
             />
           </div>

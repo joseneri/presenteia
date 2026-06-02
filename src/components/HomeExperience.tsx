@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowUp,
   BookOpen,
   HeartHandshake,
   MousePointerClick,
@@ -21,6 +22,7 @@ import type { Recommendation } from "@/lib/recommend";
 
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
+  const quizSectionRef = useRef<HTMLDivElement | null>(null);
   const resultsSectionRef = useRef<HTMLElement | null>(null);
   const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
 
@@ -41,6 +43,30 @@ export function HomeExperience() {
       resultsHeadingRef.current?.focus({ preventScroll: true });
     });
   }, [recommendations.length]);
+
+  function scrollToQuiz() {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    quizSectionRef.current?.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "center"
+    });
+
+    window.setTimeout(
+      () => {
+        document
+          .getElementById("interests")
+          ?.focus({ preventScroll: true });
+      },
+      prefersReducedMotion ? 0 : 360
+    );
+
+    trackEvent("results_refine_click", {
+      result_count: recommendations.length
+    });
+  }
 
   return (
     <>
@@ -111,7 +137,7 @@ export function HomeExperience() {
               height={420}
             />
           </div>
-          <div id="explorar">
+          <div id="explorar" ref={quizSectionRef}>
             <GiftQuiz onRecommendations={setRecommendations} />
           </div>
         </div>
@@ -133,10 +159,20 @@ export function HomeExperience() {
                   Top {recommendations.length} ideias para esse perfil
                 </h2>
               </div>
-              <span className="result-pill">
-                <Trophy size={16} />
-                Ranqueado por afinidade
-              </span>
+              <div className="results-actions">
+                <span className="result-pill">
+                  <Trophy size={16} />
+                  Ranqueado por afinidade
+                </span>
+                <button
+                  className="button result-refine-button"
+                  onClick={scrollToQuiz}
+                  type="button"
+                >
+                  <ArrowUp size={16} />
+                  Ajustar busca
+                </button>
+              </div>
             </div>
             <div className="grid results-grid">
               {recommendations.map((product, index) => (
@@ -146,6 +182,17 @@ export function HomeExperience() {
                   rank={index + 1}
                 />
               ))}
+            </div>
+            <div className="results-refine">
+              <p>Quer tentar outro caminho?</p>
+              <button
+                className="button result-refine-button"
+                onClick={scrollToQuiz}
+                type="button"
+              >
+                <ArrowUp size={16} />
+                Tentar de novo
+              </button>
             </div>
           </div>
         </section>
