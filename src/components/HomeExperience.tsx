@@ -84,6 +84,7 @@ export function HomeExperience() {
               className="hero-photo hero-photo-large"
               src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=920&q=82"
               alt=""
+              unoptimized
               width={920}
               height={780}
             />
@@ -91,6 +92,7 @@ export function HomeExperience() {
               className="hero-photo hero-photo-small hero-photo-top"
               src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=520&q=82"
               alt=""
+              unoptimized
               width={520}
               height={420}
             />
@@ -98,6 +100,7 @@ export function HomeExperience() {
               className="hero-photo hero-photo-small hero-photo-bottom"
               src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=520&q=82"
               alt=""
+              unoptimized
               width={520}
               height={420}
             />
