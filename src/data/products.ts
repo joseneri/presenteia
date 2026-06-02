@@ -11,7 +11,7 @@ export type Product = {
   interests: string[];
 };
 
-const affiliateTag = "seu-codigo-20";
+const affiliateTag = "presentesid09-20";
 
 export const products: Product[] = [
   {
