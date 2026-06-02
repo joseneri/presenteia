@@ -4,7 +4,7 @@ import Image from "next/image";
 import { articles } from "@/data/articles";
 import { ProductGrid } from "@/components/ProductGrid";
 
-const baseUrl = "https://presenteia.com.br";
+const baseUrl = "https://presenteia.io";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   description:
     "Guias completos de presentes organizados por pessoa, ocasiao, faixa de preco e interesse. Encontre a ideia certa.",
   keywords: ["guia presentes", "lista presentes", "presente por ocasiao", "presente por pessoa"],
-  alternates: { canonical: "https://presenteia.com.br/presentes" },
+  alternates: { canonical: "https://presenteia.io/presentes" },
   openGraph: {
     type: "website",
-    url: "https://presenteia.com.br/presentes",
+    url: "https://presenteia.io/presentes",
     title: "Guias de presentes | PresenteIA",
     description: "Guias completos organizados por pessoa, ocasiao, faixa de preco e interesse.",
     locale: "pt_BR",

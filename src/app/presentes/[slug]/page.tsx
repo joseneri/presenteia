@@ -4,7 +4,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { guides } from "@/data/guides";
 import { products } from "@/data/products";
 
-const baseUrl = "https://presenteia.com.br";
+const baseUrl = "https://presenteia.io";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

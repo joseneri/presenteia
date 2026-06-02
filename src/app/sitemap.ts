@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/data/articles";
 import { guides } from "@/data/guides";
 
-const baseUrl = "https://presenteia.com.br";
+const baseUrl = "https://presenteia.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

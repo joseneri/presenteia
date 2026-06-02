@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   description:
     "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento. Guias praticos para nao errar na escolha.",
   keywords: ["blog presentes", "artigos presentes", "dicas presentes", "ideias presentes"],
-  alternates: { canonical: "https://presenteia.com.br/blog" },
+  alternates: { canonical: "https://presenteia.io/blog" },
   openGraph: {
     type: "website",
-    url: "https://presenteia.com.br/blog",
+    url: "https://presenteia.io/blog",
     title: "Blog de presentes | PresenteIA",
     description: "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento.",
     locale: "pt_BR",

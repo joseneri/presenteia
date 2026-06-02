@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/"
     },
-    sitemap: "https://presenteia.com.br/sitemap.xml"
+    sitemap: "https://presenteia.io/sitemap.xml"
   };
 }

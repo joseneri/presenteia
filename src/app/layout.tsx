@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { activeTheme } from "@/lib/themes";
 import "./globals.css";
 
-const baseUrl = "https://presenteia.com.br";
+const baseUrl = "https://presenteia.io";
 
 export const metadata: Metadata = {
   title: {
