@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight,
   BookOpen,
   HeartHandshake,
   MousePointerClick,
@@ -73,16 +72,12 @@ export function HomeExperience() {
                 Encontrar presente
                 <Sparkles size={16} />
               </a>
-              <Link className="button secondary" href="/presentes">
-                Explorar ideias
-                <ArrowRight size={16} />
-              </Link>
             </div>
           </div>
           <div className="hero-visual" aria-hidden="true">
             <Image
               className="hero-photo hero-photo-large"
-              src="https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=920&q=82"
+              src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=920&q=82&auto=format&fit=crop"
               alt=""
               unoptimized
               width={920}
@@ -90,7 +85,7 @@ export function HomeExperience() {
             />
             <Image
               className="hero-photo hero-photo-small hero-photo-top"
-              src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=520&q=82"
+              src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=520&q=82&auto=format&fit=crop"
               alt=""
               unoptimized
               width={520}
@@ -98,7 +93,7 @@ export function HomeExperience() {
             />
             <Image
               className="hero-photo hero-photo-small hero-photo-bottom"
-              src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=520&q=82"
+              src="https://images.unsplash.com/photo-1512909006721-3d6018887383?w=520&q=82&auto=format&fit=crop"
               alt=""
               unoptimized
               width={520}
@@ -185,7 +180,7 @@ export function HomeExperience() {
         </div>
       </section>
 
-      <section className="section band">
+      <section className="section band popular-ideas-section">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">Ideias populares</p>
