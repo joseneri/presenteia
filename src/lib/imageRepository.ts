@@ -390,6 +390,486 @@ const topicImages: ImageTopic[] = [
     terms: ["flor", "flores", "buque", "delicado"]
   },
   {
+    topic: "experiencia",
+    priority: 97,
+    query: "experience,gift,workshop",
+    count: 5,
+    startLock: 1940,
+    terms: ["experiencia", "oficina", "aula", "workshop", "vivencia", "ingresso"]
+  },
+  {
+    topic: "curso",
+    priority: 95,
+    query: "online,course,learning",
+    count: 5,
+    startLock: 1950,
+    terms: ["curso", "aula", "aprendizado", "aprender", "estudo", "idioma"]
+  },
+  {
+    topic: "assinatura",
+    priority: 94,
+    query: "subscription,box,gift",
+    count: 5,
+    startLock: 1960,
+    terms: ["assinatura", "clube", "mensal", "box", "streaming", "servico"]
+  },
+  {
+    topic: "moda-acessorios",
+    priority: 93,
+    query: "fashion,accessories,gift",
+    count: 5,
+    startLock: 1970,
+    terms: ["moda", "acessorio", "acessorios", "bolsa", "carteira", "estilo"]
+  },
+  {
+    topic: "relogio",
+    priority: 92,
+    query: "watch,accessory,gift",
+    count: 5,
+    startLock: 1980,
+    terms: ["relogio", "smartwatch", "pulseira", "acessorio premium"]
+  },
+  {
+    topic: "perfume",
+    priority: 94,
+    query: "perfume,fragrance,gift",
+    count: 5,
+    startLock: 1990,
+    terms: ["perfume", "fragrancia", "aroma", "cheiro", "colonia"]
+  },
+  {
+    topic: "barbearia",
+    priority: 92,
+    query: "beard,grooming,barber",
+    count: 5,
+    startLock: 2010,
+    terms: ["barba", "barbear", "barbearia", "grooming", "cuidados masculinos"]
+  },
+  {
+    topic: "esportes",
+    priority: 92,
+    query: "sports,equipment,gift",
+    count: 5,
+    startLock: 2020,
+    terms: ["esporte", "esportes", "corrida", "futebol", "tenis", "ativo"]
+  },
+  {
+    topic: "yoga-meditacao",
+    priority: 91,
+    query: "yoga,meditation,wellness",
+    count: 5,
+    startLock: 2030,
+    terms: ["yoga", "meditacao", "mindfulness", "tapete", "respiracao"]
+  },
+  {
+    topic: "bike",
+    priority: 90,
+    query: "bicycle,cycling,gift",
+    count: 5,
+    startLock: 2040,
+    terms: ["bike", "bicicleta", "ciclismo", "pedal", "capacete"]
+  },
+  {
+    topic: "cinema-series",
+    priority: 90,
+    query: "movie,cinema,popcorn",
+    count: 5,
+    startLock: 2050,
+    terms: ["cinema", "filme", "filmes", "serie", "series", "pipoca"]
+  },
+  {
+    topic: "viagem-organizacao",
+    priority: 91,
+    query: "travel,organizer,luggage",
+    count: 5,
+    startLock: 2060,
+    terms: ["mala", "necessaire", "passaporte", "organizador de viagem", "viagem"]
+  },
+  {
+    topic: "camping",
+    priority: 89,
+    query: "camping,outdoor,gift",
+    count: 5,
+    startLock: 2070,
+    terms: ["camping", "trilha", "outdoor", "aventura", "natureza"]
+  },
+  {
+    topic: "papelaria-premium",
+    priority: 91,
+    query: "premium,stationery,desk",
+    count: 5,
+    startLock: 2080,
+    terms: ["caneta", "caneta premium", "moleskine", "caderno premium", "escrita"]
+  },
+  {
+    topic: "organizacao",
+    priority: 91,
+    query: "organizer,storage,home",
+    count: 5,
+    startLock: 2090,
+    terms: ["organizacao", "organizador", "arrumacao", "minimalista", "pratico"]
+  },
+  {
+    topic: "games-digitais",
+    priority: 91,
+    query: "videogame,controller,gaming",
+    count: 5,
+    startLock: 2100,
+    terms: ["videogame", "controle", "console", "gift card", "jogos digitais"]
+  },
+  {
+    topic: "festa-aniversario",
+    priority: 90,
+    query: "birthday,party,gift",
+    count: 5,
+    startLock: 2110,
+    terms: ["aniversario", "parabens", "festa", "celebrar", "comemoracao"]
+  },
+  {
+    topic: "casamento",
+    priority: 90,
+    query: "wedding,gift,home",
+    count: 5,
+    startLock: 2120,
+    terms: ["casamento", "noivos", "presente de casamento", "lista de casamento"]
+  },
+  {
+    topic: "montessori",
+    priority: 89,
+    query: "montessori,toys,children",
+    count: 5,
+    startLock: 2130,
+    terms: ["montessori", "sensorial", "educativo", "brinquedo educativo", "desenvolvimento"]
+  },
+  {
+    topic: "personalizado",
+    priority: 88,
+    query: "personalized,gift,custom",
+    count: 5,
+    startLock: 2140,
+    terms: ["personalizado", "personalizada", "nome gravado", "customizado", "sob medida"]
+  },
+  {
+    topic: "joias-bijuterias",
+    priority: 94,
+    query: "jewelry,gift,accessory",
+    count: 5,
+    startLock: 2150,
+    terms: ["joia", "joias", "colar", "brinco", "anel", "bijuteria", "semijoia"]
+  },
+  {
+    topic: "maquiagem",
+    priority: 93,
+    query: "makeup,beauty,gift",
+    count: 5,
+    startLock: 2160,
+    terms: ["maquiagem", "make", "batom", "paleta", "rimel", "pincel"]
+  },
+  {
+    topic: "cabelo",
+    priority: 92,
+    query: "haircare,beauty,gift",
+    count: 5,
+    startLock: 2170,
+    terms: ["cabelo", "haircare", "secador", "chapinha", "cacheado", "cronograma capilar"]
+  },
+  {
+    topic: "banho-spa",
+    priority: 92,
+    query: "bath,spa,gift",
+    count: 5,
+    startLock: 2180,
+    terms: ["banho", "sais de banho", "sabonete", "toalha", "spa em casa", "hidratante"]
+  },
+  {
+    topic: "velas-aromas",
+    priority: 93,
+    query: "candles,aroma,home",
+    count: 5,
+    startLock: 2190,
+    terms: ["vela", "velas", "aromatizador", "difusor", "essencia", "aromas"]
+  },
+  {
+    topic: "cama-conforto",
+    priority: 90,
+    query: "bedroom,cozy,blanket",
+    count: 5,
+    startLock: 2200,
+    terms: ["cama", "manta", "cobertor", "pijama", "travesseiro", "conforto"]
+  },
+  {
+    topic: "mesa-posta",
+    priority: 91,
+    query: "tableware,dining,gift",
+    count: 5,
+    startLock: 2210,
+    terms: ["mesa posta", "jantar", "prato", "taça", "talheres", "aparelho de jantar"]
+  },
+  {
+    topic: "churrasco",
+    priority: 92,
+    query: "barbecue,grill,gift",
+    count: 5,
+    startLock: 2220,
+    terms: ["churrasco", "churrasqueira", "carne", "grelha", "kit churrasco"]
+  },
+  {
+    topic: "cerveja-artesanal",
+    priority: 90,
+    query: "craft,beer,gift",
+    count: 5,
+    startLock: 2230,
+    terms: ["cerveja", "cerveja artesanal", "chope", "copo de cerveja", "petisco"]
+  },
+  {
+    topic: "bar-drinks",
+    priority: 90,
+    query: "cocktail,bar,gift",
+    count: 5,
+    startLock: 2240,
+    terms: ["drink", "drinks", "cocktail", "bar", "gin", "whisky", "coqueteleira"]
+  },
+  {
+    topic: "doces-confeitaria",
+    priority: 89,
+    query: "dessert,baking,gift",
+    count: 5,
+    startLock: 2250,
+    terms: ["confeitaria", "bolo", "doce", "doces", "cookies", "cupcake"]
+  },
+  {
+    topic: "piquenique",
+    priority: 88,
+    query: "picnic,basket,gift",
+    count: 5,
+    startLock: 2260,
+    terms: ["piquenique", "cesta", "parque", "toalha picnic", "lanche"]
+  },
+  {
+    topic: "plantas-casa",
+    priority: 91,
+    query: "indoor,plants,home",
+    count: 5,
+    startLock: 2270,
+    terms: ["planta de casa", "vaso", "suculenta", "terrario", "jiboia", "samambaia"]
+  },
+  {
+    topic: "aquario",
+    priority: 84,
+    query: "aquarium,fish,tank",
+    count: 5,
+    startLock: 2280,
+    terms: ["aquario", "peixe", "betta", "aquarismo", "tanque"]
+  },
+  {
+    topic: "pet-caes",
+    priority: 90,
+    query: "dog,pet,gift",
+    count: 5,
+    startLock: 2290,
+    terms: ["cachorro", "cao", "pet dog", "coleira", "brinquedo cachorro"]
+  },
+  {
+    topic: "pet-gatos",
+    priority: 90,
+    query: "cat,pet,gift",
+    count: 5,
+    startLock: 2300,
+    terms: ["gato", "gatos", "arranhador", "brinquedo gato", "catnip"]
+  },
+  {
+    topic: "bebida-quente",
+    priority: 89,
+    query: "hot,chocolate,tea",
+    count: 5,
+    startLock: 2310,
+    terms: ["chocolate quente", "capuccino", "bebida quente", "inverno", "xicara"]
+  },
+  {
+    topic: "frio-inverno",
+    priority: 88,
+    query: "winter,cozy,gift",
+    count: 5,
+    startLock: 2320,
+    terms: ["frio", "inverno", "cachecol", "luva", "meia", "quentinho"]
+  },
+  {
+    topic: "verao-outdoor",
+    priority: 88,
+    query: "summer,outdoor,gift",
+    count: 5,
+    startLock: 2330,
+    terms: ["verao", "outdoor", "sol", "cooler", "oculos de sol", "boné"]
+  },
+  {
+    topic: "carro-acessorios",
+    priority: 88,
+    query: "car,accessories,gift",
+    count: 5,
+    startLock: 2340,
+    terms: ["carro", "automotivo", "suporte veicular", "aspirador automotivo", "motorista"]
+  },
+  {
+    topic: "moto",
+    priority: 86,
+    query: "motorcycle,accessories,gift",
+    count: 5,
+    startLock: 2350,
+    terms: ["moto", "motociclista", "capacete", "luva moto", "motorcycle"]
+  },
+  {
+    topic: "audio-casa",
+    priority: 91,
+    query: "speaker,audio,home",
+    count: 5,
+    startLock: 2360,
+    terms: ["caixa de som", "speaker", "som ambiente", "audio casa", "bluetooth"]
+  },
+  {
+    topic: "smart-home",
+    priority: 92,
+    query: "smart,home,technology",
+    count: 5,
+    startLock: 2370,
+    terms: ["casa inteligente", "smart home", "lampada smart", "tomada inteligente", "alexa"]
+  },
+  {
+    topic: "seguranca-casa",
+    priority: 87,
+    query: "home,security,camera",
+    count: 5,
+    startLock: 2380,
+    terms: ["camera de seguranca", "seguranca", "videoporteiro", "fechadura digital"]
+  },
+  {
+    topic: "setup-desk",
+    priority: 93,
+    query: "desk,setup,workspace",
+    count: 5,
+    startLock: 2390,
+    terms: ["desk setup", "mousepad", "teclado", "monitor", "mesa gamer", "estacao de trabalho"]
+  },
+  {
+    topic: "ergonomia",
+    priority: 91,
+    query: "ergonomic,office,chair",
+    count: 5,
+    startLock: 2400,
+    terms: ["ergonomia", "cadeira", "apoio lombar", "apoio de pes", "postura"]
+  },
+  {
+    topic: "professor",
+    priority: 88,
+    query: "teacher,desk,books",
+    count: 5,
+    startLock: 2410,
+    terms: ["professor", "professora", "docente", "sala de aula", "ensino"]
+  },
+  {
+    topic: "medicina-saude",
+    priority: 86,
+    query: "health,medical,gift",
+    count: 5,
+    startLock: 2420,
+    terms: ["medicina", "medico", "enfermeira", "saude", "hospital", "plantao"]
+  },
+  {
+    topic: "arquitetura-design",
+    priority: 87,
+    query: "architecture,design,desk",
+    count: 5,
+    startLock: 2430,
+    terms: ["arquitetura", "design", "decorador", "desenho tecnico", "interiores"]
+  },
+  {
+    topic: "engenharia-diy",
+    priority: 87,
+    query: "engineering,diy,tools",
+    count: 5,
+    startLock: 2440,
+    terms: ["engenharia", "engenheiro", "projeto", "maker", "ferramenta precisa"]
+  },
+  {
+    topic: "adolescente",
+    priority: 90,
+    query: "teen,room,gift",
+    count: 5,
+    startLock: 2450,
+    terms: ["adolescente", "teen", "quarto jovem", "jovem", "estilo jovem"]
+  },
+  {
+    topic: "idosos-conforto",
+    priority: 89,
+    query: "senior,comfort,gift",
+    count: 5,
+    startLock: 2460,
+    terms: ["idoso", "idosa", "avos", "avó", "avô", "conforto para idosos"]
+  },
+  {
+    topic: "recem-casados",
+    priority: 89,
+    query: "newlyweds,home,gift",
+    count: 5,
+    startLock: 2470,
+    terms: ["recem casados", "recem-casados", "primeira casa", "vida a dois"]
+  },
+  {
+    topic: "casa-nova",
+    priority: 92,
+    query: "new,home,gift",
+    count: 5,
+    startLock: 2480,
+    terms: ["casa nova", "apartamento novo", "mudanca", "novo lar", "open house"]
+  },
+  {
+    topic: "formatura-carreira",
+    priority: 90,
+    query: "graduation,career,gift",
+    count: 5,
+    startLock: 2490,
+    terms: ["formatura", "formando", "carreira", "diploma", "novo emprego"]
+  },
+  {
+    topic: "nascimento-bebe",
+    priority: 91,
+    query: "newborn,baby,gift",
+    count: 5,
+    startLock: 2500,
+    terms: ["nascimento", "recem nascido", "maternidade", "enxoval", "bebe novo"]
+  },
+  {
+    topic: "fotolivro-memorias",
+    priority: 89,
+    query: "photo,album,memories",
+    count: 5,
+    startLock: 2510,
+    terms: ["album", "fotolivro", "memorias", "recordacao", "lembrancas", "foto impressa"]
+  },
+  {
+    topic: "instrumentos-musicais",
+    priority: 88,
+    query: "musical,instrument,gift",
+    count: 5,
+    startLock: 2520,
+    terms: ["violao", "teclado musical", "instrumento musical", "musico", "ukulele"]
+  },
+  {
+    topic: "karaoke",
+    priority: 86,
+    query: "karaoke,microphone,party",
+    count: 5,
+    startLock: 2530,
+    terms: ["karaoke", "microfone", "cantar", "festa musical", "cantoria"]
+  },
+  {
+    topic: "colecionaveis",
+    priority: 88,
+    query: "collectible,figure,gift",
+    count: 5,
+    startLock: 2540,
+    terms: ["colecionavel", "colecionaveis", "action figure", "funko", "miniatura"]
+  },
+  {
     topic: "generico-presente",
     priority: 1,
     query: "gift,present,box",
