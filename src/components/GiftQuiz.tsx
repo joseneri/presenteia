@@ -1,8 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { track } from "@vercel/analytics/react";
+import { FormEvent, FocusEvent, useRef, useState } from "react";
 import { Loader2, Sparkles } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
 const initialForm: RecommendationInput = {
@@ -23,7 +23,36 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
   const [form, setForm] = useState(initialForm);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const hasTrackedStart = useRef(false);
   const isPurchase = variant === "purchase";
+
+  function trackQuizStart(fieldName: string) {
+    if (hasTrackedStart.current) {
+      return;
+    }
+
+    hasTrackedStart.current = true;
+    trackEvent("quiz_started", {
+      field: fieldName,
+      variant,
+      recipient: form.recipient,
+      age_group: form.ageGroup,
+      occasion: form.occasion,
+      budget: form.budget,
+      style: form.style
+    });
+  }
+
+  function onFormFocus(event: FocusEvent<HTMLFormElement>) {
+    const fieldName =
+      event.target instanceof HTMLInputElement ||
+      event.target instanceof HTMLSelectElement ||
+      event.target instanceof HTMLTextAreaElement
+        ? event.target.name || event.target.id
+        : "form";
+
+    trackQuizStart(fieldName);
+  }
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,8 +74,18 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         recommendations: Recommendation[];
       };
       onRecommendations?.(data.recommendations);
-      track("quiz_submitted", { ...form });
+      trackEvent("quiz_submitted", {
+        ...form,
+        variant,
+        result_count: data.recommendations.length
+      });
     } catch (requestError) {
+      trackEvent("quiz_failed", {
+        variant,
+        recipient: form.recipient,
+        occasion: form.occasion,
+        budget: form.budget
+      });
       setError(
         requestError instanceof Error
           ? requestError.message
@@ -59,7 +98,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
   return (
     <div>
-      <form className="quiz-panel" onSubmit={onSubmit}>
+      <form className="quiz-panel" onFocus={onFormFocus} onSubmit={onSubmit}>
         <div className="quiz-heading">
           <span className="mini-icon" aria-hidden="true">
             <Sparkles size={16} />
@@ -79,6 +118,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="recipient">Para quem e?</label>
             <select
               id="recipient"
+              name="recipient"
               value={form.recipient}
               onChange={(event) =>
                 setForm({ ...form, recipient: event.target.value })
@@ -109,6 +149,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="ageGroup">Faixa etaria</label>
             <select
               id="ageGroup"
+              name="ageGroup"
               value={form.ageGroup}
               onChange={(event) =>
                 setForm({ ...form, ageGroup: event.target.value })
@@ -127,6 +168,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="occasion">Ocasiao</label>
             <select
               id="occasion"
+              name="occasion"
               value={form.occasion}
               onChange={(event) =>
                 setForm({ ...form, occasion: event.target.value })
@@ -150,6 +192,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="budget">Orcamento</label>
             <select
               id="budget"
+              name="budget"
               value={form.budget}
               onChange={(event) =>
                 setForm({ ...form, budget: event.target.value })
@@ -169,6 +212,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="style">Estilo</label>
             <select
               id="style"
+              name="style"
               value={form.style}
               onChange={(event) =>
                 setForm({ ...form, style: event.target.value })
@@ -191,6 +235,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <label htmlFor="interests">Do que a pessoa gosta?</label>
             <textarea
               id="interests"
+              name="interests"
               placeholder="ex: cafe, leitura, games, academia, decoracao..."
               value={form.interests}
               onChange={(event) =>
@@ -202,6 +247,16 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           <button
             className={`button cta-button form-submit${isPurchase ? " cta-button-purchase" : ""}`}
             disabled={isLoading}
+            onClick={() =>
+              trackEvent("cta_click", {
+                label: isPurchase ? "Ver ideias para comprar" : "Ver meu Top 10",
+                location: "quiz",
+                variant,
+                recipient: form.recipient,
+                occasion: form.occasion,
+                budget: form.budget
+              })
+            }
             type="submit"
           >
             {isLoading ? <Loader2 size={16} /> : <Sparkles size={16} />}

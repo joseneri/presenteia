@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Gift, Search } from "lucide-react";
+import { Suspense } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { SiteHeader } from "@/components/SiteHeader";
 import { activeTheme } from "@/lib/themes";
 import "./globals.css";
 
@@ -63,34 +64,7 @@ export default function RootLayout({
     <html lang="pt-BR" data-theme={activeTheme.id}>
       <body>
         <div className="site-shell">
-          <header className="header">
-            <nav className="container nav" aria-label="Principal">
-              <Link href="/" className="brand">
-                <span className="brand-mark" aria-hidden="true">
-                  <Gift size={21} />
-                  <span className="brand-spark" />
-                </span>
-                <span className="brand-word">
-                  <span>Presente</span>
-                  <span className="brand-ai">IA</span>
-                </span>
-              </Link>
-              <form className="header-search" action="/buscar">
-                <Search size={17} aria-hidden="true" />
-                <input
-                  name="q"
-                  type="search"
-                  placeholder="Busque por pessoa, data ou ideia de presente..."
-                  aria-label="Pesquisar presentes"
-                />
-              </form>
-              <div className="nav-links">
-                <Link href="/presentes">Guias</Link>
-                <Link href="/blog">Blog</Link>
-                <Link href="/#explorar">Explorar</Link>
-              </div>
-            </nav>
-          </header>
+          <SiteHeader />
           <main className="main">{children}</main>
           <footer className="footer">
             <div className="container footer-inner">
@@ -102,6 +76,9 @@ export default function RootLayout({
             </div>
           </footer>
         </div>
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <Analytics />
       </body>
     </html>

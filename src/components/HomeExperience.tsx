@@ -16,6 +16,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { ProductGrid } from "@/components/ProductGrid";
 import { articles } from "@/data/articles";
 import { guides } from "@/data/guides";
+import { trackEvent } from "@/lib/analytics";
 import type { Recommendation } from "@/lib/recommend";
 
 export function HomeExperience() {
@@ -68,7 +69,17 @@ export function HomeExperience() {
               </span>
             </div>
             <div className="hero-actions">
-              <a className="button" href="#explorar">
+              <a
+                className="button"
+                href="#explorar"
+                onClick={() =>
+                  trackEvent("cta_click", {
+                    label: "Explorar ideia",
+                    location: "hero",
+                    href: "#explorar"
+                  })
+                }
+              >
                 Explorar ideia
                 <Sparkles size={16} />
               </a>
@@ -202,7 +213,18 @@ export function HomeExperience() {
           </div>
           <div className="grid two">
             {guides.map((guide) => (
-              <Link className="guide-card" href={`/presentes/${guide.slug}`} key={guide.slug}>
+              <Link
+                className="guide-card"
+                href={`/presentes/${guide.slug}`}
+                key={guide.slug}
+                onClick={() =>
+                  trackEvent("guide_click", {
+                    slug: guide.slug,
+                    title: guide.title,
+                    location: "home_guides"
+                  })
+                }
+              >
                 <Search size={22} />
                 <h3>{guide.title}</h3>
                 <p>{guide.description}</p>
@@ -220,7 +242,18 @@ export function HomeExperience() {
           </div>
           <div className="grid three">
             {articles.map((article) => (
-              <Link className="article-card" href={`/blog/${article.slug}`} key={article.slug}>
+              <Link
+                className="article-card"
+                href={`/blog/${article.slug}`}
+                key={article.slug}
+                onClick={() =>
+                  trackEvent("article_click", {
+                    slug: article.slug,
+                    title: article.title,
+                    location: "home_blog"
+                  })
+                }
+              >
                 <div className="article-body">
                   <BookOpen size={22} />
                   <h3>{article.title}</h3>

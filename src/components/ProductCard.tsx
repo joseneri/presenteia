@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { track } from "@vercel/analytics/react";
+import { trackEvent } from "@/lib/analytics";
 import type { Recommendation } from "@/lib/recommend";
 import type { Product } from "@/data/products";
 
@@ -106,10 +106,13 @@ export function ProductCard({ product, rank }: ProductCardProps) {
           href={`/go/${product.id}`}
           target="_blank"
           onClick={() =>
-            track("product_click", {
-              id: product.id,
-              title: product.title,
-              priceRange: product.priceRange
+            trackEvent("amazon_click", {
+              product_id: product.id,
+              item_id: product.id,
+              item_name: product.title,
+              price_range: product.priceRange,
+              rank: rank ?? null,
+              outbound_url: `/go/${product.id}`
             })
           }
         >
