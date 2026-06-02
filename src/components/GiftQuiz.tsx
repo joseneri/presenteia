@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, FocusEvent, useRef, useState } from "react";
+import { FormEvent, FocusEvent, useEffect, useRef, useState } from "react";
 import { Loader2, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { Recommendation, RecommendationInput } from "@/lib/recommend";
@@ -13,6 +13,27 @@ const initialForm: RecommendationInput = {
   interests: "",
   style: ""
 };
+
+const loadingSteps = [
+  {
+    title: "Lendo o perfil",
+    description: "Entendendo pessoa, ocasiao, orcamento e gostos."
+  },
+  {
+    title: "Cruzando pistas",
+    description: "Buscando ideias que combinam com o contexto informado."
+  },
+  {
+    title: "Refinando motivos",
+    description: "Escrevendo razoes claras para cada sugestao."
+  },
+  {
+    title: "Preparando resultado",
+    description: "Organizando os melhores presentes e links de busca."
+  }
+];
+
+const loadingStepIntervalMs = 7000;
 
 type GiftQuizProps = {
   onRecommendations?: (recommendations: Recommendation[]) => void;
@@ -31,8 +52,24 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
   const [form, setForm] = useState(initialForm);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loadingStep, setLoadingStep] = useState(0);
   const hasTrackedStart = useRef(false);
   const isPurchase = variant === "purchase";
+  const activeLoadingStep = loadingSteps[loadingStep];
+
+  useEffect(() => {
+    if (!isLoading) {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setLoadingStep((currentStep) =>
+        Math.min(currentStep + 1, loadingSteps.length - 1)
+      );
+    }, loadingStepIntervalMs);
+
+    return () => window.clearInterval(interval);
+  }, [isLoading]);
 
   function trackQuizStart(fieldName: string) {
     if (hasTrackedStart.current) {
@@ -64,6 +101,12 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (isLoading) {
+      return;
+    }
+
+    setLoadingStep(0);
     setIsLoading(true);
     setError("");
 
@@ -121,7 +164,13 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
   return (
     <div>
-      <form className="quiz-panel" onFocus={onFormFocus} onSubmit={onSubmit}>
+      <form
+        aria-busy={isLoading}
+        aria-describedby={isLoading ? "quiz-loading-status" : undefined}
+        className={`quiz-panel${isLoading ? " quiz-panel-loading" : ""}`}
+        onFocus={onFormFocus}
+        onSubmit={onSubmit}
+      >
         <div className="quiz-heading">
           <span className="mini-icon" aria-hidden="true">
             <Sparkles size={16} />
@@ -136,7 +185,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           </div>
         </div>
 
-        <div className="form-grid">
+        <fieldset className="form-grid" disabled={isLoading}>
           <div className="field">
             <label htmlFor="recipient">Para quem e?</label>
             <select
@@ -289,12 +338,62 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           >
             {isLoading ? <Loader2 size={16} /> : <Sparkles size={16} />}
             {isLoading
-              ? "Pensando..."
+              ? "Montando curadoria..."
               : isPurchase
                 ? "Ver ideias para comprar"
                 : "Ver ideias"}
           </button>
-        </div>
+        </fieldset>
+
+        {isLoading ? (
+          <div
+            className="quiz-processing"
+            id="quiz-loading-status"
+            role="status"
+            aria-live="polite"
+          >
+            <div className="quiz-processing-head">
+              <span className="processing-orbit" aria-hidden="true">
+                <Sparkles size={18} />
+              </span>
+              <div>
+                <strong>Estamos montando sua curadoria</strong>
+                <span>
+                  Pode levar cerca de 30 segundos. Nao feche esta tela.
+                </span>
+              </div>
+            </div>
+
+            <div className="processing-bar" aria-hidden="true">
+              <span />
+            </div>
+
+            <ol className="processing-steps" aria-label="Etapas da curadoria">
+              {loadingSteps.map((step, index) => {
+                const isComplete = index < loadingStep;
+                const isActive = index === loadingStep;
+
+                return (
+                  <li
+                    className={
+                      isActive
+                        ? "processing-step is-active"
+                        : isComplete
+                          ? "processing-step is-complete"
+                          : "processing-step"
+                    }
+                    key={step.title}
+                  >
+                    <span className="processing-dot" aria-hidden="true" />
+                    <span>{step.title}</span>
+                  </li>
+                );
+              })}
+            </ol>
+
+            <p className="processing-note">{activeLoadingStep.description}</p>
+          </div>
+        ) : null}
 
         <p className="disclosure">
           Podemos receber comissao por compras qualificadas, sem custo extra
