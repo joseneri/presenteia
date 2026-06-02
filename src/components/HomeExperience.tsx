@@ -73,7 +73,7 @@ export function HomeExperience() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy-column">
-            <p className="eyebrow">Escolhas com afeto e menos duvida</p>
+            <p className="eyebrow">Escolhas com afeto e menos dúvida</p>
             <h1>Acerte no presente com mais carinho.</h1>
             <p className="hero-copy">
               Conte quem vai receber, a data e o jeito da pessoa. O PresenteIA
@@ -204,8 +204,8 @@ export function HomeExperience() {
             <p className="eyebrow">Como o Presenteia ajuda</p>
             <h2>Menos chute, mais contexto e carinho</h2>
             <p>
-              Em vez de abrir uma vitrine aleatoria, o PresenteIA organiza
-              perfil, momento e orcamento para priorizar opcoes que fazem
+              Em vez de abrir uma vitrine aleatória, o PresenteIA organiza
+              perfil, momento e orçamento para priorizar opções que fazem
               sentido de verdade.
             </p>
           </div>
@@ -214,15 +214,15 @@ export function HomeExperience() {
               <HeartHandshake size={24} />
               <h3>Entende a pessoa</h3>
               <p>
-                Considera gostos, rotina, ocasiao e estilo para sair do presente
-                generico.
+                Considera gostos, rotina, ocasião e estilo para sair do presente
+                genérico.
               </p>
             </article>
             <article className="feature-card">
               <Sparkles size={24} />
               <h3>Explica o motivo</h3>
               <p>
-                Cada sugestao vem com uma razao simples, para voce entender por
+                Cada sugestão vem com uma razão simples, para você entender por
                 que aquele presente combina com a pessoa.
               </p>
             </article>
@@ -244,7 +244,7 @@ export function HomeExperience() {
             <p className="eyebrow">Ideias populares</p>
             <h2>Presentes que costumam funcionar bem</h2>
             <p>
-              Comece por opcoes versateis para aniversario, amigo secreto,
+              Comece por opções versáteis para aniversário, amigo secreto,
               Natal e datas especiais.
             </p>
           </div>
@@ -255,8 +255,8 @@ export function HomeExperience() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Guias rapidos</p>
-            <h2>Escolha por pessoa, data ou orcamento</h2>
+            <p className="eyebrow">Guias rápidos</p>
+            <h2>Escolha por pessoa, data ou orçamento</h2>
           </div>
           <div className="grid two">
             {guides.map((guide) => (
@@ -285,7 +285,7 @@ export function HomeExperience() {
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">Blog</p>
-            <h2>Inspiracao para acertar no presente</h2>
+            <h2>Inspiração para acertar no presente</h2>
           </div>
           <div className="grid three">
             {articles.map((article) => (

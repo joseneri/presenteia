@@ -2839,6 +2839,20 @@ p {
   flex-wrap: wrap;
 }
 
+.footer-links {
+  display: inline-flex;
+  gap: 14px;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--color-heading);
+}
+
 @media (max-width: 880px) {
   .grid,
   .feature-grid,

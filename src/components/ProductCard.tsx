@@ -51,7 +51,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         <h3>{product.title}</h3>
         <p>{product.description}</p>
         {reason ? <p className="product-reason">{reason}</p> : null}
-        <div className="amazon-rating" aria-label="Avaliacao estimada">
+        <div className="amazon-rating" aria-label="Avaliação estimada">
           <span>4,{rank ? Math.max(3, 9 - rank) : 7}</span>
           <span className="stars" aria-hidden="true">
             ★★★★★
@@ -66,7 +66,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
           ))}
         </div>
         <p className="product-meta">{product.priceRange}</p>
-        <p className="amazon-delivery">Entrega gratis em produtos elegiveis</p>
+        <p className="amazon-delivery">Entrega grátis em produtos elegíveis</p>
         <a
           className="button"
           href={href}

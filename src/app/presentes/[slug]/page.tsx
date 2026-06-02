@@ -93,9 +93,9 @@ export default async function GuidePage({ params }: PageProps) {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <h2>Melhores ideias para comecar</h2>
+            <h2>Melhores ideias para começar</h2>
             <p>
-              Opcoes com utilidade clara, boas para comparar e comprar com
+              Opções com utilidade clara, boas para comparar e comprar com
               poucos cliques.
             </p>
           </div>

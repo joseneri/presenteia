@@ -46,7 +46,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="eyebrow">Busca de presentes</p>
           <h1>{q ? `Resultados para "${q}"` : "Busque por produto ou ocasião"}</h1>
           <p>
-            Pesquise por termos como fone, cafe, Dia das Maes, gamer ou ate 100
+            Pesquise por termos como fone, café, Dia das Mães, gamer ou até 100
             reais.
           </p>
         </div>
@@ -65,8 +65,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </div>
           ) : (
             <div className="status">
-              Nao encontrei nada com esse termo ainda. Tente buscar por cafe,
-              tecnologia, gamer, mae ou amigo secreto.
+              Não encontrei nada com esse termo ainda. Tente buscar por café,
+              tecnologia, gamer, mãe ou amigo secreto.
             </div>
           )}
         </div>

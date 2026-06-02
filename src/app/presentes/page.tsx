@@ -4,16 +4,16 @@ import { Search } from "lucide-react";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Guias de presentes | Por pessoa, ocasiao e preco",
+  title: "Guias de presentes | Por pessoa, ocasião e preço",
   description:
-    "Guias completos de presentes organizados por pessoa, ocasiao, faixa de preco e interesse. Encontre a ideia certa.",
-  keywords: ["guia presentes", "lista presentes", "presente por ocasiao", "presente por pessoa"],
+    "Guias completos de presentes organizados por pessoa, ocasião, faixa de preço e interesse. Encontre a ideia certa.",
+  keywords: ["guia presentes", "lista presentes", "presente por ocasião", "presente por pessoa"],
   alternates: { canonical: "https://presenteia.io/presentes" },
   openGraph: {
     type: "website",
     url: "https://presenteia.io/presentes",
     title: "Guias de presentes | PresenteIA",
-    description: "Guias completos organizados por pessoa, ocasiao, faixa de preco e interesse.",
+    description: "Guias completos organizados por pessoa, ocasião, faixa de preço e interesse.",
     locale: "pt_BR",
     siteName: "PresenteIA"
   }
@@ -27,7 +27,7 @@ export default function GuidesPage() {
           <p className="eyebrow">Guias</p>
           <h1>Guias para escolher sem perder tempo.</h1>
           <p>
-            Encontre ideias por pessoa, ocasiao, interesse e faixa de preco.
+            Encontre ideias por pessoa, ocasião, interesse e faixa de preço.
           </p>
         </div>
       </section>

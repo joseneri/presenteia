@@ -127,7 +127,7 @@ export default async function ArticlePage({ params }: PageProps) {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Sugestoes relacionadas</p>
+            <p className="eyebrow">Sugestões relacionadas</p>
             <h2>Produtos citados neste guia</h2>
           </div>
           <ProductGrid ids={article.relatedProductIds} />

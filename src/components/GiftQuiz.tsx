@@ -17,7 +17,7 @@ const initialForm: RecommendationInput = {
 const loadingSteps = [
   {
     title: "Lendo o perfil",
-    description: "Entendendo pessoa, ocasiao, orcamento e gostos."
+    description: "Entendendo pessoa, ocasião, orçamento e gostos."
   },
   {
     title: "Cruzando pistas",
@@ -25,7 +25,7 @@ const loadingSteps = [
   },
   {
     title: "Refinando motivos",
-    description: "Escrevendo razoes claras para cada sugestao."
+    description: "Escrevendo razões claras para cada sugestão."
   },
   {
     title: "Preparando resultado",
@@ -64,7 +64,7 @@ function FieldLabel({ children, htmlFor, required = false }: FieldLabelProps) {
             <span className="required-mark" aria-hidden="true">
               *
             </span>
-            <span className="sr-only"> obrigatorio</span>
+            <span className="sr-only"> obrigatório</span>
           </>
         ) : null}
       </label>
@@ -180,7 +180,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
     }
 
     setValidationError(
-      "Preencha pelo menos 4 pistas para a IA acertar melhor. Ex: faixa etaria, estilo, ocasiao ou gostos."
+      "Preencha pelo menos 4 pistas para a IA acertar melhor. Ex: faixa etária, estilo, ocasião ou gostos."
     );
     document
       .getElementById(
@@ -202,9 +202,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
     return false;
   }
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
+  async function submitRecommendations() {
     if (isLoading) {
       return;
     }
@@ -241,9 +239,9 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
       }
 
       if (!response.ok || !data.recommendations) {
-        const detail = data.debugId ? ` Codigo: ${data.debugId}` : "";
+        const detail = data.debugId ? ` Código: ${data.debugId}` : "";
         throw new Error(
-          `${data.error ?? "Nao foi possivel gerar recomendacoes agora."}${detail}`
+          `${data.error ?? "Não foi possível gerar recomendações agora."}${detail}`
         );
       }
 
@@ -297,6 +295,11 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
     }
   }
 
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    void submitRecommendations();
+  }
+
   return (
     <div>
       <form
@@ -330,7 +333,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         <fieldset className="form-grid" disabled={isLoading}>
           <div className="field">
             <FieldLabel htmlFor="recipient" required>
-              Para quem e?
+              Para quem é?
             </FieldLabel>
             <select
               aria-invalid={validationError && !form.recipient ? true : undefined}
@@ -343,14 +346,14 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               }
             >
               <option value="">Escolha a pessoa</option>
-              <optgroup label="Familia">
-                <option value="mae">Mae</option>
+              <optgroup label="Família">
+                <option value="mae">Mãe</option>
                 <option value="pai">Pai</option>
-                <option value="avos">Avo ou avo</option>
+                <option value="avos">Avó ou avô</option>
                 <option value="filho">Filho</option>
                 <option value="filha">Filha</option>
-                <option value="irma">Irma</option>
-                <option value="irmao">Irmao</option>
+                <option value="irma">Irmã</option>
+                <option value="irmao">Irmão</option>
                 <option value="sogra">Sogra</option>
               </optgroup>
               <optgroup label="Relacionamento">
@@ -367,20 +370,20 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 <option value="chefe">Chefe</option>
                 <option value="professor">Professor(a)</option>
               </optgroup>
-              <optgroup label="Criancas e jovens">
-                <option value="bebe">Bebe</option>
-                <option value="crianca">Crianca</option>
+              <optgroup label="Crianças e jovens">
+                <option value="bebe">Bebê</option>
+                <option value="crianca">Criança</option>
                 <option value="adolescente">Adolescente</option>
               </optgroup>
               <optgroup label="Outros">
                 <option value="gamer">Gamer</option>
-                <option value="pessoa dificil">Pessoa dificil de presentear</option>
+                <option value="pessoa dificil">Pessoa difícil de presentear</option>
               </optgroup>
             </select>
           </div>
 
           <div className="field">
-            <FieldLabel htmlFor="ageGroup">Faixa etaria</FieldLabel>
+            <FieldLabel htmlFor="ageGroup">Faixa etária</FieldLabel>
             <select
               id="ageGroup"
               name="ageGroup"
@@ -389,10 +392,10 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 updateFormField("ageGroup", event.target.value)
               }
             >
-              <option value="">Nao sei / nao importa</option>
-              <option value="bebe 0 a 2 anos">Bebe: 0 a 2 anos</option>
-              <option value="crianca 3 a 5 anos">Crianca: 3 a 5 anos</option>
-              <option value="crianca 6 a 9 anos">Crianca: 6 a 9 anos</option>
+              <option value="">Não sei / não importa</option>
+              <option value="bebe 0 a 2 anos">Bebê: 0 a 2 anos</option>
+              <option value="crianca 3 a 5 anos">Criança: 3 a 5 anos</option>
+              <option value="crianca 6 a 9 anos">Criança: 6 a 9 anos</option>
               <option value="pre-adolescente 10 a 12 anos">10 a 12 anos</option>
               <option value="adolescente 13 a 17 anos">13 a 17 anos</option>
               <option value="jovem adulto 18 a 25 anos">18 a 25 anos</option>
@@ -403,7 +406,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
           <div className="field">
             <FieldLabel htmlFor="occasion">
-              Ocasiao
+              Ocasião
             </FieldLabel>
             <select
               id="occasion"
@@ -413,15 +416,15 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 updateFormField("occasion", event.target.value)
               }
             >
-              <option value="">Escolha a ocasiao</option>
-              <option value="aniversario">Aniversario</option>
+              <option value="">Escolha a ocasião</option>
+              <option value="aniversario">Aniversário</option>
               <option value="natal">Natal</option>
               <option value="amigo secreto">Amigo secreto</option>
               <option value="dia dos namorados">Dia dos Namorados</option>
-              <option value="dia das maes">Dia das Maes</option>
+              <option value="dia das maes">Dia das Mães</option>
               <option value="dia dos pais">Dia dos Pais</option>
-              <option value="dia das criancas">Dia das Criancas</option>
-              <option value="cha de bebe">Cha de bebe</option>
+              <option value="dia das criancas">Dia das Crianças</option>
+              <option value="cha de bebe">Chá de bebê</option>
               <option value="formatura">Formatura</option>
               <option value="casamento">Casamento</option>
               <option value="casa nova">Casa nova</option>
@@ -432,7 +435,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
           <div className="field">
             <FieldLabel htmlFor="budget">
-              Orcamento
+              Orçamento
             </FieldLabel>
             <select
               id="budget"
@@ -443,14 +446,14 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               }
             >
               <option value="">Escolha uma faixa</option>
-              <option value="ate 50 reais">Ate R$50</option>
+              <option value="ate 50 reais">Até R$50</option>
               <option value="ate 100 reais">R$50 a R$100</option>
               <option value="ate 150 reais">R$100 a R$150</option>
               <option value="ate 200 reais">R$150 a R$200</option>
               <option value="ate 300 reais">R$200 a R$300</option>
               <option value="ate 500 reais">R$300 a R$500</option>
               <option value="acima de 500 reais">Acima de R$500</option>
-              <option value="varias faixas de preco">Quero ver varias faixas</option>
+              <option value="varias faixas de preco">Quero ver várias faixas</option>
             </select>
           </div>
 
@@ -465,17 +468,17 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               }
             >
               <option value="">Surpreenda-me</option>
-              <option value="util e pratico">Util e pratico</option>
+              <option value="util e pratico">Útil e prático</option>
               <option value="criativo e diferente">Criativo e diferente</option>
               <option value="tecnologia e gadget">Tecnologia e gadget</option>
               <option value="bem-estar e autocuidado">Bem-estar e autocuidado</option>
-              <option value="casa e decoracao">Casa e decoracao</option>
-              <option value="gastronomia e cafe">Gastronomia e cafe</option>
+              <option value="casa e decoracao">Casa e decoração</option>
+              <option value="gastronomia e cafe">Gastronomia e café</option>
               <option value="livros e estudo">Livros e estudo</option>
-              <option value="experiencia">Experiencia</option>
-              <option value="romantico">Romantico</option>
+              <option value="experiencia">Experiência</option>
+              <option value="romantico">Romântico</option>
               <option value="premium">Premium</option>
-              <option value="barato e lembranca">Barato e lembranca</option>
+              <option value="barato e lembranca">Barato e lembrança</option>
             </select>
           </div>
 
@@ -486,7 +489,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             <textarea
               id="interests"
               name="interests"
-              placeholder="Opcional: cafe, leitura, games, academia, plantas..."
+              placeholder="Opcional: café, leitura, games, academia, plantas..."
               value={form.interests}
               onChange={(event) =>
                 updateFormField("interests", event.target.value)
@@ -497,7 +500,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           <button
             className={`button cta-button form-submit${isPurchase ? " cta-button-purchase" : ""}`}
             disabled={isLoading}
-            onClick={() =>
+            onClick={() => {
               trackEvent("cta_click", {
                 label: isPurchase ? "Ver ideias para comprar" : "Ver ideias",
                 location: "quiz",
@@ -505,9 +508,10 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 recipient: form.recipient,
                 occasion: form.occasion,
                 budget: form.budget
-              })
-            }
-            type="submit"
+              });
+              void submitRecommendations();
+            }}
+            type="button"
           >
             {isLoading ? <Loader2 size={16} /> : <Sparkles size={16} />}
             {isLoading
@@ -532,7 +536,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
               <div>
                 <strong>Estamos montando sua curadoria</strong>
                 <span>
-                  Pode levar cerca de 30 segundos. Nao feche esta tela.
+                  Pode levar cerca de 30 segundos. Não feche esta tela.
                 </span>
               </div>
             </div>
@@ -569,8 +573,8 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         ) : null}
 
         <p className="disclosure">
-          Podemos receber comissao por compras qualificadas, sem custo extra
-          para voce.
+          Podemos receber comissão por compras qualificadas, sem custo extra
+          para você.
         </p>
       </form>
       {error ? <div className="status quiz-status">{error}</div> : null}

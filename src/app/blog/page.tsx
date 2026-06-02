@@ -6,14 +6,14 @@ import { articles } from "@/data/articles";
 export const metadata: Metadata = {
   title: "Blog de presentes | Artigos e ideias",
   description:
-    "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento. Guias praticos para nao errar na escolha.",
+    "Artigos com ideias de presentes por pessoa, ocasião, estilo e orçamento. Guias práticos para não errar na escolha.",
   keywords: ["blog presentes", "artigos presentes", "dicas presentes", "ideias presentes"],
   alternates: { canonical: "https://presenteia.io/blog" },
   openGraph: {
     type: "website",
     url: "https://presenteia.io/blog",
     title: "Blog de presentes | PresenteIA",
-    description: "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento.",
+    description: "Artigos com ideias de presentes por pessoa, ocasião, estilo e orçamento.",
     locale: "pt_BR",
     siteName: "PresenteIA"
   }
@@ -27,7 +27,7 @@ export default function BlogPage() {
           <p className="eyebrow">Blog</p>
           <h1>Ideias de presentes para decidir melhor.</h1>
           <p>
-            Conteudo editorial curto, pratico e pensado para buscas organicas.
+            Conteúdo editorial curto, prático e pensado para buscas orgânicas.
           </p>
         </div>
       </section>
