@@ -42,8 +42,9 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         <Image
           src={image}
           alt=""
-          width={640}
-          height={460}
+          width={860}
+          height={860}
+          sizes="(max-width: 880px) calc(100vw - 32px), 33vw"
           aria-hidden="true"
         />
       </div>

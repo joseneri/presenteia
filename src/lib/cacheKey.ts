@@ -1,7 +1,7 @@
 import { createHash } from "crypto";
 import type { RecommendationInput } from "@/lib/recommend";
 
-const cacheKeyPrefix = "presenteia:recommendations:v1:";
+const cacheKeyPrefix = "presenteia:recommendations:v3:";
 
 function normalizeDropdown(value: string | undefined) {
   return (value ?? "").toLowerCase().trim();

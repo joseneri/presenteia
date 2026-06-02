@@ -11,6 +11,12 @@ import {
   type RecommendationInput
 } from "@/lib/recommend";
 import { getRedis } from "@/lib/redis";
+import {
+  findBestVisualAnchor,
+  getVisualAnchor,
+  getVisualCatalogForPrompt,
+  type VisualGiftAnchor
+} from "@/lib/visualCatalog";
 
 export const runtime = "nodejs";
 
@@ -27,6 +33,9 @@ type OpenAIRecommendation = {
   buscaAmazon?: string;
   categoria?: string;
   categories?: string[];
+  visualAnchorId?: string;
+  imageAnchorId?: string;
+  anchorId?: string;
   destaque?: boolean;
   coringa?: boolean;
 };
@@ -74,7 +83,7 @@ export async function POST(request: Request) {
     debugId,
     model,
     fallbackEnabled: missingApiKeyFallbackEnabled,
-    mode: "openai-freeform",
+    mode: "openai-visual-anchored",
     openAITimeoutMs,
     recipient: input.recipient,
     ageGroup: input.ageGroup,
@@ -150,8 +159,9 @@ export async function POST(request: Request) {
               input,
               desiredCount,
               candidateCount,
+              visualCatalog: getVisualCatalogForPrompt(),
               task:
-                "Crie uma lista de candidatos de presentes livres, sem usar catalogo fixo. Respeite os parametros preenchidos pelo usuario: pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, destaque e coringa. searchQuery deve ser curta e boa para buscar na Amazon Brasil, sem marca inventada e sem preco. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, destaque, coringa }] }."
+                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
             })
           }
         ],
@@ -183,7 +193,7 @@ export async function POST(request: Request) {
     console.info("[recommendations] openai_success", {
       debugId,
       model,
-      mode: "openai-freeform",
+      mode: "openai-visual-anchored",
       responseId: response.id,
       finishReason: response.choices[0]?.finish_reason,
       recommendationCount: recommendations.length,
@@ -202,7 +212,7 @@ export async function POST(request: Request) {
       total: recommendations.length,
       itens: toStructuredItems(recommendations),
       source: "openai",
-      mode: "openai-freeform"
+      mode: "openai-visual-anchored"
     };
 
     await setCachedRecommendations(cacheKey, payload, debugId);
@@ -348,13 +358,15 @@ function buildSystemPrompt() {
   return [
     "Voce e um especialista brasileiro em presentes com foco em conversao, curadoria e conexao emocional.",
     "Sugira presentes reais que uma pessoa conseguiria procurar em lojas online no Brasil.",
+    "Toda recomendacao precisa estar presa a uma imagem confiavel: use somente ids existentes no visualCatalog recebido pelo usuario.",
+    "O visualAnchorId e uma restricao obrigatoria, nao uma sugestao. Se uma ideia nao couber em nenhum visualAnchorId, escolha outra ideia.",
     "A quantidade final de itens e calculada pelo servidor e deve ser respeitada: sempre entregue desiredCount itens finais, normalmente 8.",
     "Use pelo menos 4 parametros preenchidos pelo usuario quando existirem. Priorize pessoa, orcamento, estilo, idade e gostos; use ocasiao apenas quando ela vier informada. Nao invente uma ocasiao quando o campo estiver vazio.",
     "Quando o usuario mencionar um tema forte, gere candidatos conectados a ele, mas nao faca a lista inteira do mesmo tema. Diversidade obrigatoria: no maximo 2 itens da mesma categoria ou categoria similar e no maximo 2 itens do mesmo macrotema. Se o usuario mencionar cafe, inclua no maximo 2 itens relacionados diretamente a cafe; os demais devem ser alternativas distintas conectadas ao perfil, como leitura, cozinha, casa, bem-estar, trabalho, experiencia ou tecnologia.",
     "Hierarquia obrigatoria: o item 1 deve ter destaque true e ser o mais criativo e certeiro, nao o mais obvio. Exatamente 1 item deve ter coringa true: uma experiencia, servico ou presente inusitado dentro do orcamento. Os demais devem vir em relevancia decrescente.",
     "O campo reason deve ser um motivo emocional que conecta com a pessoa, nao uma descricao do produto. Exemplo ruim: kit completo com 3 tipos de grao especial. Exemplo bom: porque ela vai lembrar de voce toda manha.",
     "Responda APENAS com JSON valido, sem texto antes ou depois, sem markdown e sem backticks.",
-    "Formato obrigatorio: { \"total\": numero, \"recommendations\": [{ \"title\": string, \"description\": string, \"reason\": string, \"priceRange\": string, \"searchQuery\": string, \"categories\": string[], \"destaque\": boolean, \"coringa\": boolean }] }."
+    "Formato obrigatorio: { \"total\": numero, \"recommendations\": [{ \"title\": string, \"description\": string, \"reason\": string, \"priceRange\": string, \"searchQuery\": string, \"categories\": string[], \"visualAnchorId\": string, \"destaque\": boolean, \"coringa\": boolean }] }."
   ].join(" ");
 }
 
@@ -371,13 +383,19 @@ function buildDynamicRecommendations(
 
   const dynamicRecommendations = items
     .map(normalizeOpenAIRecommendation)
+    .map((item) => ({
+      ...item,
+      visualAnchor:
+        getVisualAnchor(item.visualAnchorId) ?? findBestVisualAnchor(item)
+    }))
     .filter((item) => {
       if (
         !item.title ||
         !item.description ||
         !item.reason ||
         !item.priceRange ||
-        !item.searchQuery
+        !item.searchQuery ||
+        !item.visualAnchor
       ) {
         return false;
       }
@@ -390,25 +408,29 @@ function buildDynamicRecommendations(
     })
     .slice(0, desiredCount)
     .map((item, index) => {
-      const baseId = slugifyRecommendation(item.title) || `sugestao-${index + 1}`;
+      const visualAnchor = item.visualAnchor as VisualGiftAnchor;
+      const baseId =
+        slugifyRecommendation(visualAnchor.id) ||
+        slugifyRecommendation(item.title) ||
+        `sugestao-${index + 1}`;
       const id = usedIds.has(baseId) ? `${baseId}-${index + 1}` : baseId;
       usedIds.add(id);
       const coringa =
         !hasCoringa &&
         (item.coringa === true || index === Math.min(2, desiredCount - 1));
       hasCoringa = hasCoringa || coringa;
-      const categories = item.categories.filter(Boolean).slice(0, 3);
+      const categories = visualAnchor.categories.slice(0, 3);
       const image = getGiftImage({
         id,
-        title: item.title,
-        description: item.description,
-        searchQuery: item.searchQuery,
+        title: visualAnchor.label,
+        description: visualAnchor.description,
+        searchQuery: visualAnchor.searchQuery,
         categories,
         recipient: input.recipient,
         ageGroup: input.ageGroup,
         occasion: input.occasion,
         style: input.style,
-        interests: [input.interests],
+        interests: [input.interests, item.title, item.searchQuery],
         usedImages: [...usedImages]
       });
 
@@ -420,14 +442,12 @@ function buildDynamicRecommendations(
         description: item.description.trim(),
         reason: item.reason.trim(),
         priceRange: item.priceRange.trim(),
-        amazonUrl: buildAmazonSearchUrl(item.searchQuery.trim()),
+        amazonUrl: buildAmazonSearchUrl(visualAnchor.searchQuery),
         image,
-        categories: categories.length
-          ? categories
-          : [input.style, input.occasion].filter(Boolean).slice(0, 2),
+        categories,
         personas: [input.recipient],
         occasions: [input.occasion],
-        interests: [input.interests || input.style],
+        interests: [input.interests || input.style, visualAnchor.label],
         score: 100 - index,
         destaque: index === 0,
         coringa
@@ -514,6 +534,7 @@ type DiversityCandidate = {
   searchQuery?: string;
   categories?: string[];
   categoria?: string;
+  visualAnchor?: VisualGiftAnchor;
 };
 
 type DiversityState = {
@@ -537,7 +558,10 @@ function canUseRecommendation(
   } = {}
 ) {
   const category = normalizeCategory(
-    candidate.categories?.[0] ?? candidate.categoria ?? ""
+    candidate.visualAnchor?.categories[0] ??
+      candidate.categories?.[0] ??
+      candidate.categoria ??
+      ""
   );
   const topic = getRecommendationTopic(candidate);
   const categoryCount = state.categoryCounts.get(category) ?? 0;
@@ -575,6 +599,9 @@ function getRecommendationTopic(candidate: DiversityCandidate) {
       candidate.title,
       candidate.description,
       candidate.searchQuery,
+      candidate.visualAnchor?.label,
+      candidate.visualAnchor?.id,
+      candidate.visualAnchor?.terms.join(" "),
       candidate.categories?.join(" "),
       candidate.categoria
     ]
@@ -649,6 +676,7 @@ function normalizeOpenAIRecommendation(item: OpenAIRecommendation) {
     searchQuery: item.searchQuery ?? item.buscaAmazon ?? item.title ?? item.titulo ?? "",
     categories: item.categories?.filter(Boolean) ?? (category ? [category] : []),
     categoria: item.categoria,
+    visualAnchorId: item.visualAnchorId ?? item.imageAnchorId ?? item.anchorId,
     destaque: item.destaque,
     coringa: item.coringa
   };

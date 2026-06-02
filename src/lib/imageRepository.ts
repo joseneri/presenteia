@@ -647,11 +647,23 @@ const topicImages: ImageTopic[] = [
   },
   {
     topic: "plantas-casa",
-    priority: 91,
-    query: "indoor,plants,home",
+    priority: 104,
+    query: "vase,ceramic,flowers",
     count: 5,
     startLock: 2270,
-    terms: ["planta de casa", "vaso", "suculenta", "terrario", "jiboia", "samambaia"]
+    terms: [
+      "planta de casa",
+      "vaso",
+      "vasos",
+      "vaso decorativo",
+      "ceramica",
+      "flores secas",
+      "arranjo seco",
+      "suculenta",
+      "terrario",
+      "jiboia",
+      "samambaia"
+    ]
   },
   {
     topic: "aquario",
@@ -1094,6 +1106,21 @@ const curatedSearchImages: SearchImage[] = [
     priority: 126,
     topic: "jardim",
     terms: ["planta", "plantas", "suculenta", "suculentas", "jardim", "verde"]
+  },
+  {
+    id: "curated-vaso-01",
+    image: imageUrl("photo-1485955900006-10f4d324d411"),
+    priority: 142,
+    topic: "vaso-decorativo",
+    terms: [
+      "vaso",
+      "vasos",
+      "vaso decorativo",
+      "ceramica",
+      "flores secas",
+      "arranjo seco",
+      "decorativo"
+    ]
   },
   {
     id: "curated-crianca-01",
