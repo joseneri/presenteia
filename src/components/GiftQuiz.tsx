@@ -24,6 +24,7 @@ type RecommendationResponse = {
   error?: string;
   debugId?: string;
   source?: string;
+  mode?: string;
 };
 
 export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizProps) {
@@ -84,8 +85,15 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
       console.info("[recommendations] client_success", {
         source: data.source,
+        mode: data.mode,
         debugId: data.debugId,
-        count: data.recommendations.length
+        count: data.recommendations.length,
+        items: data.recommendations.map((product, index) => ({
+          rank: index + 1,
+          id: product.id,
+          title: product.title,
+          reason: product.reason
+        }))
       });
 
       onRecommendations?.(data.recommendations);

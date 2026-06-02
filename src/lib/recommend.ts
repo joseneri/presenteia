@@ -14,6 +14,24 @@ export type Recommendation = Product & {
   score: number;
 };
 
+const affiliateTag = "presentesid09-20";
+
+export function buildAmazonSearchUrl(query: string) {
+  const search = new URLSearchParams({
+    k: query,
+    tag: affiliateTag
+  });
+
+  return `https://www.amazon.com.br/s?${search.toString()}`;
+}
+
+export function slugifyRecommendation(value: string) {
+  return normalize(value)
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
 const normalize = (value: string) =>
   value
     .toLowerCase()

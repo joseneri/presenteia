@@ -66,9 +66,18 @@ const realProductImages: Record<string, string> = {
     "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=720&q=82"
 };
 
+function isRecommendation(product: Product | Recommendation): product is Recommendation {
+  return "reason" in product;
+}
+
 export function ProductCard({ product, rank }: ProductCardProps) {
   const image = realProductImages[product.id] ?? product.image;
   const rankClass = rank ? ` rank-${rank}` : "";
+  const reason = isRecommendation(product) ? product.reason : "";
+  const isDynamicRecommendation = isRecommendation(product) && !realProductImages[product.id];
+  const href = isDynamicRecommendation && product.amazonUrl.startsWith("https://")
+    ? product.amazonUrl
+    : `/go/${product.id}`;
 
   return (
     <article className={`product-card${rankClass}`}>
@@ -85,6 +94,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
       <div className="product-body">
         <h3>{product.title}</h3>
         <p>{product.description}</p>
+        {reason ? <p className="product-reason">{reason}</p> : null}
         <div className="amazon-rating" aria-label="Avaliacao estimada">
           <span>4,{rank ? Math.max(3, 9 - rank) : 7}</span>
           <span className="stars" aria-hidden="true">
@@ -103,7 +113,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         <p className="amazon-delivery">Entrega gratis em produtos elegiveis</p>
         <a
           className="button"
-          href={`/go/${product.id}`}
+          href={href}
           target="_blank"
           onClick={() =>
             trackEvent("amazon_click", {
@@ -112,7 +122,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
               item_name: product.title,
               price_range: product.priceRange,
               rank: rank ?? null,
-              outbound_url: `/go/${product.id}`
+              outbound_url: href
             })
           }
         >
