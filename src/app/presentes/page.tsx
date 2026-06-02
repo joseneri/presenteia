@@ -4,9 +4,19 @@ import { Search } from "lucide-react";
 import { guides } from "@/data/guides";
 
 export const metadata: Metadata = {
-  title: "Guias de presentes",
+  title: "Guias de presentes | Por pessoa, ocasiao e preco",
   description:
-    "Guias de presentes por pessoa, ocasiao, faixa de preco e interesse."
+    "Guias completos de presentes organizados por pessoa, ocasiao, faixa de preco e interesse. Encontre a ideia certa.",
+  keywords: ["guia presentes", "lista presentes", "presente por ocasiao", "presente por pessoa"],
+  alternates: { canonical: "https://presenteia.com.br/presentes" },
+  openGraph: {
+    type: "website",
+    url: "https://presenteia.com.br/presentes",
+    title: "Guias de presentes | PresenteIA",
+    description: "Guias completos organizados por pessoa, ocasiao, faixa de preco e interesse.",
+    locale: "pt_BR",
+    siteName: "PresenteIA"
+  }
 };
 
 export default function GuidesPage() {

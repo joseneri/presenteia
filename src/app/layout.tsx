@@ -4,14 +4,53 @@ import { Gift, Search } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+const baseUrl = "https://presenteia.com.br";
+
 export const metadata: Metadata = {
   title: {
     default: "PresenteIA | Sugestoes de presentes com IA",
     template: "%s | PresenteIA"
   },
   description:
-    "Encontre presentes criativos, uteis e bem escolhidos com ajuda de IA.",
-  metadataBase: new URL("https://presenteia.com.br")
+    "Encontre presentes criativos, uteis e bem escolhidos com ajuda de IA. Recomendador inteligente por pessoa, ocasiao e orcamento.",
+  metadataBase: new URL(baseUrl),
+  keywords: [
+    "presente", "ideia de presente", "presente aniversario", "presente natal",
+    "presente dia dos namorados", "presente dia das maes", "presente dia dos pais",
+    "amigo secreto", "recomendador de presentes", "presente barato"
+  ],
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: baseUrl,
+    siteName: "PresenteIA",
+    title: "PresenteIA | Sugestoes de presentes com IA",
+    description: "Recomendador inteligente de presentes por pessoa, ocasiao, orcamento e interesse.",
+    images: [
+      {
+        url: `${baseUrl}/og-default.png`,
+        width: 1200,
+        height: 630,
+        alt: "PresenteIA — Sugestoes de presentes com IA"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PresenteIA | Sugestoes de presentes com IA",
+    description: "Recomendador inteligente de presentes por pessoa, ocasiao, orcamento e interesse.",
+    images: [`${baseUrl}/og-default.png`]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  }
 };
 
 export default function RootLayout({

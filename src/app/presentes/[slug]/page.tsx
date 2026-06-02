@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
 import { guides } from "@/data/guides";
+import { products } from "@/data/products";
+
+const baseUrl = "https://presenteia.com.br";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -21,9 +24,26 @@ export async function generateMetadata({
     return {};
   }
 
+  const url = `${baseUrl}/presentes/${guide.slug}`;
   return {
     title: guide.title,
-    description: guide.description
+    description: guide.description,
+    keywords: guide.keywords,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      url,
+      title: guide.title,
+      description: guide.description,
+      locale: "pt_BR",
+      siteName: "PresenteIA",
+      images: [{ url: `${baseUrl}/og-default.png`, width: 1200, height: 630, alt: guide.title }]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.description
+    }
   };
 }
 
@@ -35,8 +55,29 @@ export default async function GuidePage({ params }: PageProps) {
     notFound();
   }
 
+  const guideProducts = products.filter((p) => guide.productIds.includes(p.id));
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: guide.title,
+    description: guide.description,
+    url: `${baseUrl}/presentes/${guide.slug}`,
+    numberOfItems: guideProducts.length,
+    itemListElement: guideProducts.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: p.title,
+      description: p.description,
+      url: `${baseUrl}/go/${p.id}`
+    }))
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="page-title">
         <div className="container">
           <p className="eyebrow">Guia de presentes</p>

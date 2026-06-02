@@ -4,9 +4,19 @@ import { BookOpen } from "lucide-react";
 import { articles } from "@/data/articles";
 
 export const metadata: Metadata = {
-  title: "Blog de presentes",
+  title: "Blog de presentes | Artigos e ideias",
   description:
-    "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento."
+    "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento. Guias praticos para nao errar na escolha.",
+  keywords: ["blog presentes", "artigos presentes", "dicas presentes", "ideias presentes"],
+  alternates: { canonical: "https://presenteia.com.br/blog" },
+  openGraph: {
+    type: "website",
+    url: "https://presenteia.com.br/blog",
+    title: "Blog de presentes | PresenteIA",
+    description: "Artigos com ideias de presentes por pessoa, ocasiao, estilo e orcamento.",
+    locale: "pt_BR",
+    siteName: "PresenteIA"
+  }
 };
 
 export default function BlogPage() {
