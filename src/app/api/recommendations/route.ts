@@ -14,11 +14,13 @@ type OpenAIReasonPayload = {
 const fallbackEnabled = process.env.OPENAI_FALLBACK_ENABLED === "true";
 
 export async function POST(request: Request) {
+  const debugId = crypto.randomUUID();
   const input = (await request.json()) as RecommendationInput;
   const recommendations = recommendProducts(input);
   const model = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
 
   console.info("[recommendations] request_received", {
+    debugId,
     model,
     fallbackEnabled,
     recipient: input.recipient,
@@ -30,21 +32,23 @@ export async function POST(request: Request) {
   });
 
   if (!process.env.OPENAI_API_KEY) {
-    console.error("[recommendations] missing_openai_api_key");
+    console.error("[recommendations] missing_openai_api_key", { debugId });
 
     if (fallbackEnabled) {
       console.info("[recommendations] returning_local_fallback", {
+        debugId,
         reason: "missing_api_key",
         count: recommendations.length
       });
-      return NextResponse.json({ recommendations, source: "local" });
+      return NextResponse.json({ recommendations, source: "local", debugId });
     }
 
     return NextResponse.json(
       {
         error:
-          "OPENAI_API_KEY nao configurada. Configure a chave para testar a API.",
-        source: "openai-error"
+          "OPENAI_API_KEY nao configurada no servidor de producao.",
+        source: "openai-error",
+        debugId
       },
       { status: 500 }
     );
@@ -94,6 +98,7 @@ export async function POST(request: Request) {
     }));
 
     console.info("[recommendations] openai_success", {
+      debugId,
       model,
       responseId: response.id,
       finishReason: response.choices[0]?.finish_reason,
@@ -104,30 +109,37 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       recommendations: enrichedRecommendations,
-      source: "openai"
+      source: "openai",
+      debugId
     });
   } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+
     console.error("[recommendations] openai_error", {
+      debugId,
       model,
       fallbackEnabled,
-      error: error instanceof Error ? error.message : "Unknown error"
+      error: message
     });
 
     if (fallbackEnabled) {
       console.info("[recommendations] returning_local_fallback", {
+        debugId,
         reason: "openai_error",
         count: recommendations.length
       });
       return NextResponse.json({
         recommendations,
-        source: "local-fallback"
+        source: "local-fallback",
+        debugId
       });
     }
 
     return NextResponse.json(
       {
-        error: "Nao foi possivel gerar recomendacoes com a OpenAI agora.",
-        source: "openai-error"
+        error: `OpenAI falhou: ${message}`,
+        source: "openai-error",
+        debugId
       },
       { status: 502 }
     );

@@ -19,6 +19,13 @@ type GiftQuizProps = {
   variant?: "default" | "purchase";
 };
 
+type RecommendationResponse = {
+  recommendations?: Recommendation[];
+  error?: string;
+  debugId?: string;
+  source?: string;
+};
+
 export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizProps) {
   const [form, setForm] = useState(initialForm);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,13 +73,21 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
         body: JSON.stringify(form)
       });
 
-      if (!response.ok) {
-        throw new Error("Nao foi possivel gerar recomendacoes agora.");
+      const data = (await response.json()) as RecommendationResponse;
+
+      if (!response.ok || !data.recommendations) {
+        const detail = data.debugId ? ` Codigo: ${data.debugId}` : "";
+        throw new Error(
+          `${data.error ?? "Nao foi possivel gerar recomendacoes agora."}${detail}`
+        );
       }
 
-      const data = (await response.json()) as {
-        recommendations: Recommendation[];
-      };
+      console.info("[recommendations] client_success", {
+        source: data.source,
+        debugId: data.debugId,
+        count: data.recommendations.length
+      });
+
       onRecommendations?.(data.recommendations);
       trackEvent("quiz_submitted", {
         ...form,
