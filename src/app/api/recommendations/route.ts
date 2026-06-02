@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
+import { generateRecommendationCacheKey } from "@/lib/cacheKey";
 import { getGiftImage, getProductImage } from "@/lib/imageRepository";
 import {
   buildAmazonSearchUrl,
@@ -9,6 +10,9 @@ import {
   type Recommendation,
   type RecommendationInput
 } from "@/lib/recommend";
+import { getRedis } from "@/lib/redis";
+
+export const runtime = "nodejs";
 
 type OpenAIRecommendation = {
   title?: string;
@@ -33,16 +37,34 @@ type OpenAIRecommendationPayload = {
   total?: number;
 };
 
+type RecommendationResponsePayload = {
+  recommendations: Recommendation[];
+  total: number;
+  itens: ReturnType<typeof toStructuredItems>;
+  source: string;
+  mode?: string;
+};
+
+type MemoryCacheEntry = {
+  payload: RecommendationResponsePayload;
+  expiresAt: number;
+};
+
 const defaultOpenAITimeoutMs = 35000;
+const cacheTtlSeconds = 60 * 60 * 24 * 7;
+const cacheTtlMs = cacheTtlSeconds * 1000;
 const missingApiKeyFallbackEnabled =
   process.env.OPENAI_FALLBACK_ENABLED === "true";
 const openAITimeoutMs = getOpenAITimeoutMs();
 let openAIClient: OpenAI | null = null;
 let openAIClientApiKey: string | undefined;
+const redis = getRedis();
+const memoryCache = new Map<string, MemoryCacheEntry>();
 
 export async function POST(request: Request) {
   const debugId = crypto.randomUUID();
   const input = (await request.json()) as RecommendationInput;
+  const cacheKey = generateRecommendationCacheKey(input);
   const localRecommendations = recommendProducts(input);
   const desiredCount = getRecommendationCount(input);
   const candidateCount = desiredCount + 4;
@@ -64,6 +86,24 @@ export async function POST(request: Request) {
     candidateCount
   });
 
+  const cachedPayload = await getCachedRecommendations(cacheKey, debugId);
+
+  if (cachedPayload) {
+    console.info("[recommendations] cache_hit", {
+      debugId,
+      source: cachedPayload.source,
+      recommendationCount: cachedPayload.recommendations.length
+    });
+
+    return NextResponse.json({
+      ...cachedPayload,
+      debugId,
+      fromCache: true
+    });
+  }
+
+  console.info("[recommendations] cache_miss", { debugId });
+
   if (!process.env.OPENAI_API_KEY) {
     console.error("[recommendations] missing_openai_api_key", { debugId });
 
@@ -78,7 +118,8 @@ export async function POST(request: Request) {
         total: localRecommendations.length,
         itens: toStructuredItems(localRecommendations),
         source: "local",
-        debugId
+        debugId,
+        fromCache: false
       });
     }
 
@@ -156,13 +197,20 @@ export async function POST(request: Request) {
       usage: response.usage
     });
 
-    return NextResponse.json({
+    const payload = {
       recommendations,
       total: recommendations.length,
       itens: toStructuredItems(recommendations),
       source: "openai",
-      mode: "openai-freeform",
-      debugId
+      mode: "openai-freeform"
+    };
+
+    await setCachedRecommendations(cacheKey, payload, debugId);
+
+    return NextResponse.json({
+      ...payload,
+      debugId,
+      fromCache: false
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
@@ -186,9 +234,93 @@ export async function POST(request: Request) {
       itens: toStructuredItems(localRecommendations),
       source: "local-fallback",
       mode: "openai-fallback",
-      debugId
+      debugId,
+      fromCache: false
     });
   }
+}
+
+async function getCachedRecommendations(cacheKey: string, debugId: string) {
+  const memoryPayload = getMemoryCachedRecommendations(cacheKey);
+
+  if (memoryPayload) {
+    console.info("[recommendations] memory_cache_hit", { debugId });
+    return memoryPayload;
+  }
+
+  if (!redis) {
+    return null;
+  }
+
+  try {
+    const cached = await redis.get<string>(cacheKey);
+
+    if (!cached) {
+      return null;
+    }
+
+    const payload = JSON.parse(cached) as RecommendationResponsePayload;
+    setMemoryCachedRecommendations(cacheKey, payload);
+
+    return payload;
+  } catch (error) {
+    console.error("[recommendations] redis_get_error", {
+      debugId,
+      error: error instanceof Error ? error.message : "Unknown error"
+    });
+    return null;
+  }
+}
+
+async function setCachedRecommendations(
+  cacheKey: string,
+  payload: RecommendationResponsePayload,
+  debugId: string
+) {
+  setMemoryCachedRecommendations(cacheKey, payload);
+
+  if (!redis) {
+    return;
+  }
+
+  try {
+    await redis.setex(cacheKey, cacheTtlSeconds, JSON.stringify(payload));
+    console.info("[recommendations] cache_saved", {
+      debugId,
+      ttlSeconds: cacheTtlSeconds,
+      recommendationCount: payload.recommendations.length
+    });
+  } catch (error) {
+    console.error("[recommendations] redis_set_error", {
+      debugId,
+      error: error instanceof Error ? error.message : "Unknown error"
+    });
+  }
+}
+
+function getMemoryCachedRecommendations(cacheKey: string) {
+  const cached = memoryCache.get(cacheKey);
+
+  if (!cached) {
+    return null;
+  }
+
+  if (Date.now() > cached.expiresAt) {
+    memoryCache.delete(cacheKey);
+    return null;
+  }
+
+  return cached.payload;
+}
+
+function setMemoryCachedRecommendations(
+  cacheKey: string,
+  payload: RecommendationResponsePayload
+) {
+  memoryCache.set(cacheKey, {
+    payload,
+    expiresAt: Date.now() + cacheTtlMs
+  });
 }
 
 function getOpenAIClient(apiKey: string) {
