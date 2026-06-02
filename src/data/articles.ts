@@ -3463,5 +3463,985 @@ export const articles: Article[] = [
         body: "Quando voce quer acertar no presente com mais intencao, vale usar uma ferramenta em que voce controla as informacoes: pessoa, idade, ocasiao, orcamento, estilo e interesses. Assim, as sugestoes ficam mais proximas do que quem vai receber realmente gostaria."
       }
     ]
+  },
+  {
+    slug: "presentes-para-quem-voce-nao-conhece-bem",
+    title: "Presentes para quem voce nao conhece bem: ideias seguras e elegantes",
+    description:
+      "Guia para escolher presentes neutros, uteis e de bom gosto quando voce ainda nao conhece profundamente a pessoa.",
+    date: "2026-06-02",
+    keywords: ["presente para quem nao conheco bem", "presente neutro", "presente seguro", "presente sem intimidade"],
+    relatedProductIds: ["caneca-termica", "kit-cafe", "planner", "garrafa-termica"],
+    sections: [
+      {
+        title: "A regra do presente seguro",
+        body: "Quando voce nao conhece bem a pessoa, o melhor presente e util, neutro e bem apresentado. A ideia nao e impressionar com intimidade, mas evitar gafes e mostrar cuidado.",
+        tips: [
+          "Prefira itens de uso diario",
+          "Evite perfume, roupa e humor interno",
+          "Escolha cores discretas e design simples",
+          "Uma boa embalagem aumenta muito a percepcao de cuidado"
+        ]
+      },
+      {
+        title: "Presentes que funcionam em quase qualquer contexto",
+        body: "Caneca termica, kit de cafe, planner, garrafa termica e organizador de mesa funcionam porque nao exigem conhecer gostos profundos. Sao presentes profissionais, amigaveis e praticos.",
+        tips: [
+          "Caneca termica para trabalho ou estudo",
+          "Kit de cafe especial em embalagem bonita",
+          "Planner de mesa para rotina",
+          "Garrafa termica para escritorio, academia ou viagem"
+        ]
+      },
+      {
+        title: "Como ajustar pelo contexto",
+        body: "Para colega de trabalho, escolha algo mais profissional. Para familiar distante, algo mais acolhedor. Para vizinho ou conhecido, uma lembranca util e simples costuma ser suficiente.",
+        tips: [
+          "Ambiente corporativo: planner, caneca ou organizador",
+          "Familiar distante: kit de cafe ou item de casa",
+          "Vizinho: lembranca pequena e bem embalada",
+          "Amigo de amigo: presente pratico sem mensagem exagerada"
+        ]
+      },
+      {
+        title: "O que evitar",
+        body: "Evite presentes muito pessoais, muito caros ou com mensagem ambigua. Quando nao ha intimidade, o excesso pode criar desconforto. Melhor parecer cuidadoso do que invasivo."
+      }
+    ]
+  },
+  {
+    slug: "presentes-baratos-que-parecem-caros",
+    title: "Presentes baratos que parecem caros: como impressionar gastando pouco",
+    description:
+      "Ideias de presentes acessiveis com aparencia premium, boa utilidade e apresentacao caprichada.",
+    date: "2026-06-02",
+    keywords: ["presentes baratos que parecem caros", "presente barato bonito", "presente bom e barato", "presente economico elegante"],
+    relatedProductIds: ["caneca-termica", "luminaria-led", "organizador-cabos", "kit-cafe"],
+    sections: [
+      {
+        title: "O segredo nao e esconder o preco",
+        body: "Um presente barato parece caro quando tem utilidade clara, acabamento bom e entrega cuidadosa. O erro e comprar qualquer coisa so porque cabe no orcamento.",
+        tips: [
+          "Escolha um item com uso obvio",
+          "Prefira materiais que parecem duraveis",
+          "Use embalagem simples e bonita",
+          "Adicione um bilhete especifico"
+        ]
+      },
+      {
+        title: "Ideias que entregam valor visual",
+        body: "Luminaria de mesa, caneca termica, kit de cafe e organizador de cabos parecem melhores do que o preco quando escolhidos com design limpo e boa embalagem.",
+        tips: [
+          "Luminaria LED para quarto ou home office",
+          "Caneca termica com acabamento discreto",
+          "Kit de cafe com dois itens combinados",
+          "Organizador de cabos para mesa arrumada"
+        ]
+      },
+      {
+        title: "Como montar um kit barato",
+        body: "Kits aumentam a percepcao de valor. Caneca termica com cafe, planner com caneta ou luminaria com bloco de notas parecem uma escolha pensada, nao uma compra apressada.",
+        tips: [
+          "Escolha um tema unico",
+          "Use um item principal e um complemento",
+          "Evite misturar produtos sem conexao",
+          "Monte em caixa kraft ou sacola de boa qualidade"
+        ]
+      },
+      {
+        title: "Faixas de preco inteligentes",
+        body: "Ate R$50, foque em item unico bem escolhido. Entre R$50 e R$100, monte um kit. Entre R$100 e R$150, escolha uma versao melhor de um produto simples."
+      }
+    ]
+  },
+  {
+    slug: "presentes-digitais",
+    title: "Presentes digitais: ideias instantaneas para surpreender sem entrega fisica",
+    description:
+      "Sugestoes de presentes digitais como assinaturas, cursos, gift cards e experiencias online para resolver rapido sem parecer generico.",
+    date: "2026-06-02",
+    keywords: ["presente digital", "presentes digitais", "presente online", "presente sem entrega fisica"],
+    relatedProductIds: ["kindle", "echo-dot", "fone-bluetooth", "jogo-tabuleiro"],
+    sections: [
+      {
+        title: "Quando presente digital faz sentido",
+        body: "Presentes digitais sao perfeitos quando a data chegou rapido, a pessoa mora longe ou voce quer evitar frete. O segredo e escolher algo que combine com o habito dela.",
+        tips: [
+          "Bom para presente de ultima hora",
+          "Funciona para quem mora em outra cidade",
+          "Evita erro de tamanho, cor ou entrega",
+          "Precisa de uma mensagem pessoal para nao parecer frio"
+        ]
+      },
+      {
+        title: "Assinaturas que funcionam",
+        body: "Streaming, audiolivros, cursos online, apps de meditacao e clubes digitais sao presentes que duram meses. A escolha deve partir do que a pessoa ja consome.",
+        tips: [
+          "Assinatura de leitura ou audiolivros",
+          "Curso online de interesse real",
+          "App de meditacao ou treino",
+          "Streaming de musica ou filmes"
+        ]
+      },
+      {
+        title: "Gift cards sem cara de improviso",
+        body: "Gift card funciona quando voce mostra que escolheu a loja certa. Um credito para livros, games, decoracao ou cafe pode ser muito melhor do que um produto aleatorio.",
+        tips: [
+          "Escolha loja ligada ao hobby da pessoa",
+          "Explique no bilhete por que escolheu aquele credito",
+          "Evite valor muito baixo para lojas caras",
+          "Combine com uma sugestao de uso"
+        ]
+      },
+      {
+        title: "Como entregar um presente digital",
+        body: "Nao envie apenas um codigo seco. Crie uma mensagem bonita, explique a escolha e, se puder, mande junto uma imagem ou cartao digital simples. A apresentacao ainda importa."
+      }
+    ]
+  },
+  {
+    slug: "presentes-sustentaveis",
+    title: "Presentes sustentaveis: ideias uteis, bonitas e com menor desperdicio",
+    description:
+      "Guia de presentes sustentaveis para quem valoriza consumo consciente, durabilidade, reutilizacao e escolhas com proposito.",
+    date: "2026-06-02",
+    keywords: ["presentes sustentaveis", "presente ecologico", "presente consciente", "presente sem desperdicio"],
+    relatedProductIds: ["garrafa-termica", "moka-cafeteira", "kit-cafe", "caneca-termica"],
+    sections: [
+      {
+        title: "Sustentavel nao precisa parecer alternativo",
+        body: "Um presente sustentavel bom e aquele que a pessoa realmente usa. Durabilidade, reutilizacao e menor desperdicio importam mais do que uma etiqueta verde sem utilidade.",
+        tips: [
+          "Priorize produtos reutilizaveis",
+          "Escolha itens duraveis em vez de descartaveis",
+          "Prefira presentes consumiveis de qualidade",
+          "Evite objetos decorativos sem funcao"
+        ]
+      },
+      {
+        title: "Ideias sustentaveis para rotina",
+        body: "Garrafa termica, caneca reutilizavel, cafeteira Moka e kit de cafe especial substituem consumos descartaveis e ainda entram no dia a dia com facilidade.",
+        tips: [
+          "Garrafa termica inox para reduzir garrafas descartaveis",
+          "Caneca reutilizavel para escritorio",
+          "Cafeteira Moka sem capsulas",
+          "Kit de cafe especial com embalagem simples"
+        ]
+      },
+      {
+        title: "Presentes de baixo desperdicio",
+        body: "Experiencias, cursos, livros digitais e consumiveis bem escolhidos evitam acumulo de objetos. Sao boas escolhas para quem ja tem casa cheia ou estilo minimalista.",
+        tips: [
+          "Experiencia em vez de objeto",
+          "Curso ou oficina pratica",
+          "Livro digital para leitor frequente",
+          "Consumivel premium que sera usado"
+        ]
+      },
+      {
+        title: "Como embalar sem exagero",
+        body: "Use papel kraft, tecido, caixa reutilizavel ou sacola bonita que a pessoa possa aproveitar. Sustentabilidade tambem aparece na forma como voce entrega."
+      }
+    ]
+  },
+  {
+    slug: "presentes-para-gamer",
+    title: "Presentes para gamer: ideias para setup, conforto e jogos",
+    description:
+      "Sugestoes de presentes para gamers por perfil: casual, competitivo, console, PC, setup e conforto para jogar melhor.",
+    date: "2026-06-02",
+    keywords: ["presente para gamer", "presentes para gamer", "presente setup gamer", "ideias de presentes gamers"],
+    relatedProductIds: ["fone-bluetooth", "luminaria-led", "organizador-cabos", "suporte-celular"],
+    sections: [
+      {
+        title: "Antes de comprar, descubra onde ele joga",
+        body: "Gamer de PC, console e celular precisa de presentes diferentes. O melhor caminho e descobrir plataforma, jogos favoritos e o que falta no setup antes de escolher.",
+        tips: [
+          "Pergunte se joga no PC, console ou celular",
+          "Evite jogo fisico sem saber a plataforma",
+          "Acessorios de setup costumam ser mais seguros",
+          "Conforto importa para quem joga por horas"
+        ]
+      },
+      {
+        title: "Presentes para setup gamer",
+        body: "Luminaria LED, organizador de cabos, suporte de celular, mousepad grande e headset ajudam no visual e na funcionalidade do setup sem depender do jogo favorito.",
+        tips: [
+          "Luminaria LED para ambiente",
+          "Organizador de cabos para mesa",
+          "Suporte de celular para streaming ou chamadas",
+          "Fone ou headset para comunicacao"
+        ]
+      },
+      {
+        title: "Presentes para gamer competitivo",
+        body: "Quem joga competitivo valoriza resposta, conforto e foco. Fone de boa qualidade, cadeira confortavel, apoio de pulso e iluminacao adequada podem fazer diferenca na rotina.",
+        tips: [
+          "Fone com boa qualidade de microfone",
+          "Apoio de pulso para teclado e mouse",
+          "Luminaria que reduz cansaco visual",
+          "Garrafa termica para longas sessoes"
+        ]
+      },
+      {
+        title: "Gift card pode ser a escolha mais certeira",
+        body: "Quando voce nao sabe o jogo, um gift card da plataforma favorita evita erro. Personalize a entrega explicando que ele pode escolher exatamente o item ou passe que queria."
+      }
+    ]
+  },
+  {
+    slug: "presentes-para-clientes",
+    title: "Presentes para clientes: ideias profissionais para fortalecer relacionamento",
+    description:
+      "Ideias de presentes corporativos para clientes, com equilibrio entre utilidade, bom gosto, marca e limites profissionais.",
+    date: "2026-06-02",
+    keywords: ["presentes para clientes", "presente corporativo cliente", "brinde premium cliente", "ideias de presentes corporativos"],
+    relatedProductIds: ["kit-cafe", "caneca-termica", "planner", "garrafa-termica"],
+    sections: [
+      {
+        title: "Presente para cliente precisa ser profissional",
+        body: "O objetivo nao e parecer intimo, e sim demonstrar atencao e fortalecer relacionamento. Presentes corporativos devem ser uteis, discretos e compativeis com a imagem da empresa.",
+        tips: [
+          "Evite presentes pessoais demais",
+          "Mantenha bom gosto e discricao",
+          "Cuidado com valores muito altos",
+          "Personalizacao deve ser sutil"
+        ]
+      },
+      {
+        title: "Ideias seguras para clientes",
+        body: "Kit de cafe, planner, caneca termica, garrafa inox e organizador de mesa sao escolhas profissionais porque entram na rotina sem invadir o gosto pessoal.",
+        tips: [
+          "Kit de cafe especial",
+          "Planner executivo",
+          "Caneca termica discreta",
+          "Garrafa termica de boa qualidade"
+        ]
+      },
+      {
+        title: "Quando personalizar com marca",
+        body: "Marca em presente corporativo deve ser pequena e elegante. Se o logo domina o objeto, ele vira propaganda. Se aparece com cuidado, vira lembranca profissional.",
+        tips: [
+          "Use logo pequeno",
+          "Priorize qualidade do produto",
+          "Evite frases promocionais",
+          "Inclua mensagem humana no cartao"
+        ]
+      },
+      {
+        title: "Datas boas para presentear clientes",
+        body: "Fim de ano, fechamento de projeto, renovacao de contrato e marco de parceria sao momentos bons. O presente deve reconhecer a relacao, nao pressionar por uma nova compra."
+      }
+    ]
+  },
+  {
+    slug: "presentes-para-funcionarios",
+    title: "Presentes para funcionarios: ideias uteis para reconhecer a equipe",
+    description:
+      "Sugestoes de presentes para funcionarios em fim de ano, metas batidas, aniversarios e datas internas da empresa.",
+    date: "2026-06-02",
+    keywords: ["presentes para funcionarios", "presente para equipe", "brinde para funcionarios", "ideias de reconhecimento equipe"],
+    relatedProductIds: ["garrafa-termica", "caneca-termica", "planner", "fone-bluetooth"],
+    sections: [
+      {
+        title: "Reconhecimento precisa parecer real",
+        body: "Funcionario percebe quando o presente foi escolhido so para cumprir tabela. O melhor presente de equipe e util, justo e acompanhado de uma mensagem clara de reconhecimento.",
+        tips: [
+          "Evite itens descartaveis sem valor real",
+          "Escolha algo que todos possam usar",
+          "Mantenha padrao semelhante entre pessoas",
+          "Inclua uma mensagem especifica da empresa"
+        ]
+      },
+      {
+        title: "Presentes para toda a equipe",
+        body: "Garrafa termica, caneca termica, planner, kit de cafe e fone basico sao opcoes amplas. Funcionam porque nao dependem de tamanho, genero ou gosto pessoal muito especifico.",
+        tips: [
+          "Garrafa termica para rotina",
+          "Caneca termica para escritorio",
+          "Planner para organizacao",
+          "Kit de cafe ou snack premium"
+        ]
+      },
+      {
+        title: "Presentes por contexto",
+        body: "Para home office, itens de mesa funcionam melhor. Para equipe externa, garrafa, mochila e acessorios de mobilidade fazem mais sentido. Para time criativo, kits mais personalizaveis podem agradar.",
+        tips: [
+          "Home office: luminaria, planner ou suporte",
+          "Equipe externa: garrafa e itens de mobilidade",
+          "Time criativo: kit de papelaria premium",
+          "Datas internas: presente com mensagem de marco"
+        ]
+      },
+      {
+        title: "O que evitar em presente para funcionarios",
+        body: "Evite presentes que parecam ferramenta obrigatoria de trabalho, itens com logo enorme ou escolhas que criem comparacao injusta. Reconhecimento deve gerar pertencimento, nao desconforto."
+      }
+    ]
+  },
+  {
+    slug: "presentes-para-mae-de-primeira-viagem",
+    title: "Presentes para mae de primeira viagem: cuidado para ela e para a nova rotina",
+    description:
+      "Ideias de presentes para maes de primeira viagem que ajudam no descanso, praticidade, acolhimento e primeiros meses com o bebe.",
+    date: "2026-06-02",
+    keywords: ["presente para mae de primeira viagem", "presentes pos parto", "presente para nova mae", "ideias para mae recente"],
+    relatedProductIds: ["massageador", "skincare-kit", "caneca-termica", "pelucia-bebe"],
+    sections: [
+      {
+        title: "Pense tambem na mae, nao so no bebe",
+        body: "Muita gente presenteia apenas o bebe. Para uma mae de primeira viagem, um presente que cuida dela pode ter impacto enorme, porque mostra que ela tambem foi lembrada.",
+        tips: [
+          "Inclua algo para descanso da mae",
+          "Evite opinioes sobre criacao ou rotina",
+          "Prefira praticidade e acolhimento",
+          "Pergunte antes se o presente envolve alimentacao ou saude"
+        ]
+      },
+      {
+        title: "Presentes de autocuidado",
+        body: "Massageador, kit de skincare suave, caneca termica e itens de sono ajudam pequenos momentos de recuperacao. O presente deve facilitar, nao dar mais trabalho.",
+        tips: [
+          "Massageador portatil",
+          "Kit de skincare delicado",
+          "Caneca termica para cha ou cafe",
+          "Mascara de descanso confortavel"
+        ]
+      },
+      {
+        title: "Presentes praticos para a rotina",
+        body: "Organizadores, garrafa termica, luminaria suave e livros simples sobre a fase podem ajudar nos primeiros meses. Prefira itens faceis de limpar e usar.",
+        tips: [
+          "Garrafa termica para hidratacao",
+          "Luminaria suave para noite",
+          "Organizador de pequenos itens",
+          "Livro leve e pratico sobre maternidade"
+        ]
+      },
+      {
+        title: "Como entregar com sensibilidade",
+        body: "O pos-parto pode ser intenso. Combine horario, evite visita surpresa e escreva uma mensagem curta oferecendo apoio real. As vezes, o melhor presente e facilitar a vida."
+      }
+    ]
+  },
+  {
+    slug: "presentes-para-quem-ama-pets",
+    title: "Presentes para quem ama pets: ideias para tutores apaixonados",
+    description:
+      "Ideias de presentes para quem ama cachorro, gato ou animais em geral, com foco em rotina, afeto e praticidade.",
+    date: "2026-06-02",
+    keywords: ["presente para quem ama pets", "presente para tutor de pet", "presentes para quem ama cachorro", "presentes para quem ama gato"],
+    relatedProductIds: ["chaveiro-smart", "porta-retrato-casal", "garrafa-termica", "organizador-cabos"],
+    sections: [
+      {
+        title: "Presente para tutor nao precisa ser para o pet",
+        body: "Quem ama pets adora receber algo que reconhece esse vinculo. Pode ser um item para o animal, mas tambem pode ser algo para o tutor usar lembrando dele.",
+        tips: [
+          "Descubra se e cachorro, gato ou outro animal",
+          "Evite alimento sem conhecer restricoes",
+          "Personalizacao com foto do pet funciona muito bem",
+          "Itens praticos para passeio sao certeiros"
+        ]
+      },
+      {
+        title: "Presentes com memoria afetiva",
+        body: "Porta-retrato, quadro com foto, chaveiro personalizado e album pequeno com o pet criam presente emocional sem precisar conhecer detalhes tecnicos da rotina.",
+        tips: [
+          "Porta-retrato com foto do pet",
+          "Chaveiro personalizado",
+          "Quadro minimalista com nome do animal",
+          "Album de fotos do pet"
+        ]
+      },
+      {
+        title: "Presentes praticos para tutores",
+        body: "Garrafa para passeios, organizador de itens, bolsa pequena e rastreador de chave ajudam quem sai bastante com o pet ou vive carregando acessorios.",
+        tips: [
+          "Garrafa para passeio",
+          "Organizador de coleiras e saquinhos",
+          "Bolsa para itens do pet",
+          "Chaveiro organizador para rotina"
+        ]
+      },
+      {
+        title: "Quando presentear o proprio pet",
+        body: "Brinquedos e caminhas podem funcionar, mas confira porte, idade e seguranca. Para pets com restricao alimentar ou comportamento especifico, pergunte antes."
+      }
+    ]
+  },
+  {
+    slug: "o-que-nao-dar-de-presente",
+    title: "O que nao dar de presente: erros comuns e alternativas melhores",
+    description:
+      "Lista pratica do que evitar ao presentear e como substituir escolhas arriscadas por opcoes mais seguras e uteis.",
+    date: "2026-06-02",
+    keywords: ["o que nao dar de presente", "erros ao escolher presente", "presentes ruins", "presente que deve evitar"],
+    relatedProductIds: ["kit-cafe", "caneca-termica", "garrafa-termica", "planner"],
+    sections: [
+      {
+        title: "O presente errado quase sempre ignora contexto",
+        body: "A maioria dos presentes ruins nao falha por preco, mas por falta de leitura da pessoa e da ocasiao. Um item bom para uma namorada pode ser inadequado para uma colega, e vice-versa.",
+        tips: [
+          "Considere nivel de intimidade",
+          "Pense na ocasiao",
+          "Evite mensagens ambiguas",
+          "Nao escolha apenas pelo seu gosto"
+        ]
+      },
+      {
+        title: "Presentes pessoais demais",
+        body: "Perfume, roupa, maquiagem, joias intimas e itens ligados ao corpo podem dar errado quando voce nao conhece preferencias, tamanho ou limites da relacao.",
+        tips: [
+          "Troque perfume por kit de cafe ou livro",
+          "Troque roupa por acessorio neutro",
+          "Troque maquiagem por skincare apenas se conhecer a rotina",
+          "Troque item intimo por presente de casa ou trabalho"
+        ]
+      },
+      {
+        title: "Presentes que parecem critica",
+        body: "Livro de dieta, produto anti-idade, item de organizacao para pessoa bagunceira ou curso de produtividade podem soar como indireta. Mesmo com boa intencao, o risco e alto.",
+        tips: [
+          "Evite presentes que corrijam um defeito",
+          "Nao transforme necessidade sensivel em surpresa",
+          "Prefira conforto, lazer ou utilidade neutra",
+          "Se tiver duvida, escolha algo menos pessoal"
+        ]
+      },
+      {
+        title: "Alternativas seguras",
+        body: "Quando a escolha parece arriscada, volte para presentes neutros e bem feitos: caneca termica, kit de cafe, garrafa, planner, experiencia simples ou vale-presente de loja certa."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-ultima-hora",
+    title: "Presentes de Dia dos Namorados de ultima hora: resolva ate 12 de junho",
+    description:
+      "Ideias de presentes rapidos para o Dia dos Namorados em 12 de junho: opcoes com entrega agil, digitais e kits faceis de montar.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados ultima hora", "presente 12 de junho rapido", "presente namorado ultima hora", "presente namorada ultima hora"],
+    relatedProductIds: ["fone-bluetooth", "kit-cafe", "caneca-termica", "skincare-kit"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&h=630&fit=crop",
+      alt: "Casal de maos dadas em clima romantico"
+    },
+    sections: [
+      {
+        title: "Primeiro: escolha algo que chega ou resolve rapido",
+        body: "Quando o Dia dos Namorados esta perto, o melhor presente nao e o mais criativo do mundo: e o que voce consegue entregar bem, com carinho e sem parecer improviso. Foque em itens com entrega rapida, retirada facil ou formato digital.",
+        tips: [
+          "Procure produtos com entrega antes de 12 de junho",
+          "Evite itens personalizados que precisam de muitos dias",
+          "Monte um kit simples se o prazo estiver apertado",
+          "Inclua um bilhete para tirar a cara de emergencia"
+        ]
+      },
+      {
+        title: "Presentes fisicos que costumam salvar",
+        body: "Fone bluetooth, kit de cafe, caneca termica, skincare e luminaria de mesa sao opcoes com boa disponibilidade e uso real. Funcionam porque entram na rotina e nao dependem de tamanho ou gosto muito especifico.",
+        image: {
+          src: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&h=450&fit=crop",
+          alt: "Presentes embrulhados para uma data especial"
+        },
+        tips: [
+          "Para ela: skincare, luminaria, Kindle ou kit de cafe",
+          "Para ele: fone, Echo Dot, caneca termica ou organizador",
+          "Para casal: jogo de tabuleiro, kit de vinho ou experiencia",
+          "Para todos: um presente util com embalagem bonita"
+        ]
+      },
+      {
+        title: "Presentes digitais para o mesmo dia",
+        body: "Se nao da tempo de receber nada, transforme o presente em experiencia. Um curso, ingresso, assinatura, gift card ou jantar reservado pode ser entregue em minutos se vier com uma mensagem bem escrita.",
+        tips: [
+          "Assinatura de streaming ou musica",
+          "Gift card da loja favorita",
+          "Voucher de jantar ou experiencia",
+          "Curso online ligado a um hobby da pessoa"
+        ]
+      },
+      {
+        title: "Como entregar sem parecer descuido",
+        body: "Mesmo um presente simples fica melhor com contexto. Escreva uma mensagem especifica, mencione algo que voce admira na pessoa e combine o presente com um jantar, cafe ou passeio curto."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-ate-100-reais",
+    title: "Presentes de Dia dos Namorados ate R$100 que parecem bem pensados",
+    description:
+      "Ideias romanticas e uteis para o Dia dos Namorados ate R$100, com kits simples, presentes criativos e boa apresentacao.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados ate 100 reais", "presente barato dia dos namorados", "presente romantico barato", "presente 12 de junho ate 100"],
+    relatedProductIds: ["caneca-termica", "kit-cafe", "luminaria-led", "porta-retrato-casal"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=1200&h=630&fit=crop",
+      alt: "Mesa romantica com presente pequeno e flores"
+    },
+    sections: [
+      {
+        title: "Ate R$100 da para ser romantico sem exagero",
+        body: "O segredo e nao comprar um item aleatorio. Com ate R$100, escolha algo que tenha uso real e entregue com cuidado. A embalagem, o bilhete e o contexto fazem metade do trabalho.",
+        tips: [
+          "Prefira um presente util com toque romantico",
+          "Monte um kit em vez de comprar algo solto",
+          "Evite lembrancas descartaveis sem funcao",
+          "Use uma mensagem especifica sobre voces"
+        ]
+      },
+      {
+        title: "Kits baratos que funcionam",
+        body: "Kit cafe com caneca, porta-retrato com foto, luminaria pequena com bilhete ou caneca termica com chocolate criam uma percepcao de presente pensado, mesmo com baixo custo.",
+        tips: [
+          "Caneca termica + cafe especial",
+          "Porta-retrato + foto impressa",
+          "Luminaria LED + carta curta",
+          "Chocolate bom + bilhete pessoal"
+        ]
+      },
+      {
+        title: "Para namorada e namorado",
+        body: "Para namorada, skincare simples, luminaria e porta-retrato costumam funcionar. Para namorado, caneca termica, organizador, fone basico e kit de cafe sao escolhas seguras.",
+        image: {
+          src: "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&h=450&fit=crop",
+          alt: "Presente pequeno com laco vermelho"
+        },
+        tips: [
+          "Para ela: skincare, luminaria ou foto especial",
+          "Para ele: caneca, cafe ou acessorio de setup",
+          "Para casal: jogo simples ou noite tematica",
+          "Para relacao recente: presente leve e sem exagero"
+        ]
+      },
+      {
+        title: "O acabamento muda tudo",
+        body: "Uma caixa kraft, papel de seda, fita simples e bilhete escrito a mao elevam qualquer presente barato. No Dia dos Namorados, a intencao aparece nos detalhes."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-para-namorada",
+    title: "Presentes de Dia dos Namorados para namorada: ideias que emocionam",
+    description:
+      "Sugestoes de presentes para namorada no Dia dos Namorados: autocuidado, tecnologia, romanticos, experiencias e kits por perfil.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados para namorada", "presente para namorada 12 de junho", "ideias para namorada dia dos namorados", "presente romantico para namorada"],
+    relatedProductIds: ["skincare-kit", "kindle", "luminaria-led", "massageador"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&h=630&fit=crop",
+      alt: "Casal sentado junto em clima romantico"
+    },
+    sections: [
+      {
+        title: "Para acertar, lembre do que ela comentou",
+        body: "O presente mais forte para namorada e aquele que prova que voce escutou. Pense no que ela mencionou querer, no que ela usa todo dia e no que ela adia comprar para si mesma.",
+        tips: [
+          "Relembre conversas das ultimas semanas",
+          "Observe rotina de autocuidado, leitura ou trabalho",
+          "Evite comprar apenas o que voce acha bonito",
+          "Inclua uma carta curta e especifica"
+        ]
+      },
+      {
+        title: "Namorada que ama autocuidado",
+        body: "Skincare, massageador, difusor, vela e kit de bem-estar mostram cuidado sem depender de tamanho ou gosto complicado. Escolha fragrancias suaves se nao tiver certeza.",
+        image: {
+          src: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&h=450&fit=crop",
+          alt: "Itens de autocuidado em uma mesa clara"
+        },
+        tips: [
+          "Kit skincare com hidratante e mascara",
+          "Massageador portatil",
+          "Difusor de aromas",
+          "Voucher de spa ou massagem"
+        ]
+      },
+      {
+        title: "Namorada leitora, criativa ou tech",
+        body: "Kindle, luminaria de leitura, fone bluetooth, suporte de celular ou kit de arte funcionam para perfis diferentes. O importante e conectar o produto com algo que ela ja gosta.",
+        tips: [
+          "Kindle para quem le muito",
+          "Luminaria para leitura ou home office",
+          "Fone bluetooth para musica e chamadas",
+          "Kit de desenho para namorada criativa"
+        ]
+      },
+      {
+        title: "O gesto que converte o presente em memoria",
+        body: "No dia 12 de junho, nao entregue apenas a caixa. Combine com jantar, cafe, passeio ou uma carta sobre um momento de voces. A memoria do presente vem do contexto."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-para-namorado",
+    title: "Presentes de Dia dos Namorados para namorado: uteis, romanticos e sem erro",
+    description:
+      "Ideias de presentes para namorado no Dia dos Namorados: tecnologia, setup, cafe, games, conforto e experiencias.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados para namorado", "presente para namorado 12 de junho", "ideias para namorado dia dos namorados", "presente romantico para namorado"],
+    relatedProductIds: ["fone-bluetooth", "echo-dot", "organizador-cabos", "moka-cafeteira"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&h=630&fit=crop",
+      alt: "Casal segurando as maos ao ar livre"
+    },
+    sections: [
+      {
+        title: "Namorado geralmente valoriza uso real",
+        body: "Para muitos namorados, o presente ideal melhora algo que ele ja faz: ouvir musica, jogar, trabalhar, estudar, tomar cafe ou descansar. Romantico nao precisa ser inutil.",
+        tips: [
+          "Pense na rotina dele",
+          "Observe setup, cafe, tecnologia e hobbies",
+          "Evite presente decorativo sem contexto",
+          "Use o bilhete para trazer o romantismo"
+        ]
+      },
+      {
+        title: "Tecnologia e setup",
+        body: "Fone bluetooth, Echo Dot, organizador de cabos, luminaria LED e suporte de celular sao presentes com alto uso. Eles parecem simples, mas entram no dia a dia.",
+        image: {
+          src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=450&fit=crop",
+          alt: "Mesa de trabalho organizada com acessorios"
+        },
+        tips: [
+          "Fone bluetooth para musica, academia e chamadas",
+          "Echo Dot para quarto ou escritorio",
+          "Organizador de cabos para setup",
+          "Luminaria LED para mesa"
+        ]
+      },
+      {
+        title: "Cafe, games e conforto",
+        body: "Se ele ama cafe, uma Moka com kit especial e excelente. Se joga, aposte em acessorio de setup ou gift card. Se trabalha muito, massageador e garrafa termica comunicam cuidado.",
+        tips: [
+          "Cafeteira Moka + cafe especial",
+          "Gift card da plataforma favorita",
+          "Massageador portatil",
+          "Garrafa ou caneca termica"
+        ]
+      },
+      {
+        title: "Como deixar romantico",
+        body: "Use uma frase que conecte o presente com a historia de voces. Algo como 'para seus cafes antes dos nossos encontros' vale mais do que uma mensagem generica."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-para-casal",
+    title: "Presentes de Dia dos Namorados para casal: ideias para curtir juntos",
+    description:
+      "Presentes para o casal no Dia dos Namorados: experiencias, jogos, casa, cafe, jantar e momentos compartilhados.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados para casal", "presente casal 12 de junho", "presente para curtir juntos", "ideias romanticas para casal"],
+    relatedProductIds: ["jogo-tabuleiro", "kit-cafe", "moka-cafeteira", "porta-retrato-casal"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1501901609772-df0848060b33?w=1200&h=630&fit=crop",
+      alt: "Casal em mesa romantica com bebidas"
+    },
+    sections: [
+      {
+        title: "Quando o melhor presente e um programa",
+        body: "Para casais, presentes compartilhados podem ter mais impacto do que um objeto individual. O foco e criar uma memoria: jantar, jogo, cafe especial, filme, viagem curta ou noite em casa.",
+        tips: [
+          "Pense em algo que voces fazem juntos",
+          "Escolha um presente que cria ritual",
+          "Combine produto com programa",
+          "Evite itens que so uma pessoa aproveita"
+        ]
+      },
+      {
+        title: "Ideias para noite em casa",
+        body: "Jogo de tabuleiro, kit de cafe, cafeteira Moka, porta-retrato e kit de jantar em casa transformam o dia 12 de junho em um momento completo, mesmo sem restaurante.",
+        image: {
+          src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&h=450&fit=crop",
+          alt: "Mesa preparada para jantar a dois"
+        },
+        tips: [
+          "Jogo de tabuleiro para dois",
+          "Kit cafe para cafe da manha especial",
+          "Cafeteira Moka para criar ritual",
+          "Porta-retrato com foto do casal"
+        ]
+      },
+      {
+        title: "Experiencias que funcionam",
+        body: "Aula de culinaria, degustacao, piquenique, show, cinema especial ou fim de semana curto sao presentes que viram historia. Se o orcamento for baixo, planeje uma versao simples.",
+        tips: [
+          "Jantar em casa com cardapio escolhido",
+          "Piquenique em lugar bonito",
+          "Ingresso para show ou cinema",
+          "Aula ou workshop para dois"
+        ]
+      },
+      {
+        title: "Como entregar",
+        body: "Entregue como convite: um envelope com data, horario e a proposta do programa. O presente deixa de ser so objeto e vira antecipacao."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-relacionamento-recente",
+    title: "Presentes de Dia dos Namorados para relacionamento recente",
+    description:
+      "Ideias leves para presentear no Dia dos Namorados quando o relacionamento ainda e novo, sem exagerar e sem parecer frio.",
+    date: "2026-06-02",
+    keywords: ["presente relacionamento recente dia dos namorados", "presente para ficante dia dos namorados", "presente namoro recente", "presente leve dia dos namorados"],
+    relatedProductIds: ["kit-cafe", "caneca-termica", "luminaria-led", "jogo-tabuleiro"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200&h=630&fit=crop",
+      alt: "Casal jovem conversando em clima leve"
+    },
+    sections: [
+      {
+        title: "O equilibrio e o ponto principal",
+        body: "Em relacionamento recente, o presente precisa mostrar interesse sem criar pressao. Escolha algo gentil, util e com um toque pessoal, mas evite declaracoes enormes se o momento ainda nao pede.",
+        tips: [
+          "Evite presentes caros demais",
+          "Nao force intimidade que ainda nao existe",
+          "Escolha algo leve e facil de usar",
+          "Use uma mensagem carinhosa, mas simples"
+        ]
+      },
+      {
+        title: "Presentes leves que funcionam",
+        body: "Kit de cafe, caneca termica, luminaria pequena, jogo casual, livro ou chocolate bom funcionam porque sao agradaveis sem parecerem compromisso exagerado.",
+        tips: [
+          "Kit de cafe ou cha",
+          "Caneca termica discreta",
+          "Luminaria de mesa",
+          "Jogo simples para fazerem juntos"
+        ]
+      },
+      {
+        title: "Quando escolher experiencia",
+        body: "Um encontro bem planejado pode ser melhor que um presente fisico. Cafe, jantar casual, cinema, piquenique ou passeio curto criam memoria sem pesar no relacionamento.",
+        image: {
+          src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=450&fit=crop",
+          alt: "Casal em encontro ao ar livre"
+        },
+        tips: [
+          "Cafe em um lugar bonito",
+          "Cinema com lanche depois",
+          "Piquenique simples",
+          "Jantar casual sem clima formal demais"
+        ]
+      },
+      {
+        title: "O que evitar",
+        body: "Evite joias caras, perfume muito pessoal, presentes com nome do casal ou itens que parecam cobranca. O objetivo e abrir espaco, nao acelerar tudo de uma vez."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-a-distancia",
+    title: "Presentes de Dia dos Namorados a distancia: ideias para 12 de junho",
+    description:
+      "Ideias para presentear namorado ou namorada a distancia no Dia dos Namorados com entrega, presente digital e experiencias remotas.",
+    date: "2026-06-02",
+    keywords: ["presente dia dos namorados a distancia", "presente namoro a distancia", "presente para namorada longe", "presente para namorado longe"],
+    relatedProductIds: ["kindle", "fone-bluetooth", "porta-retrato-casal", "echo-dot"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=630&fit=crop",
+      alt: "Pessoa olhando paisagem com celular na mao"
+    },
+    sections: [
+      {
+        title: "Distancia pede presente com presenca emocional",
+        body: "Quando voces nao podem estar juntos em 12 de junho, o presente precisa carregar presenca: mensagem, surpresa no horario certo e algo que conecte a rotina de voces.",
+        tips: [
+          "Planeje a entrega com antecedencia",
+          "Combine presente fisico e chamada de video",
+          "Inclua uma carta ou mensagem longa",
+          "Escolha algo que a pessoa use lembrando de voce"
+        ]
+      },
+      {
+        title: "Presentes que viajam bem",
+        body: "Kindle, fone bluetooth, porta-retrato, kit de cafe e Echo Dot sao opcoes que chegam por entrega e criam uso recorrente. Evite itens frageis se a entrega for incerta.",
+        tips: [
+          "Kindle para leitura",
+          "Fone bluetooth para chamadas e musica",
+          "Porta-retrato com foto enviada antes",
+          "Kit de cafe ou chocolate"
+        ]
+      },
+      {
+        title: "Experiencias a distancia",
+        body: "Jantar por video, filme sincronizado, playlist personalizada, carta digital e voucher de viagem futura tornam a distancia menos fria. O calendario e parte do presente.",
+        image: {
+          src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop",
+          alt: "Notebook aberto para encontro online"
+        },
+        tips: [
+          "Jantar por chamada de video",
+          "Filme assistido ao mesmo tempo",
+          "Playlist com historia de voces",
+          "Voucher simbolico para proxima visita"
+        ]
+      },
+      {
+        title: "Como fazer a surpresa funcionar",
+        body: "Avise apenas o necessario para garantir que a pessoa esteja em casa. Depois, marque uma chamada e deixe o presente virar assunto do encontro."
+      }
+    ]
+  },
+  {
+    slug: "experiencias-dia-dos-namorados",
+    title: "Experiencias para Dia dos Namorados: presentes que viram memoria",
+    description:
+      "Ideias de experiencias para presentear no Dia dos Namorados: jantar, spa, viagem curta, aula, show e programas para dois.",
+    date: "2026-06-02",
+    keywords: ["experiencias dia dos namorados", "presente experiencia dia dos namorados", "programa dia dos namorados", "ideias romanticas 12 de junho"],
+    relatedProductIds: ["jogo-tabuleiro", "kit-cafe", "massageador", "moka-cafeteira"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&h=630&fit=crop",
+      alt: "Jantar romantico com luzes e mesa preparada"
+    },
+    sections: [
+      {
+        title: "Experiencia e perfeita para quem ja tem tudo",
+        body: "No Dia dos Namorados, uma experiencia bem planejada pode converter melhor que objeto caro. O valor esta na memoria: o que voces fizeram, conversaram e lembraram depois.",
+        tips: [
+          "Escolha algo que combine com o casal",
+          "Reserve antes de 12 de junho",
+          "Tenha plano B para chuva ou lotacao",
+          "Entregue como convite bonito"
+        ]
+      },
+      {
+        title: "Experiencias classicas que funcionam",
+        body: "Jantar, degustacao, cinema especial, show, spa e fim de semana curto sao escolhas fortes. O diferencial esta em personalizar o programa para o gosto da pessoa.",
+        image: {
+          src: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=450&fit=crop",
+          alt: "Prato especial em restaurante"
+        },
+        tips: [
+          "Jantar em restaurante com significado",
+          "Spa ou massagem para dois",
+          "Show ou evento do artista favorito",
+          "Fim de semana em pousada"
+        ]
+      },
+      {
+        title: "Experiencias baratas e memoraveis",
+        body: "Piquenique, noite de jogos, cafe da manha preparado em casa, trilha leve ou noite de filmes podem ser muito romanticos. O cuidado do planejamento pesa mais que o custo.",
+        tips: [
+          "Piquenique com comidas favoritas",
+          "Noite de jogos com playlist",
+          "Cafe da manha surpresa",
+          "Roteiro de lugares importantes para voces"
+        ]
+      },
+      {
+        title: "Como transformar em presente",
+        body: "Imprima ou escreva um convite com data, horario e motivo da escolha. A experiencia fica mais concreta quando a pessoa recebe algo nas maos."
+      }
+    ]
+  },
+  {
+    slug: "presentes-personalizados-dia-dos-namorados",
+    title: "Presentes personalizados para Dia dos Namorados: com foto, nome e historia",
+    description:
+      "Ideias de presentes personalizados para 12 de junho: fotos, gravacoes, cartas, kits e lembrancas com significado real.",
+    date: "2026-06-02",
+    keywords: ["presente personalizado dia dos namorados", "presente com foto casal", "presente romantico personalizado", "presente com nome dia dos namorados"],
+    relatedProductIds: ["porta-retrato-casal", "caneca-termica", "planner", "garrafa-termica"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=1200&h=630&fit=crop",
+      alt: "Foto impressa e presente romantico sobre mesa"
+    },
+    sections: [
+      {
+        title: "Personalizado so funciona com significado",
+        body: "Nome e foto por si so nao bastam. O presente personalizado converte melhor quando traz uma memoria real: uma viagem, um apelido, uma frase de voces ou uma data importante.",
+        tips: [
+          "Use foto com historia",
+          "Evite personalizacao generica demais",
+          "Escolha objeto que a pessoa realmente usaria",
+          "Confira prazo de producao antes de 12 de junho"
+        ]
+      },
+      {
+        title: "Ideias com foto",
+        body: "Porta-retrato, quadro, caneca, album pequeno e quebra-cabeca com foto funcionam bem quando a imagem e boa e a embalagem reforca o clima romantico.",
+        image: {
+          src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=450&fit=crop",
+          alt: "Casal em foto romantica"
+        },
+        tips: [
+          "Porta-retrato com foto favorita",
+          "Quadro com impressao de qualidade",
+          "Album de momentos do relacionamento",
+          "Caneca com foto discreta"
+        ]
+      },
+      {
+        title: "Ideias com texto ou gravacao",
+        body: "Pulseira, chaveiro, garrafa, caneta, caderno ou caixa com gravacao funcionam quando o texto e curto. Uma frase simples e especifica vence qualquer mensagem pronta.",
+        tips: [
+          "Inicial ou data importante",
+          "Frase curta de voces",
+          "Coordenadas de um lugar especial",
+          "Caixa com cartas ou bilhetes"
+        ]
+      },
+      {
+        title: "Se o prazo estiver curto",
+        body: "Use personalizacao manual: carta, fotos impressas, playlist e kit montado por voce. Nem todo presente personalizado precisa ser produzido por loja."
+      }
+    ]
+  },
+  {
+    slug: "cesta-dia-dos-namorados",
+    title: "Cesta de Dia dos Namorados: como montar uma que parece premium",
+    description:
+      "Guia para montar cesta de Dia dos Namorados com cafe, vinho, skincare, doces, itens uteis e apresentacao bonita.",
+    date: "2026-06-02",
+    keywords: ["cesta dia dos namorados", "cesta romantica dia dos namorados", "kit dia dos namorados", "como montar cesta para namorado"],
+    relatedProductIds: ["kit-cafe", "caneca-termica", "skincare-kit", "moka-cafeteira"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=1200&h=630&fit=crop",
+      alt: "Kit de presente montado com embalagem bonita"
+    },
+    sections: [
+      {
+        title: "Cesta boa tem tema, nao bagunca",
+        body: "A cesta de Dia dos Namorados parece premium quando tem uma ideia clara. Cafe da manha, noite de filme, autocuidado, vinho ou setup romantico sao temas melhores do que misturar itens aleatorios.",
+        tips: [
+          "Escolha um tema antes de comprar",
+          "Use um item principal e complementos",
+          "Mantenha cores combinando",
+          "Inclua uma carta ou tag personalizada"
+        ]
+      },
+      {
+        title: "Cesta de cafe da manha",
+        body: "Cafe especial, caneca termica, chocolate, biscoito bom, geleia e uma flor pequena formam uma cesta simples e muito efetiva para o dia 12 de junho.",
+        image: {
+          src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=450&fit=crop",
+          alt: "Cafe especial sobre mesa de madeira"
+        },
+        tips: [
+          "Cafe especial ou capsulas",
+          "Caneca termica",
+          "Chocolate ou biscoito artesanal",
+          "Bilhete para abrir junto"
+        ]
+      },
+      {
+        title: "Cesta de autocuidado ou filme",
+        body: "Para autocuidado, use skincare, vela, cha e massageador. Para noite de filme, use snacks, bebida, jogo ou voucher de streaming. A cesta vira um programa pronto.",
+        tips: [
+          "Autocuidado: skincare, vela e cha",
+          "Filme: pipoca, chocolate e bebida",
+          "Cafe: caneca, cafe e Moka",
+          "Romantica: foto, carta e doce favorito"
+        ]
+      },
+      {
+        title: "Como montar bonito",
+        body: "Use caixa firme, papel de seda, alturas diferentes e poucos itens bons. Cesta cheia de produtos fracos parece barata; cesta enxuta com bons itens parece escolhida."
+      }
+    ]
   }
 ];
