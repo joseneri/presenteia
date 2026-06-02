@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Gift, Search } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
+import { activeTheme } from "@/lib/themes";
 import "./globals.css";
 
 const baseUrl = "https://presenteia.com.br";
@@ -59,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" data-theme={activeTheme.id}>
       <body>
         <div className="site-shell">
           <header className="header">
@@ -86,7 +87,7 @@ export default function RootLayout({
               <div className="nav-links">
                 <Link href="/presentes">Guias</Link>
                 <Link href="/blog">Blog</Link>
-                <Link href="/#recomendador">Recomendador</Link>
+                <Link href="/#explorar">Explorar</Link>
               </div>
             </nav>
           </header>

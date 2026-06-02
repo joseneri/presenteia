@@ -68,8 +68,8 @@ export function HomeExperience() {
               </span>
             </div>
             <div className="hero-actions">
-              <a className="button" href="#recomendador">
-                Encontrar presente
+              <a className="button" href="#explorar">
+                Explorar ideia
                 <Sparkles size={16} />
               </a>
             </div>
@@ -100,7 +100,7 @@ export function HomeExperience() {
               height={420}
             />
           </div>
-          <div id="recomendador">
+          <div id="explorar">
             <GiftQuiz onRecommendations={setRecommendations} />
           </div>
         </div>
