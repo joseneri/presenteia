@@ -20,8 +20,8 @@ import { guides } from "@/data/guides";
 import { trackEvent } from "@/lib/analytics";
 import type { Recommendation } from "@/lib/recommend";
 
-const homeGuideLimit = 2;
-const homeArticleLimit = 3;
+const homeGuideLimit = 20;
+const homeArticleLimit = 20;
 const popularProductLimit = 4;
 
 export function HomeExperience() {
@@ -261,7 +261,7 @@ export function HomeExperience() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Guias rápidos</p>
+            <p className="eyebrow">20 guias rápidos</p>
             <h2>Escolha por pessoa, data ou orçamento</h2>
           </div>
           <div className="grid two">
@@ -290,7 +290,7 @@ export function HomeExperience() {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow">Blog</p>
+            <p className="eyebrow">20 posts no blog</p>
             <h2>Inspiração para acertar no presente</h2>
           </div>
           <div className="grid three">

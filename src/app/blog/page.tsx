@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { articles } from "@/data/articles";
 
-const blogListLimit = 12;
+const blogListLimit = 20;
 
 export const metadata: Metadata = {
   title: "Blog de presentes | Artigos e ideias",

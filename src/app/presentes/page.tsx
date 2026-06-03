@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { guides } from "@/data/guides";
 
-const guideListLimit = 12;
+const guideListLimit = 20;
 
 export const metadata: Metadata = {
   title: "Guias de presentes | Por pessoa, ocasião e preço",
