@@ -54,6 +54,9 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
   );
 
   const rankedProducts = products
+    .filter((product) =>
+      isPriceRangeAllowedForBudget(product.priceRange, input.budget)
+    )
     .map((product) => {
       const terms = [
         ...product.categories,
@@ -87,6 +90,31 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
 export function getRecommendationCount(input: RecommendationInput) {
   void input;
   return 6;
+}
+
+export function isPriceRangeAllowedForBudget(
+  priceRange: string,
+  budget: string
+) {
+  const constraint = getBudgetConstraint(budget);
+
+  if (!constraint) {
+    return true;
+  }
+
+  const prices = extractPriceValues(priceRange);
+
+  if (prices.length === 0) {
+    return false;
+  }
+
+  const maxPrice = Math.max(...prices);
+
+  if (constraint.type === "above") {
+    return maxPrice >= constraint.min;
+  }
+
+  return maxPrice <= constraint.max;
 }
 
 function buildReason(product: Product, input: RecommendationInput) {
@@ -150,19 +178,46 @@ function limitCategoryRepetition(
 }
 
 function budgetScore(product: Product, budget: string) {
-  const normalizedBudget = normalize(budget);
+  const constraint = getBudgetConstraint(budget);
+  const prices = extractPriceValues(product.priceRange);
 
-  if (!normalizedBudget.includes("ate")) {
+  if (!constraint || prices.length === 0) {
     return 0;
   }
 
-  const budgetLimit = Number(normalizedBudget.match(/\d+/)?.[0] ?? 0);
-  const prices = product.priceRange.match(/\d+/g)?.map(Number) ?? [];
   const minPrice = Math.min(...prices);
+  const maxPrice = Math.max(...prices);
 
-  if (!budgetLimit || !Number.isFinite(minPrice)) {
-    return 0;
+  if (constraint.type === "above") {
+    return maxPrice >= constraint.min ? 2 : -8;
   }
 
-  return minPrice <= budgetLimit ? 1 : -2;
+  if (maxPrice <= constraint.max) {
+    return 3;
+  }
+
+  return minPrice <= constraint.max ? -4 : -8;
+}
+
+function getBudgetConstraint(budget: string) {
+  const normalizedBudget = normalize(budget);
+  const value = Number(normalizedBudget.match(/\d+/)?.[0] ?? 0);
+
+  if (normalizedBudget.includes("varias") || !value) {
+    return null;
+  }
+
+  if (normalizedBudget.includes("acima")) {
+    return { type: "above" as const, min: value };
+  }
+
+  if (normalizedBudget.includes("ate")) {
+    return { type: "max" as const, max: value };
+  }
+
+  return null;
+}
+
+function extractPriceValues(priceRange: string) {
+  return priceRange.match(/\d+/g)?.map(Number).filter(Number.isFinite) ?? [];
 }

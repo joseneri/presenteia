@@ -6,6 +6,7 @@ import { getSemanticGiftImage } from "@/lib/semanticImageSearch";
 import {
   buildAmazonSearchUrl,
   getRecommendationCount,
+  isPriceRangeAllowedForBudget,
   recommendProducts,
   slugifyRecommendation,
   type Recommendation,
@@ -75,11 +76,7 @@ export async function POST(request: Request) {
   const debugId = crypto.randomUUID();
   const input = (await request.json()) as RecommendationInput;
   const cacheKey = generateRecommendationCacheKey(input);
-  const localRecommendations = recommendProducts(input);
-  const desiredCount = getRecommendationCount(input);
-  const candidateCount = desiredCount + 4;
   const model = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
-  const marketTrendContext = getMarketTrendContext();
 
   console.info("[recommendations] request_received", {
     debugId,
@@ -92,14 +89,10 @@ export async function POST(request: Request) {
     occasion: input.occasion,
     budget: input.budget,
     style: input.style,
-    interests: input.interests || null,
-    desiredCount,
-    candidateCount,
-    marketTrendInfluence: marketTrendContext.influence,
-    marketTrendCategory: marketTrendContext.category
+    interests: input.interests || null
   });
 
-  const cachedPayload = await getCachedRecommendations(cacheKey, debugId);
+  const cachedPayload = await getCachedRecommendations(cacheKey, input, debugId);
 
   if (cachedPayload) {
     console.info("[recommendations] cache_hit", {
@@ -116,6 +109,19 @@ export async function POST(request: Request) {
   }
 
   console.info("[recommendations] cache_miss", { debugId });
+
+  const localRecommendations = recommendProducts(input);
+  const desiredCount = getRecommendationCount(input);
+  const candidateCount = desiredCount + 4;
+  const marketTrendContext = getMarketTrendContext();
+
+  console.info("[recommendations] generation_context_ready", {
+    debugId,
+    desiredCount,
+    candidateCount,
+    marketTrendInfluence: marketTrendContext.influence,
+    marketTrendCategory: marketTrendContext.category
+  });
 
   if (!process.env.OPENAI_API_KEY) {
     console.error("[recommendations] missing_openai_api_key", { debugId });
@@ -166,7 +172,7 @@ export async function POST(request: Request) {
               marketTrendContext,
               visualCatalog: getVisualCatalogForPrompt(),
               task:
-                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. Use marketTrendContext como sinal de mercado: influence 0 ignora tendencias, 1 favorece fortemente produtos da lista; category limita o recorte de tendencias quando diferente de all. Tendencias nao devem vencer adequacao ao perfil. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
+                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. O orcamento e regra obrigatoria: se input.budget for ate X reais, nenhum priceRange pode passar de R$X; se for acima de X reais, escolha itens com faixa compatível com valor acima de X; se for varias faixas de preco, varie livremente. Use marketTrendContext como sinal de mercado: influence 0 ignora tendencias, 1 favorece fortemente produtos da lista; category limita o recorte de tendencias quando diferente de all. Tendencias nao devem vencer adequacao ao perfil. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
             })
           }
         ],
@@ -255,10 +261,22 @@ export async function POST(request: Request) {
   }
 }
 
-async function getCachedRecommendations(cacheKey: string, debugId: string) {
+async function getCachedRecommendations(
+  cacheKey: string,
+  input: RecommendationInput,
+  debugId: string
+) {
   const memoryPayload = getMemoryCachedRecommendations(cacheKey);
 
   if (memoryPayload) {
+    if (!isPayloadAllowedForBudget(memoryPayload, input)) {
+      memoryCache.delete(cacheKey);
+      console.info("[recommendations] memory_cache_budget_mismatch", {
+        debugId
+      });
+      return null;
+    }
+
     console.info("[recommendations] memory_cache_hit", { debugId });
     return memoryPayload;
   }
@@ -275,6 +293,14 @@ async function getCachedRecommendations(cacheKey: string, debugId: string) {
     }
 
     const payload = JSON.parse(cached) as RecommendationResponsePayload;
+
+    if (!isPayloadAllowedForBudget(payload, input)) {
+      console.info("[recommendations] redis_cache_budget_mismatch", {
+        debugId
+      });
+      return null;
+    }
+
     setMemoryCachedRecommendations(cacheKey, payload);
 
     return payload;
@@ -285,6 +311,15 @@ async function getCachedRecommendations(cacheKey: string, debugId: string) {
     });
     return null;
   }
+}
+
+function isPayloadAllowedForBudget(
+  payload: RecommendationResponsePayload,
+  input: RecommendationInput
+) {
+  return payload.recommendations.every((recommendation) =>
+    isPriceRangeAllowedForBudget(recommendation.priceRange, input.budget)
+  );
 }
 
 async function setCachedRecommendations(
@@ -404,6 +439,10 @@ async function buildDynamicRecommendations(
         !item.searchQuery ||
         !item.visualAnchor
       ) {
+        return false;
+      }
+
+      if (!isPriceRangeAllowedForBudget(item.priceRange, input.budget)) {
         return false;
       }
 
