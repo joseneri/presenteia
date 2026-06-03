@@ -1652,6 +1652,7 @@ p {
 }
 
 .quiz-panel {
+  position: relative;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -1662,6 +1663,7 @@ p {
 .quiz-panel-loading {
   border-color: color-mix(in srgb, var(--color-primary) 36%, var(--color-border));
   box-shadow: 0 22px 46px color-mix(in srgb, var(--color-primary) 13%, transparent);
+  padding: 24px;
 }
 
 .quiz-heading {
@@ -1704,6 +1706,14 @@ p {
 
 .form-grid:disabled {
   opacity: 1;
+}
+
+.quiz-panel-loading .form-grid {
+  grid-template-columns: 1fr;
+}
+
+.quiz-panel-loading .form-grid .field {
+  display: none;
 }
 
 .form-grid:disabled input,
@@ -1827,17 +1837,19 @@ p {
 }
 
 .quiz-processing {
-  border-top: 1px solid var(--color-border-soft);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, var(--color-border));
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface));
   display: grid;
-  gap: 12px;
-  margin-top: 18px;
-  padding-top: 18px;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
 }
 
 .quiz-processing-head {
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 12px;
+  grid-template-columns: 36px 1fr;
+  gap: 10px;
   align-items: center;
 }
 
@@ -1861,8 +1873,8 @@ p {
 
 .processing-orbit {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -1902,8 +1914,8 @@ p {
 
 .processing-steps {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 10px;
   list-style: none;
   margin: 0;
   padding: 0;

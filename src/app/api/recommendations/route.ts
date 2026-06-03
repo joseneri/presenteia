@@ -85,6 +85,7 @@ export async function POST(request: Request) {
     mode: "openai-visual-anchored",
     openAITimeoutMs,
     recipient: input.recipient,
+    sex: input.sex,
     ageGroup: input.ageGroup,
     occasion: input.occasion,
     budget: input.budget,
@@ -172,7 +173,7 @@ export async function POST(request: Request) {
               marketTrendContext,
               visualCatalog: getVisualCatalogForPrompt(),
               task:
-                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. O orcamento e regra obrigatoria: se input.budget for ate X reais, nenhum priceRange pode passar de R$X; se for acima de X reais, escolha itens com faixa compatível com valor acima de X; se for varias faixas de preco, varie livremente. Use marketTrendContext como sinal de mercado: influence 0 ignora tendencias, 1 favorece fortemente produtos da lista; category limita o recorte de tendencias quando diferente de all. Tendencias nao devem vencer adequacao ao perfil. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
+                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, sexo quando informado, orcamento, estilo, idade, gostos e ocasiao quando informada. O orcamento e regra obrigatoria: se input.budget for ate X reais, nenhum priceRange pode passar de R$X; se for acima de X reais, escolha itens com faixa compatível com valor acima de X; se for varias faixas de preco, varie livremente. Use marketTrendContext como sinal de mercado: influence 0 ignora tendencias, 1 favorece fortemente produtos da lista; category limita o recorte de tendencias quando diferente de all. Tendencias nao devem vencer adequacao ao perfil. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
             })
           }
         ],
@@ -405,7 +406,7 @@ function buildSystemPrompt() {
     "O visualAnchorId e uma restricao obrigatoria, nao uma sugestao. Se uma ideia nao couber em nenhum visualAnchorId, escolha outra ideia.",
     "Evite ideias cujo card principal dependeria de foto de pessoa, rua, praia, natureza, casamento ou ambiente amplo. Se sugerir experiencia, amarre a recomendacao a um item visual de compra, como voucher, caixa, kit, livro ou acessorio relacionado.",
     "A quantidade final de itens e calculada pelo servidor e deve ser respeitada: sempre entregue desiredCount itens finais, normalmente 6.",
-    "Use pelo menos 4 parametros preenchidos pelo usuario quando existirem. Priorize pessoa, orcamento, estilo, idade e gostos; use ocasiao apenas quando ela vier informada. Nao invente uma ocasiao quando o campo estiver vazio.",
+    "Use pelo menos 4 parametros preenchidos pelo usuario quando existirem. Priorize pessoa, sexo quando informado, orcamento, estilo, idade e gostos; use ocasiao apenas quando ela vier informada. Nao invente uma ocasiao quando o campo estiver vazio.",
     "Quando o usuario mencionar um tema forte, gere candidatos conectados a ele, mas nao faca a lista inteira do mesmo tema. Diversidade obrigatoria: no maximo 2 itens da mesma categoria ou categoria similar e no maximo 2 itens do mesmo macrotema. Se o usuario mencionar cafe, inclua no maximo 2 itens relacionados diretamente a cafe; os demais devem ser alternativas distintas conectadas ao perfil, como leitura, cozinha, casa, bem-estar, trabalho, experiencia ou tecnologia.",
     "Hierarquia obrigatoria: o item 1 deve ter destaque true e ser o mais criativo e certeiro, nao o mais obvio. Exatamente 1 item deve ter coringa true: uma experiencia, servico ou presente inusitado dentro do orcamento. Os demais devem vir em relevancia decrescente.",
     "O campo reason deve ser um motivo emocional que conecta com a pessoa, nao uma descricao do produto. Exemplo ruim: kit completo com 3 tipos de grao especial. Exemplo bom: porque ela vai lembrar de voce toda manha.",
@@ -477,7 +478,7 @@ async function buildDynamicRecommendations(
       description: visualAnchor.description,
       searchQuery: visualAnchor.searchQuery,
       categories,
-      recipient: input.recipient,
+      recipient: [input.recipient, input.sex].filter(Boolean).join(" "),
       ageGroup: input.ageGroup,
       occasion: input.occasion,
       style: input.style,

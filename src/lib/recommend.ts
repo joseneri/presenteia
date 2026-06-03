@@ -2,6 +2,7 @@ import { products, type Product } from "@/data/products";
 
 export type RecommendationInput = {
   recipient: string;
+  sex: string;
   ageGroup: string;
   occasion: string;
   budget: string;
@@ -34,8 +35,8 @@ export function slugifyRecommendation(value: string) {
     .slice(0, 60);
 }
 
-const normalize = (value: string) =>
-  value
+const normalize = (value: string | undefined) =>
+  (value ?? "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
@@ -44,7 +45,7 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
   const desiredCount = getRecommendationCount(input);
   const haystack = normalize(
     [
-      input.recipient,
+      ...buildRecipientTerms(input),
       input.ageGroup,
       input.occasion,
       input.budget,
@@ -120,6 +121,65 @@ export function isPriceRangeAllowedForBudget(
 function buildReason(product: Product, input: RecommendationInput) {
   const interest = input.interests || "os interesses da pessoa";
   return `Combina com ${interest} e tem perfil ${product.categories.slice(0, 2).join(" + ")}.`;
+}
+
+function buildRecipientTerms(input: RecommendationInput) {
+  const recipient = normalize(input.recipient);
+  const sex = normalize(input.sex);
+  const terms = [recipient, sex];
+
+  const recipientMap: Record<string, { female: string[]; male: string[]; neutral: string[] }> = {
+    "mae-pai": {
+      female: ["mae"],
+      male: ["pai"],
+      neutral: ["mae", "pai", "familia"]
+    },
+    filho: {
+      female: ["filha"],
+      male: ["filho"],
+      neutral: ["filho", "filha", "crianca"]
+    },
+    irmao: {
+      female: ["irma"],
+      male: ["irmao"],
+      neutral: ["irma", "irmao", "familia"]
+    },
+    "namoro": {
+      female: ["namorada"],
+      male: ["namorado"],
+      neutral: ["namorada", "namorado", "romantico"]
+    },
+    conjuge: {
+      female: ["esposa"],
+      male: ["marido"],
+      neutral: ["esposa", "marido", "casal", "romantico"]
+    },
+    amigo: {
+      female: ["amiga"],
+      male: ["amigo"],
+      neutral: ["amiga", "amigo"]
+    },
+    sogro: {
+      female: ["sogra"],
+      male: ["sogro"],
+      neutral: ["sogra", "sogro", "familia"]
+    }
+  };
+  const mappedRecipient = recipientMap[recipient];
+
+  if (!mappedRecipient) {
+    return terms;
+  }
+
+  if (sex === "feminino") {
+    return [...terms, ...mappedRecipient.female, ...mappedRecipient.neutral];
+  }
+
+  if (sex === "masculino") {
+    return [...terms, ...mappedRecipient.male, ...mappedRecipient.neutral];
+  }
+
+  return [...terms, ...mappedRecipient.neutral];
 }
 
 function limitCategoryRepetition(

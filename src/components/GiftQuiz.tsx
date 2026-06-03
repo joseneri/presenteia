@@ -7,6 +7,7 @@ import type { Recommendation, RecommendationInput } from "@/lib/recommend";
 
 const initialForm: RecommendationInput = {
   recipient: "",
+  sex: "",
   ageGroup: "",
   occasion: "",
   budget: "",
@@ -116,6 +117,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
       field: fieldName,
       variant,
       recipient: form.recipient,
+      sex: form.sex,
       age_group: form.ageGroup,
       occasion: form.occasion,
       budget: form.budget,
@@ -154,6 +156,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
     ].filter(Boolean);
     const filledContextFields = [
       form.recipient,
+      form.sex,
       form.ageGroup,
       form.occasion,
       form.budget,
@@ -186,11 +189,13 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
       .getElementById(
         !form.ageGroup
           ? "ageGroup"
-          : !form.style
-            ? "style"
-            : !form.interests
-              ? "interests"
-              : "occasion"
+          : !form.sex
+            ? "sex"
+            : !form.style
+              ? "style"
+              : !form.interests
+                ? "interests"
+                : "occasion"
       )
       ?.focus();
     trackEvent("quiz_validation_failed", {
@@ -347,25 +352,19 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
             >
               <option value="">Escolha a pessoa</option>
               <optgroup label="Família">
-                <option value="mae">Mãe</option>
-                <option value="pai">Pai</option>
+                <option value="mae-pai">Mãe ou pai</option>
                 <option value="avos">Avó ou avô</option>
-                <option value="filho">Filho</option>
-                <option value="filha">Filha</option>
-                <option value="irma">Irmã</option>
-                <option value="irmao">Irmão</option>
-                <option value="sogra">Sogra</option>
+                <option value="filho">Filho(a)</option>
+                <option value="irmao">Irmão(ã)</option>
+                <option value="sogro">Sogro(a)</option>
               </optgroup>
               <optgroup label="Relacionamento">
-                <option value="namorada">Namorada</option>
-                <option value="namorado">Namorado</option>
-                <option value="esposa">Esposa</option>
-                <option value="marido">Marido</option>
+                <option value="namoro">Namorado(a)</option>
+                <option value="conjuge">Cônjuge</option>
                 <option value="casal">Casal</option>
               </optgroup>
               <optgroup label="Social e trabalho">
-                <option value="amiga">Amiga</option>
-                <option value="amigo">Amigo</option>
+                <option value="amigo">Amigo(a)</option>
                 <option value="colega">Colega de trabalho</option>
                 <option value="chefe">Chefe</option>
                 <option value="professor">Professor(a)</option>
@@ -379,6 +378,23 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 <option value="gamer">Gamer</option>
                 <option value="pessoa dificil">Pessoa difícil de presentear</option>
               </optgroup>
+            </select>
+          </div>
+
+          <div className="field">
+            <FieldLabel htmlFor="sex">Sexo</FieldLabel>
+            <select
+              id="sex"
+              name="sex"
+              value={form.sex}
+              onChange={(event) =>
+                updateFormField("sex", event.target.value)
+              }
+            >
+              <option value="">Não sei / não importa</option>
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Masculino</option>
+              <option value="outro">Outro / não binário</option>
             </select>
           </div>
 
@@ -506,6 +522,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
                 location: "quiz",
                 variant,
                 recipient: form.recipient,
+                sex: form.sex,
                 occasion: form.occasion,
                 budget: form.budget
               });
