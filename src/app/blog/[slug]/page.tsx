@@ -7,9 +7,9 @@ import { ProductGrid } from "@/components/ProductGrid";
 const baseUrl = "https://presenteia.io";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params:  Promise<{ slug: string }>;
 };
-
+// Gerar rotas estáticas para cada artigo
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
 }
