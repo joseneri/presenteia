@@ -54,7 +54,7 @@ const memoryEmbeddingCache = new Map<string, number[]>();
 export async function getSemanticGiftImage(input: SemanticGiftImageInput) {
   const exactProductImage = input.id ? productImageRepository[input.id] : undefined;
 
-  if (exactProductImage) {
+  if (exactProductImage && !input.usedImages?.includes(exactProductImage)) {
     return exactProductImage;
   }
 

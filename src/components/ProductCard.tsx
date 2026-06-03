@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { getProductImage, hasProductImage } from "@/lib/imageRepository";
+import { getProductImage } from "@/lib/imageRepository";
 import type { Recommendation } from "@/lib/recommend";
 import type { Product } from "@/data/products";
 
@@ -17,21 +17,15 @@ function isRecommendation(product: Product | Recommendation): product is Recomme
 }
 
 export function ProductCard({ product, rank }: ProductCardProps) {
-  const hasCuratedProductImage = hasProductImage(product.id);
-  const image =
-    !hasCuratedProductImage && product.image.startsWith("https://")
-      ? product.image
-      : getProductImage({
-          ...product,
-          fallback: product.image
-        });
+  const image = product.image.startsWith("https://")
+    ? product.image
+    : getProductImage({
+        ...product,
+        fallback: product.image
+      });
   const rankClass = rank ? ` rank-${rank}` : "";
   const reason = isRecommendation(product) ? product.reason : "";
-  const isDynamicRecommendation =
-    isRecommendation(product) &&
-    product.amazonUrl.startsWith("https://") &&
-    !hasCuratedProductImage;
-  const href = isDynamicRecommendation && product.amazonUrl.startsWith("https://")
+  const href = isRecommendation(product) && product.amazonUrl.startsWith("https://")
     ? product.amazonUrl
     : `/go/${product.id}`;
 

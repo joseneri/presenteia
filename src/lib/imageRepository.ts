@@ -1183,6 +1183,66 @@ const curatedSearchImages: SearchImage[] = [
 ];
 
 export const productImageRepository: Record<string, string> = {
+  "echo-dot": imageUrl("photo-1519558260268-cde7e03a0152"),
+  kindle: imageUrl("photo-1603406136476-85d8c3ec76a5"),
+  "kit-cafe": imageUrl("photo-1495474472287-4d71bcdd2085"),
+  massageador: imageUrl("photo-1611908200005-b898ddde09cf"),
+  "fone-bluetooth": imageUrl("photo-1505740420928-5e560c06d30e"),
+  "luminaria-led": imageUrl("photo-1507473885765-e6ed057f782c"),
+  "garrafa-termica": imageUrl("photo-1566408701071-cb5c545b6240"),
+  "jogo-tabuleiro": imageUrl("photo-1610890716171-6b1bb98ffd09"),
+  "organizador-cabos": imageUrl("photo-1760348213270-7cd00b8c3405"),
+  "moka-cafeteira": imageUrl("photo-1604946327250-fbef76816bfe"),
+  "chaveiro-smart": imageUrl("photo-1676276550349-580c49631496"),
+  "caneca-termica": imageUrl("photo-1509042239860-f550ce710b93"),
+  "skincare-kit": imageUrl("photo-1598440947619-2c35fc9aa908"),
+  "suporte-celular": imageUrl("photo-1698314440014-3badb1e9c938"),
+  "lego-classic": imageUrl("photo-1515488042361-ee00e0ddd4e4"),
+  "livro-infantil": imageUrl("photo-1512820790803-83ca734da794"),
+  "pelucia-bebe": imageUrl("photo-1555252333-9f8e92e65df9"),
+  "quebra-cabeca": imageUrl("photo-1610890716171-6b1bb98ffd09"),
+  "kit-desenho": imageUrl("photo-1513364776144-60967b0f800f"),
+  "porta-retrato-casal": imageUrl("photo-1586023492125-27b2c045efd7"),
+  planner: imageUrl("photo-1455390582262-044cdead277a"),
+  "kit-ciencia": imageUrl("photo-1515488042361-ee00e0ddd4e4"),
+  "brinquedo-musical": imageUrl("photo-1515488042361-ee00e0ddd4e4"),
+  "fone-infantil": imageUrl("photo-1505740420928-5e560c06d30e"),
+  "mochila-escolar": imageUrl("photo-1534802046520-4f27db7f3ae5"),
+  "tablet-infantil": imageUrl("photo-1516321318423-f06f85e504b3"),
+  "kit-cafe-gourmet": imageUrl("photo-1559056199-641a0ac8b55e"),
+  "cafeteira-moka": imageUrl("photo-1604946327250-fbef76816bfe"),
+  "livros-leitura": imageUrl("photo-1497633762265-9d179a990aa6"),
+  "kindle-leitor": imageUrl("photo-1603406136476-85d8c3ec76a5"),
+  "caixa-som": imageUrl("photo-1536571195711-1b796f9f9f7f"),
+  "smart-home": imageUrl("photo-1519558260268-cde7e03a0152"),
+  "setup-trabalho": imageUrl("photo-1497366754035-f200968a6e72"),
+  "papelaria-planner": imageUrl("photo-1455390582262-044cdead277a"),
+  "vaso-decorativo": imageUrl("photo-1485955900006-10f4d324d411"),
+  "porta-retrato": imageUrl("photo-1586023492125-27b2c045efd7"),
+  luminaria: imageUrl("photo-1507473885765-e6ed057f782c"),
+  "plantas-casa": imageUrl("photo-1485955900006-10f4d324d411"),
+  "spa-casa": imageUrl("photo-1540555700478-4be289fbecef"),
+  "fitness-garrafa": imageUrl("photo-1566408701071-cb5c545b6240"),
+  "utensilios-cozinha": imageUrl("photo-1556912172-45b7abe8b7e1"),
+  "livro-receitas": imageUrl("photo-1556909114-f6e7ad7d3136"),
+  "temperos-gourmet": imageUrl("photo-1556912172-45b7abe8b7e1"),
+  "vinho-jantar": imageUrl("photo-1528825871115-3581a5387919"),
+  "chocolate-gourmet": imageUrl("photo-1549465220-1a8b9238cd48"),
+  "gamer-acessorio": imageUrl("photo-1593305841991-05c297ba4575"),
+  "kit-arte": imageUrl("photo-1513364776144-60967b0f800f"),
+  artesanato: imageUrl("photo-1452860606245-08befc0ff44b"),
+  "viagem-organizador": imageUrl("photo-1534802046520-4f27db7f3ae5"),
+  "praia-verao": imageUrl("photo-1507525428034-b723cf961d3e"),
+  "pet-caes": imageUrl("photo-1552053831-71594a27632d"),
+  "pet-gatos": imageUrl("photo-1514888286974-6c03e2ca1dba"),
+  "brinquedo-crianca": imageUrl("photo-1515488042361-ee00e0ddd4e4"),
+  "bebe-sensorial": imageUrl("photo-1555252333-9f8e92e65df9"),
+  "flores-buque": imageUrl("photo-1481391319762-47dff72954d9"),
+  "experiencia-oficina": imageUrl("photo-1452860606245-08befc0ff44b"),
+  "assinatura-caixa": imageUrl("photo-1549465220-1a8b9238cd48")
+};
+
+const productFallbackImageRepository: Record<string, string> = {
   "echo-dot": productAsset("echo-dot"),
   kindle: productAsset("kindle"),
   "kit-cafe": productAsset("kit-cafe"),
@@ -1260,6 +1320,9 @@ export const imageRepositorySize =
 
 export function getProductImage(input: GiftImageInput) {
   const productImage = input.id ? productImageRepository[input.id] : undefined;
+  const fallbackProductImage = input.id
+    ? productFallbackImageRepository[input.id]
+    : undefined;
 
   if (productImage && !input.usedImages?.includes(productImage)) {
     return productImage;
@@ -1267,7 +1330,7 @@ export function getProductImage(input: GiftImageInput) {
 
   return getGiftImage({
     ...input,
-    fallback: productImage ?? input.fallback
+    fallback: fallbackProductImage ?? productImage ?? input.fallback
   });
 }
 
