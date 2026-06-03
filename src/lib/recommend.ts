@@ -86,7 +86,7 @@ export function recommendProducts(input: RecommendationInput): Recommendation[] 
 
 export function getRecommendationCount(input: RecommendationInput) {
   void input;
-  return 8;
+  return 6;
 }
 
 function buildReason(product: Product, input: RecommendationInput) {

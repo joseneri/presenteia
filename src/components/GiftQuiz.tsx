@@ -163,7 +163,7 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
 
     if (requiredMissingFields.length > 0) {
       setValidationError(
-        "Preencha para quem. Depois complete pelo menos 4 pistas no total."
+        "Preencha para quem. Depois complete pelo menos 2 pistas no total."
       );
       document.getElementById(requiredMissingFields[0])?.focus();
       trackEvent("quiz_validation_failed", {
@@ -175,12 +175,12 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
       return false;
     }
 
-    if (filledContextFields.length >= 4) {
+    if (filledContextFields.length >= 2) {
       return true;
     }
 
     setValidationError(
-      "Preencha pelo menos 4 pistas para a IA acertar melhor. Ex: faixa etária, estilo, ocasião ou gostos."
+      "Preencha pelo menos 2 pistas para a IA acertar melhor. Ex: faixa etária, estilo, ocasião ou gostos."
     );
     document
       .getElementById(
@@ -572,10 +572,6 @@ export function GiftQuiz({ onRecommendations, variant = "default" }: GiftQuizPro
           </div>
         ) : null}
 
-        <p className="disclosure">
-          Podemos receber comissão por compras qualificadas, sem custo extra
-          para você.
-        </p>
       </form>
       {error ? <div className="status quiz-status">{error}</div> : null}
     </div>

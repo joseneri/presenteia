@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 import { NextResponse } from "next/server";
 import { generateRecommendationCacheKey } from "@/lib/cacheKey";
-import { getGiftImage, getProductImage } from "@/lib/imageRepository";
+import { getMarketTrendContext } from "@/lib/marketTrends";
+import { getSemanticGiftImage } from "@/lib/semanticImageSearch";
 import {
   buildAmazonSearchUrl,
   getRecommendationCount,
@@ -78,6 +79,7 @@ export async function POST(request: Request) {
   const desiredCount = getRecommendationCount(input);
   const candidateCount = desiredCount + 4;
   const model = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
+  const marketTrendContext = getMarketTrendContext();
 
   console.info("[recommendations] request_received", {
     debugId,
@@ -92,7 +94,9 @@ export async function POST(request: Request) {
     style: input.style,
     interests: input.interests || null,
     desiredCount,
-    candidateCount
+    candidateCount,
+    marketTrendInfluence: marketTrendContext.influence,
+    marketTrendCategory: marketTrendContext.category
   });
 
   const cachedPayload = await getCachedRecommendations(cacheKey, debugId);
@@ -159,9 +163,10 @@ export async function POST(request: Request) {
               input,
               desiredCount,
               candidateCount,
+              marketTrendContext,
               visualCatalog: getVisualCatalogForPrompt(),
               task:
-                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
+                "Crie uma lista de candidatos de presentes usando somente o visualCatalog. Cada recomendacao deve escolher exatamente um visualAnchorId existente no catalogo; nao invente ids. Respeite pessoa, orcamento, estilo, idade, gostos e ocasiao quando informada. Use marketTrendContext como sinal de mercado: influence 0 ignora tendencias, 1 favorece fortemente produtos da lista; category limita o recorte de tendencias quando diferente de all. Tendencias nao devem vencer adequacao ao perfil. A quantidade final desejada e desiredCount, mas retorne candidateCount candidatos diversos para o servidor selecionar os melhores. Para cada item, informe title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque e coringa. searchQuery deve ser curta, sem marca inventada e alinhada ao visualAnchorId escolhido. Retorne exatamente { total, recommendations: [{ title, description, reason, priceRange, searchQuery, categories, visualAnchorId, destaque, coringa }] }."
             })
           }
         ],
@@ -179,7 +184,7 @@ export async function POST(request: Request) {
     const parsed = (content
       ? JSON.parse(content)
       : {}) as OpenAIRecommendationPayload;
-    const recommendations = buildDynamicRecommendations(
+    const recommendations = await buildDynamicRecommendations(
       parsed.recommendations ?? parsed.itens ?? [],
       input,
       desiredCount,
@@ -359,8 +364,10 @@ function buildSystemPrompt() {
     "Voce e um especialista brasileiro em presentes com foco em conversao, curadoria e conexao emocional.",
     "Sugira presentes reais que uma pessoa conseguiria procurar em lojas online no Brasil.",
     "Toda recomendacao precisa estar presa a uma imagem confiavel: use somente ids existentes no visualCatalog recebido pelo usuario.",
+    "Use o marketTrendContext recebido como memoria de mercado. Ele contem produtos/categorias populares e um campo influence de 0 a 1. Com influence baixo, use apenas como desempate. Com influence medio, favoreca tendencias quando tambem combinarem com o perfil. Com influence alto, priorize itens da lista, mantendo diversidade e adequacao emocional.",
+    "Se marketTrendContext.category for diferente de all, trate esse recorte como preferencia de categoria, mas nunca recomende algo claramente inadequado para pessoa, idade, ocasiao ou orcamento.",
     "O visualAnchorId e uma restricao obrigatoria, nao uma sugestao. Se uma ideia nao couber em nenhum visualAnchorId, escolha outra ideia.",
-    "A quantidade final de itens e calculada pelo servidor e deve ser respeitada: sempre entregue desiredCount itens finais, normalmente 8.",
+    "A quantidade final de itens e calculada pelo servidor e deve ser respeitada: sempre entregue desiredCount itens finais, normalmente 6.",
     "Use pelo menos 4 parametros preenchidos pelo usuario quando existirem. Priorize pessoa, orcamento, estilo, idade e gostos; use ocasiao apenas quando ela vier informada. Nao invente uma ocasiao quando o campo estiver vazio.",
     "Quando o usuario mencionar um tema forte, gere candidatos conectados a ele, mas nao faca a lista inteira do mesmo tema. Diversidade obrigatoria: no maximo 2 itens da mesma categoria ou categoria similar e no maximo 2 itens do mesmo macrotema. Se o usuario mencionar cafe, inclua no maximo 2 itens relacionados diretamente a cafe; os demais devem ser alternativas distintas conectadas ao perfil, como leitura, cozinha, casa, bem-estar, trabalho, experiencia ou tecnologia.",
     "Hierarquia obrigatoria: o item 1 deve ter destaque true e ser o mais criativo e certeiro, nao o mais obvio. Exatamente 1 item deve ter coringa true: uma experiencia, servico ou presente inusitado dentro do orcamento. Os demais devem vir em relevancia decrescente.",
@@ -370,18 +377,18 @@ function buildSystemPrompt() {
   ].join(" ");
 }
 
-function buildDynamicRecommendations(
+async function buildDynamicRecommendations(
   items: OpenAIRecommendation[],
   input: RecommendationInput,
   desiredCount: number,
   localRecommendations: Recommendation[]
-): Recommendation[] {
+): Promise<Recommendation[]> {
   const usedIds = new Set<string>();
   const usedImages = new Set<string>();
   const diversityState = createDiversityState();
   let hasCoringa = false;
 
-  const dynamicRecommendations = items
+  const normalizedDynamicItems = items
     .map(normalizeOpenAIRecommendation)
     .map((item) => ({
       ...item,
@@ -406,53 +413,56 @@ function buildDynamicRecommendations(
 
       return true;
     })
-    .slice(0, desiredCount)
-    .map((item, index) => {
-      const visualAnchor = item.visualAnchor as VisualGiftAnchor;
-      const baseId =
-        slugifyRecommendation(visualAnchor.id) ||
-        slugifyRecommendation(item.title) ||
-        `sugestao-${index + 1}`;
-      const id = usedIds.has(baseId) ? `${baseId}-${index + 1}` : baseId;
-      usedIds.add(id);
-      const coringa =
-        !hasCoringa &&
-        (item.coringa === true || index === Math.min(2, desiredCount - 1));
-      hasCoringa = hasCoringa || coringa;
-      const categories = visualAnchor.categories.slice(0, 3);
-      const image = getGiftImage({
-        id,
-        title: visualAnchor.label,
-        description: visualAnchor.description,
-        searchQuery: visualAnchor.searchQuery,
-        categories,
-        recipient: input.recipient,
-        ageGroup: input.ageGroup,
-        occasion: input.occasion,
-        style: input.style,
-        interests: [input.interests, item.title, item.searchQuery],
-        usedImages: [...usedImages]
-      });
+    .slice(0, desiredCount);
 
-      usedImages.add(image);
+  const dynamicRecommendations: Recommendation[] = [];
 
-      return {
-        id,
-        title: item.title.trim(),
-        description: item.description.trim(),
-        reason: item.reason.trim(),
-        priceRange: item.priceRange.trim(),
-        amazonUrl: buildAmazonSearchUrl(visualAnchor.searchQuery),
-        image,
-        categories,
-        personas: [input.recipient],
-        occasions: [input.occasion],
-        interests: [input.interests || input.style, visualAnchor.label],
-        score: 100 - index,
-        destaque: index === 0,
-        coringa
-      };
+  for (const [index, item] of normalizedDynamicItems.entries()) {
+    const visualAnchor = item.visualAnchor as VisualGiftAnchor;
+    const baseId =
+      slugifyRecommendation(visualAnchor.id) ||
+      slugifyRecommendation(item.title) ||
+      `sugestao-${index + 1}`;
+    const id = usedIds.has(baseId) ? `${baseId}-${index + 1}` : baseId;
+    usedIds.add(id);
+    const coringa: boolean =
+      !hasCoringa &&
+      (item.coringa === true || index === Math.min(2, desiredCount - 1));
+    hasCoringa = hasCoringa || coringa;
+    const categories = visualAnchor.categories.slice(0, 3);
+    const image = await getSemanticGiftImage({
+      id,
+      title: visualAnchor.label,
+      description: visualAnchor.description,
+      searchQuery: visualAnchor.searchQuery,
+      categories,
+      recipient: input.recipient,
+      ageGroup: input.ageGroup,
+      occasion: input.occasion,
+      style: input.style,
+      interests: [input.interests, item.title, item.searchQuery],
+      usedImages: [...usedImages]
     });
+
+    usedImages.add(image);
+
+    dynamicRecommendations.push({
+      id,
+      title: item.title.trim(),
+      description: item.description.trim(),
+      reason: item.reason.trim(),
+      priceRange: item.priceRange.trim(),
+      amazonUrl: buildAmazonSearchUrl(visualAnchor.searchQuery),
+      image,
+      categories,
+      personas: [input.recipient],
+      occasions: [input.occasion],
+      interests: [input.interests || input.style, visualAnchor.label],
+      score: 100 - index,
+      destaque: index === 0,
+      coringa
+    });
+  }
 
   if (dynamicRecommendations.length >= desiredCount) {
     return normalizeRecommendationFlags(
@@ -476,7 +486,7 @@ function buildDynamicRecommendations(
     }
 
     usedIds.add(recommendation.id);
-    const image = getProductImage({
+    const image = await getSemanticGiftImage({
       ...recommendation,
       fallback: recommendation.image,
       usedImages: [...usedImages]
@@ -509,7 +519,7 @@ function buildDynamicRecommendations(
     }
 
     usedIds.add(recommendation.id);
-    const image = getProductImage({
+    const image = await getSemanticGiftImage({
       ...recommendation,
       fallback: recommendation.image,
       usedImages: [...usedImages]

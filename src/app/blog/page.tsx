@@ -3,6 +3,8 @@ import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { articles } from "@/data/articles";
 
+const blogListLimit = 12;
+
 export const metadata: Metadata = {
   title: "Blog de presentes | Artigos e ideias",
   description:
@@ -20,9 +22,11 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const listedArticles = articles.slice(0, blogListLimit);
+
   return (
     <>
-      <section className="page-title">
+      <section className="page-title" id="blog">
         <div className="container">
           <p className="eyebrow">Blog</p>
           <h1>Ideias de presentes para decidir melhor.</h1>
@@ -33,7 +37,7 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="container grid three">
-          {articles.map((article) => (
+          {listedArticles.map((article) => (
             <Link className="article-card" href={`/blog/${article.slug}`} key={article.slug}>
               <div className="article-body">
                 <BookOpen size={22} />

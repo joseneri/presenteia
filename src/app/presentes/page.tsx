@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import { guides } from "@/data/guides";
 
+const guideListLimit = 12;
+
 export const metadata: Metadata = {
   title: "Guias de presentes | Por pessoa, ocasião e preço",
   description:
@@ -20,9 +22,11 @@ export const metadata: Metadata = {
 };
 
 export default function GuidesPage() {
+  const listedGuides = guides.slice(0, guideListLimit);
+
   return (
     <>
-      <section className="page-title">
+      <section className="page-title" id="guias">
         <div className="container">
           <p className="eyebrow">Guias</p>
           <h1>Guias para escolher sem perder tempo.</h1>
@@ -33,7 +37,7 @@ export default function GuidesPage() {
       </section>
       <section className="section">
         <div className="container grid two">
-          {guides.map((guide) => (
+          {listedGuides.map((guide) => (
             <Link className="guide-card" href={`/presentes/${guide.slug}`} key={guide.slug}>
               <Search size={22} />
               <h3>{guide.title}</h3>

@@ -20,11 +20,17 @@ import { guides } from "@/data/guides";
 import { trackEvent } from "@/lib/analytics";
 import type { Recommendation } from "@/lib/recommend";
 
+const homeGuideLimit = 2;
+const homeArticleLimit = 3;
+const popularProductLimit = 4;
+
 export function HomeExperience() {
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const quizSectionRef = useRef<HTMLDivElement | null>(null);
   const resultsSectionRef = useRef<HTMLElement | null>(null);
   const resultsHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const featuredGuides = guides.slice(0, homeGuideLimit);
+  const featuredArticles = articles.slice(0, homeArticleLimit);
 
   useEffect(() => {
     if (recommendations.length === 0) {
@@ -97,16 +103,16 @@ export function HomeExperience() {
             <div className="hero-actions">
               <a
                 className="button"
-                href="#explorar"
+                href="#ideias-populares"
                 onClick={() =>
                   trackEvent("cta_click", {
-                    label: "Explorar ideia",
+                    label: "Explorar ideias",
                     location: "hero",
-                    href: "#explorar"
+                    href: "#ideias-populares"
                   })
                 }
               >
-                Explorar ideia
+                Explorar ideias
                 <Sparkles size={16} />
               </a>
             </div>
@@ -137,7 +143,7 @@ export function HomeExperience() {
               height={420}
             />
           </div>
-          <div id="explorar" ref={quizSectionRef}>
+          <div ref={quizSectionRef}>
             <GiftQuiz onRecommendations={setRecommendations} />
           </div>
         </div>
@@ -238,7 +244,7 @@ export function HomeExperience() {
         </div>
       </section>
 
-      <section className="section band popular-ideas-section">
+      <section className="section band popular-ideas-section" id="ideias-populares">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">Ideias populares</p>
@@ -248,7 +254,7 @@ export function HomeExperience() {
               Natal e datas especiais.
             </p>
           </div>
-          <ProductGrid limit={6} />
+          <ProductGrid limit={popularProductLimit} />
         </div>
       </section>
 
@@ -259,7 +265,7 @@ export function HomeExperience() {
             <h2>Escolha por pessoa, data ou orçamento</h2>
           </div>
           <div className="grid two">
-            {guides.map((guide) => (
+            {featuredGuides.map((guide) => (
               <Link
                 className="guide-card"
                 href={`/presentes/${guide.slug}`}
@@ -288,7 +294,7 @@ export function HomeExperience() {
             <h2>Inspiração para acertar no presente</h2>
           </div>
           <div className="grid three">
-            {articles.map((article) => (
+            {featuredArticles.map((article) => (
               <Link
                 className="article-card"
                 href={`/blog/${article.slug}`}

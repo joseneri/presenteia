@@ -15,7 +15,7 @@ type GiftImageInput = {
   usedImages?: string[];
 };
 
-type SearchImage = {
+export type SearchImage = {
   id: string;
   image: string;
   priority: number;

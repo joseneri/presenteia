@@ -52,13 +52,6 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         <h3>{product.title}</h3>
         <p>{product.description}</p>
         {reason ? <p className="product-reason">{reason}</p> : null}
-        <div className="amazon-rating" aria-label="Avaliação estimada">
-          <span>4,{rank ? Math.max(3, 9 - rank) : 7}</span>
-          <span className="stars" aria-hidden="true">
-            ★★★★★
-          </span>
-          <span className="rating-count">({rank ? rank * 83 + 214 : 482})</span>
-        </div>
         <div className="tag-row">
           {product.categories.slice(0, 2).map((category) => (
             <span className="tag" key={category}>
@@ -67,7 +60,9 @@ export function ProductCard({ product, rank }: ProductCardProps) {
           ))}
         </div>
         <p className="product-meta">{product.priceRange}</p>
-        <p className="amazon-delivery">Entrega grátis em produtos elegíveis</p>
+        <p className="product-store-note">
+          Confira avaliações, preço e prazo de entrega na Amazon.
+        </p>
         <a
           className="button"
           href={href}

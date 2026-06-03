@@ -1,11 +1,22 @@
 "use client";
 
-import { FormEvent } from "react";
+import { MouseEvent, FormEvent } from "react";
 import Link from "next/link";
 import { Gift, Search } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 export function SiteHeader() {
+  function onBrandClick(event: MouseEvent<HTMLAnchorElement>) {
+    trackEvent("navigation_click", { label: "brand", href: "/" });
+
+    if (window.location.pathname !== "/") {
+      return;
+    }
+
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   function onSearchSubmit(event: FormEvent<HTMLFormElement>) {
     const formData = new FormData(event.currentTarget);
     const query = String(formData.get("q") ?? "").trim();
@@ -16,13 +27,35 @@ export function SiteHeader() {
     });
   }
 
+  function onSectionLinkClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    label: string,
+    targetPath: string,
+    targetId: string
+  ) {
+    const href = `${targetPath}#${targetId}`;
+
+    trackEvent("navigation_click", { label, href });
+
+    if (window.location.pathname !== targetPath) {
+      return;
+    }
+
+    event.preventDefault();
+    window.history.replaceState(null, "", href);
+    document.getElementById(targetId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
   return (
     <header className="header">
       <nav className="container nav" aria-label="Principal">
         <Link
           href="/"
           className="brand"
-          onClick={() => trackEvent("navigation_click", { label: "brand", href: "/" })}
+          onClick={onBrandClick}
         >
           <span className="brand-mark" aria-hidden="true">
             <Gift size={21} />
@@ -45,25 +78,25 @@ export function SiteHeader() {
         </form>
         <div className="nav-links">
           <Link
-            href="/presentes"
-            onClick={() =>
-              trackEvent("navigation_click", { label: "Guias", href: "/presentes" })
+            href="/presentes#guias"
+            onClick={(event) =>
+              onSectionLinkClick(event, "Guias", "/presentes", "guias")
             }
           >
             Guias
           </Link>
           <Link
-            href="/blog"
-            onClick={() =>
-              trackEvent("navigation_click", { label: "Blog", href: "/blog" })
+            href="/blog#blog"
+            onClick={(event) =>
+              onSectionLinkClick(event, "Blog", "/blog", "blog")
             }
           >
             Blog
           </Link>
           <Link
-            href="/#explorar"
-            onClick={() =>
-              trackEvent("navigation_click", { label: "Explorar", href: "/#explorar" })
+            href="/#ideias-populares"
+            onClick={(event) =>
+              onSectionLinkClick(event, "Explorar", "/", "ideias-populares")
             }
           >
             Explorar
