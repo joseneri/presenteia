@@ -3,6 +3,7 @@ import { createHash } from "crypto";
 import { getRedis } from "@/lib/redis";
 import {
   getGiftImage,
+  productImageRepository,
   popularSearchImageRepository,
   type SearchImage
 } from "@/lib/imageRepository";
@@ -51,6 +52,12 @@ let localIndex: Map<string, number[]> | null = null;
 const memoryEmbeddingCache = new Map<string, number[]>();
 
 export async function getSemanticGiftImage(input: SemanticGiftImageInput) {
+  const exactProductImage = input.id ? productImageRepository[input.id] : undefined;
+
+  if (exactProductImage) {
+    return exactProductImage;
+  }
+
   const query = buildImageQuery(input);
 
   if (!query) {
@@ -132,13 +139,26 @@ function getProvider() {
 }
 
 function getVisualImageDocuments(): VisualImageDocument[] {
-  return popularSearchImageRepository.map((entry) => ({
-    id: entry.id,
-    image: entry.image,
-    priority: entry.priority,
-    topic: entry.topic,
-    text: buildDocumentText(entry)
-  }));
+  const productDocuments = Object.entries(productImageRepository).map(
+    ([id, image]) => ({
+      id: `product-${id}`,
+      image,
+      priority: 180,
+      topic: id,
+      text: buildProductDocumentText(id)
+    })
+  );
+
+  return [
+    ...productDocuments,
+    ...popularSearchImageRepository.map((entry) => ({
+      id: entry.id,
+      image: entry.image,
+      priority: entry.priority,
+      topic: entry.topic,
+      text: buildDocumentText(entry)
+    }))
+  ];
 }
 
 function buildDocumentText(entry: SearchImage) {
@@ -147,6 +167,18 @@ function buildDocumentText(entry: SearchImage) {
     `presente visual ${entry.topic}`,
     entry.terms.join(" "),
     expandVisualTerms(entry.terms.join(" "))
+  ].join(" ");
+}
+
+function buildProductDocumentText(id: string) {
+  const readableId = id.replace(/-/g, " ");
+
+  return [
+    `imagem de produto ${readableId}`,
+    `foto principal de produto ${readableId}`,
+    `presente compravel ${readableId}`,
+    readableId,
+    expandVisualTerms(readableId)
   ].join(" ");
 }
 

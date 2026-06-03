@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Porta retrato decorativo">
+  <rect width="640" height="460" fill="#fff0e9"/>
+  <rect x="176" y="86" width="292" height="282" rx="20" fill="#fff8f4" stroke="#2d1517" stroke-width="14"/>
+  <rect x="214" y="126" width="216" height="188" rx="10" fill="#d8efe8" stroke="#2d1517" stroke-width="8"/>
+  <circle cx="270" cy="184" r="28" fill="#f2b544"/>
+  <path d="M224 288l68-76 48 52 34-36 48 60z" fill="#83b5a4"/>
+  <path d="M288 368l-34 54M356 368l42 54" stroke="#2d1517" stroke-width="14" stroke-linecap="round"/>
+  <path d="M224 348h248" stroke="#f2b544" stroke-width="14" stroke-linecap="round"/>
+</svg>

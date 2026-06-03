@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-label="Vaso decorativo">
+  <rect width="640" height="460" fill="#fff0e9"/>
+  <path d="M250 164c-28-54 8-92 56-110 2 66-16 104-56 110z" fill="#83b5a4" stroke="#2d1517" stroke-width="10"/>
+  <path d="M336 164c-6-64 34-98 88-100-10 62-36 100-88 100z" fill="#9bc7b7" stroke="#2d1517" stroke-width="10"/>
+  <path d="M306 174c-50-20-68-64-52-116 48 24 72 58 52 116z" fill="#f2b544" stroke="#2d1517" stroke-width="10"/>
+  <path d="M292 172v72M348 164v80M320 168v76" stroke="#2d1517" stroke-width="10" stroke-linecap="round"/>
+  <path d="M218 236h224l-36 142H254z" fill="#f7b0a5" stroke="#2d1517" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M246 278h164" stroke="#fff8f4" stroke-width="16" stroke-linecap="round"/>
+  <path d="M206 382h248" stroke="#f2b544" stroke-width="16" stroke-linecap="round"/>
+</svg>
