@@ -2,6 +2,11 @@
 
 MVP de um recomendador de presentes com IA, artigos estáticos e links afiliados.
 
+## Guia para agentes
+
+Antes de fazer mudanças no projeto, leia `AGENTS.md`. Ele concentra estrutura,
+padrões de conteúdo/SEO, validações, arquivos-chave e armadilhas conhecidas.
+
 ## Rodar localmente
 
 ```bash

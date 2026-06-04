@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
+import { articles } from "@/data/articles";
 import { guides } from "@/data/guides";
 import { products } from "@/data/products";
 
@@ -56,6 +59,16 @@ export default async function GuidePage({ params }: PageProps) {
   }
 
   const guideProducts = products.filter((p) => guide.productIds.includes(p.id));
+  const guideArticle = articles.find((article) => article.slug === guide.slug);
+  const relatedArticles = articles
+    .filter(
+      (article) =>
+        article.slug !== guide.slug &&
+        (article.keywords.some((keyword) => guide.keywords.includes(keyword)) ||
+          article.slug.includes(guide.persona) ||
+          article.slug.includes(guide.occasion.replaceAll(" ", "-")))
+    )
+    .slice(0, 3);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -90,6 +103,18 @@ export default async function GuidePage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      {guideArticle?.coverImage ? (
+        <div className="article-cover guide-cover">
+          <Image
+            src={guideArticle.coverImage.src}
+            alt={guideArticle.coverImage.alt}
+            width={1200}
+            height={630}
+            className="article-cover-img"
+            priority
+          />
+        </div>
+      ) : null}
       <section className="section">
         <div className="container">
           <div className="section-head">
@@ -102,6 +127,64 @@ export default async function GuidePage({ params }: PageProps) {
           <ProductGrid ids={guide.productIds} />
         </div>
       </section>
+      {guideArticle ? (
+        <article className="article-content guide-editorial">
+          {guideArticle.sections.slice(0, 4).map((section) => (
+            <section key={section.title}>
+              <h2>{section.title}</h2>
+              <p>{section.body}</p>
+              {section.tips ? (
+                <ul className="article-tips">
+                  {section.tips.map((tip) => (
+                    <li key={tip}>{tip}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {section.image ? (
+                <Image
+                  src={section.image.src}
+                  alt={section.image.alt}
+                  width={800}
+                  height={450}
+                  className="section-image"
+                />
+              ) : null}
+            </section>
+          ))}
+          <Link className="button secondary guide-read-more" href={`/blog/${guideArticle.slug}`}>
+            Ler guia completo
+          </Link>
+        </article>
+      ) : null}
+      {relatedArticles.length > 0 ? (
+        <section className="section band">
+          <div className="container">
+            <div className="section-head">
+              <p className="eyebrow">Mais ideias</p>
+              <h2>Artigos relacionados</h2>
+            </div>
+            <div className="grid three">
+              {relatedArticles.map((article) => (
+                <Link className="article-card article-card-media" href={`/blog/${article.slug}`} key={article.slug}>
+                  {article.coverImage ? (
+                    <Image
+                      src={article.coverImage.src}
+                      alt={article.coverImage.alt}
+                      width={640}
+                      height={360}
+                      className="card-thumb"
+                    />
+                  ) : null}
+                  <div className="article-body">
+                    <h3>{article.title}</h3>
+                    <p>{article.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

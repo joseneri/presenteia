@@ -193,7 +193,7 @@ export const guides: Guide[] = [
   {
     slug: "presentes-para-sogra",
     title: "Presentes para sogra",
-    description: "Opcoes eleganres e neutras para presentear a mae do parceiro ou parceira.",
+    description: "Opcoes elegantes e neutras para presentear a mae do parceiro ou parceira.",
     persona: "sogra",
     occasion: "dia das maes",
     interest: "util",
@@ -393,7 +393,7 @@ export const guides: Guide[] = [
   {
     slug: "presentes-para-cunhada",
     title: "Presentes para cunhada",
-    description: "Opcoes eleganres e seguras para a cunhada em qualquer ocasiao.",
+    description: "Opcoes elegantes e seguras para a cunhada em qualquer ocasiao.",
     persona: "cunhada",
     occasion: "aniversario",
     interest: "util",

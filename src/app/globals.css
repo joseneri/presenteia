@@ -2077,6 +2077,78 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.featured-article {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  align-items: stretch;
+  min-height: 360px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  box-shadow: var(--ambient-shadow);
+  color: inherit;
+  text-decoration: none;
+}
+
+.featured-article-image,
+.card-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-article-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.featured-article-copy h2 {
+  margin: 0 0 12px;
+  color: var(--color-heading);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+
+.featured-article-copy p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.article-card-media,
+.guide-card-featured {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-card-media .card-thumb,
+.guide-card-featured .card-thumb {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.guide-card-copy {
+  padding: 18px 20px 20px;
+}
+
+.guide-card-featured .tag-row {
+  margin-bottom: 0;
+}
+
+.guide-card-icon {
+  display: grid;
+  min-height: 160px;
+  place-items: center;
+  background: var(--color-bg-section-alt);
+  color: var(--brand);
+}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2807,6 +2879,10 @@ p {
   margin: 0 auto;
 }
 
+.guide-cover {
+  margin-top: 8px;
+}
+
 .article-cover-img,
 .section-image {
   display: block;
@@ -2830,6 +2906,23 @@ p {
 
 .article-content h2 {
   margin-top: 34px;
+}
+
+.article-tips {
+  margin: 16px 0 0;
+  padding-left: 22px;
+}
+
+.article-tips li {
+  margin: 8px 0;
+}
+
+.guide-editorial {
+  padding-top: 0;
+}
+
+.guide-read-more {
+  margin-top: 28px;
 }
 
 .footer {
@@ -2889,8 +2982,18 @@ p {
   .grid.three,
   .grid.two,
   .results-grid,
-  .feature-grid {
+  .feature-grid,
+  .featured-article {
     grid-template-columns: 1fr;
+  }
+
+  .featured-article {
+    min-height: 0;
+  }
+
+  .featured-article-image {
+    aspect-ratio: 16 / 9;
+    height: auto;
   }
 
   .hero {

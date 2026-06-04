@@ -54,7 +54,7 @@ export const articles: Article[] = [
       },
       {
         title: "Presentes para mae que gosta de descanso e autocuidado",
-        body: "Maes raramente investem em descanso para si mesmas. Um massageador eletrico portatil e um presente que ela nunca compraria sozinha, mas que usa com frequencia depois que ganha. Kit de skincare com itens de qualidade tambem funciona muito bem — escolha opcoes sem fragrancias fortes caso nao conhea as preferencias dela. O importante e mostrar que voce pensa no bem-estar dela, nao apenas no dia a dia corrido.",
+        body: "Maes raramente investem em descanso para si mesmas. Um massageador eletrico portatil e um presente que ela nunca compraria sozinha, mas que usa com frequencia depois que ganha. Kit de skincare com itens de qualidade tambem funciona muito bem — escolha opcoes sem fragrancias fortes caso nao conheca as preferencias dela. O importante e mostrar que voce pensa no bem-estar dela, nao apenas no dia a dia corrido.",
         tips: [
           "Massageador portatil para pescoco e ombros",
           "Kit de skincare com hidratante, serum ou mascara facial",
@@ -252,7 +252,7 @@ export const articles: Article[] = [
       },
       {
         title: "Presente de ultima hora ate R$100: o que fazer",
-        body: "Quando o tempo e curto, priorize itens com entrega rapida ou que voce possa retirar fisicamente. Garrafa termica, caneca, planner e kit de cafe estao disponiveis na Amazon com entrega em 1 a 2 dias em muitas cidades. Alternatively, uma loja de papelaria ou de cafe artesanal na sua cidade pode resolver com um kit simples montado na hora. O importante e nao entregar sem embalagem e sem bilhete."
+        body: "Quando o tempo e curto, priorize itens com entrega rapida ou que voce possa retirar fisicamente. Garrafa termica, caneca, planner e kit de cafe estao disponiveis na Amazon com entrega em 1 a 2 dias em muitas cidades. Como alternativa, uma loja de papelaria ou de cafe artesanal na sua cidade pode resolver com um kit simples montado na hora. O importante e nao entregar sem embalagem e sem bilhete."
       }
     ]
   },
@@ -1295,7 +1295,7 @@ export const articles: Article[] = [
   },
   {
     slug: "presentes-para-professor",
-    title: "Presentes para professor: ideias eleganres, praticas e memoraveis",
+    title: "Presentes para professor: ideias elegantes, praticas e memoraveis",
     description:
       "Guia completo com as melhores ideias de presentes para professores — no Dia dos Professores, na formatura e em qualquer ocasiao especial.",
     date: "2026-06-01",
@@ -4441,6 +4441,218 @@ export const articles: Article[] = [
       {
         title: "Como montar bonito",
         body: "Use caixa firme, papel de seda, alturas diferentes e poucos itens bons. Cesta cheia de produtos fracos parece barata; cesta enxuta com bons itens parece escolhida."
+      }
+    ]
+  },
+  {
+    slug: "presentes-dia-dos-namorados-baratos",
+    title: "Presentes baratos para Dia dos Namorados: ideias boas sem gastar muito",
+    description:
+      "Ideias de presentes baratos para 12 de junho com cara de escolha pensada: kits simples, cafe, autocuidado, livros, cartas e experiencias.",
+    date: "2026-06-04",
+    keywords: ["presente barato dia dos namorados", "presente dia dos namorados economico", "lembrancinha dia dos namorados", "presente romantico barato"],
+    relatedProductIds: ["caneca-termica", "kit-cafe", "luminaria-led", "jogo-tabuleiro"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=1200&h=630&fit=crop",
+      alt: "Presente romantico simples com flores e cartao"
+    },
+    sections: [
+      {
+        title: "Barato nao precisa parecer improvisado",
+        body: "Um presente de Dia dos Namorados barato funciona quando tem contexto. O erro e comprar qualquer item pequeno sem conexao com a pessoa. Uma caneca termica com cafe especial, uma luminaria para leitura, um jogo para a noite de voces ou uma carta bem escrita podem ter mais impacto do que um item caro escolhido sem cuidado.",
+        tips: [
+          "Escolha um tema antes de comprar",
+          "Combine um item util com uma mensagem pessoal",
+          "Capriche na embalagem",
+          "Prefira algo que vire ritual do casal"
+        ]
+      },
+      {
+        title: "Kits baratos que parecem completos",
+        body: "Kit cafe, kit filme, kit autocuidado e kit leitura sao faceis de montar e funcionam muito bem. O segredo e usar poucos itens bons, em vez de encher a caixa com coisas aleatorias. Para cafe: caneca, cafe especial e bilhete. Para filme: snack favorito, bebida e convite para uma noite juntos.",
+        image: {
+          src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=450&fit=crop",
+          alt: "Cafe especial servido em mesa aconchegante"
+        },
+        tips: [
+          "Cafe: caneca termica + cafe especial",
+          "Filme: snacks + bebida + carta",
+          "Autocuidado: mascara facial + cha + vela",
+          "Leitura: livro usado em bom estado + marcador"
+        ]
+      },
+      {
+        title: "Experiencias de baixo custo",
+        body: "Piquenique, cafe da manha em casa, noite de jogos, roteiro de lugares importantes e jantar simples preparado por voce podem ser presentes memoraveis. Para ficar com cara de presente, entregue um convite impresso ou escrito a mao com horario e detalhes.",
+        tips: [
+          "Piquenique com comidas favoritas",
+          "Jantar caseiro com playlist",
+          "Noite de jogos para dois",
+          "Passeio por um lugar importante para o casal"
+        ]
+      },
+      {
+        title: "Como nao parecer ultima hora",
+        body: "Mesmo quando o orcamento e baixo, a apresentacao muda tudo. Use uma caixa firme, papel de seda, fita e uma carta especifica. Evite frases genericas: cite uma memoria real, uma piada de voces ou um detalhe que mostre atencao."
+      }
+    ]
+  },
+  {
+    slug: "presentes-premium-dia-dos-namorados",
+    title: "Presentes premium para Dia dos Namorados: quando voce quer impressionar",
+    description:
+      "Ideias premium para Dia dos Namorados com tecnologia, leitura, experiencias, autocuidado e presentes duraveis para surpreender sem exagero.",
+    date: "2026-06-04",
+    keywords: ["presente premium dia dos namorados", "presente caro dia dos namorados", "presente especial para namorado", "presente especial para namorada"],
+    relatedProductIds: ["kindle", "echo-dot", "fone-bluetooth", "massageador"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=1200&h=630&fit=crop",
+      alt: "Casal em jantar elegante"
+    },
+    sections: [
+      {
+        title: "Premium precisa ser pessoal, nao apenas caro",
+        body: "Um presente premium so impressiona de verdade quando combina com a rotina da pessoa. Kindle para quem le, fone bom para quem vive de musica, Echo Dot para casa conectada, massageador para quem precisa relaxar ou uma experiencia bem reservada. O valor aparece no uso e na memoria.",
+        tips: [
+          "Conecte o presente a um habito real",
+          "Evite luxo generico se nao conhece o gosto",
+          "Inclua contexto romantico na entrega",
+          "Considere prazo de troca e garantia"
+        ]
+      },
+      {
+        title: "Tecnologia que entra na rotina",
+        body: "Fone bluetooth, Kindle e Echo Dot sao presentes premium seguros porque resolvem usos frequentes. Eles funcionam para estudo, trabalho, musica, leitura, chamadas e casa. A dica e escolher uma categoria que a pessoa ja usa, mas em uma versao melhor.",
+        image: {
+          src: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop",
+          alt: "Notebook e acessorios tecnologicos sobre mesa"
+        },
+        tips: [
+          "Kindle para leitores",
+          "Fone bluetooth para musica e academia",
+          "Echo Dot para quarto ou sala",
+          "Massageador para bem-estar"
+        ]
+      },
+      {
+        title: "Experiencias premium",
+        body: "Jantar com reserva, spa para dois, fim de semana em pousada, degustacao ou show do artista favorito podem superar qualquer objeto. O importante e planejar data, deslocamento e detalhes para que a pessoa so precise aproveitar.",
+        tips: [
+          "Reserve antes de 12 de junho",
+          "Entregue o convite junto com um item simbolico",
+          "Tenha plano B para chuva ou lotacao",
+          "Escolha algo que combine com o casal"
+        ]
+      },
+      {
+        title: "Como entregar sem exagerar",
+        body: "Presente premium nao precisa de discurso grande. Uma carta curta explicando por que aquilo combina com a pessoa deixa o gesto elegante e evita parecer ostentacao."
+      }
+    ]
+  },
+  {
+    slug: "noite-romantica-em-casa-dia-dos-namorados",
+    title: "Noite romantica em casa no Dia dos Namorados: presentes e ideias",
+    description:
+      "Como montar uma noite romantica em casa para 12 de junho com jantar, jogos, cafe, filme, carta e presente para o casal.",
+    date: "2026-06-04",
+    keywords: ["noite romantica em casa dia dos namorados", "dia dos namorados em casa", "jantar dia dos namorados em casa", "presente para casal em casa"],
+    relatedProductIds: ["jogo-tabuleiro", "kit-cafe", "moka-cafeteira", "porta-retrato-casal"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&h=630&fit=crop",
+      alt: "Mesa preparada para jantar romantico em casa"
+    },
+    sections: [
+      {
+        title: "O presente pode ser a noite inteira",
+        body: "Para muitos casais, uma noite bem planejada em casa e mais especial do que restaurante lotado. O presente pode ser o conjunto: jantar, playlist, jogo, sobremesa, carta e um item que fique depois, como porta-retrato ou cafeteira para o ritual de voces.",
+        tips: [
+          "Escolha um tema para a noite",
+          "Prepare algo que a pessoa goste de comer",
+          "Deixe celular e trabalho fora do momento",
+          "Inclua um presente fisico pequeno"
+        ]
+      },
+      {
+        title: "Roteiro simples para 12 de junho",
+        body: "Comece com uma bebida ou cafe especial, siga para jantar, depois jogo de tabuleiro ou filme, e finalize com carta ou sobremesa. Esse roteiro evita aquela sensacao de improviso e cria uma memoria com começo, meio e fim.",
+        image: {
+          src: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&h=450&fit=crop",
+          alt: "Jantar romantico com luzes ao fundo"
+        },
+        tips: [
+          "Entrada: bebida, cafe ou petisco",
+          "Principal: jantar simples e bem apresentado",
+          "Depois: jogo, filme ou playlist",
+          "Final: carta, foto ou sobremesa"
+        ]
+      },
+      {
+        title: "Presentes que combinam com noite em casa",
+        body: "Jogo de tabuleiro, kit cafe, cafeteira Moka, porta-retrato, luminaria e cesta de snacks ajudam a transformar a noite em um ritual. Melhor ainda quando o presente continua sendo usado depois da data.",
+        tips: [
+          "Jogo de tabuleiro para dois",
+          "Kit cafe para o dia seguinte",
+          "Porta-retrato com foto do casal",
+          "Cesta de filme com snacks favoritos"
+        ]
+      },
+      {
+        title: "Detalhes que deixam romantico",
+        body: "Luz baixa, mesa arrumada, playlist de voces e uma carta curta fazem a noite parecer planejada. Nao precisa ficar perfeito; precisa parecer pensado."
+      }
+    ]
+  },
+  {
+    slug: "presente-dia-dos-namorados-pessoa-dificil",
+    title: "Presente de Dia dos Namorados para pessoa dificil de agradar",
+    description:
+      "Como escolher presente de Dia dos Namorados para namorado ou namorada exigente, minimalista, pratica ou que diz que nao quer nada.",
+    date: "2026-06-04",
+    keywords: ["presente dia dos namorados pessoa dificil", "namorada dificil de agradar presente", "namorado dificil de presentear", "presente para quem diz que nao quer nada"],
+    relatedProductIds: ["garrafa-termica", "kindle", "fone-bluetooth", "kit-cafe"],
+    coverImage: {
+      src: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200&h=630&fit=crop",
+      alt: "Casal conversando em clima leve"
+    },
+    sections: [
+      {
+        title: "Quando a pessoa e dificil, reduza o risco",
+        body: "Para alguem exigente, minimalista ou que diz que nao quer nada, o melhor caminho e escolher presentes de uso claro e baixo risco. Itens muito pessoais, como perfume, roupa e decoracao marcante, exigem conhecer muito bem o gosto. Presentes uteis, experiencias e consumiveis costumam funcionar melhor.",
+        tips: [
+          "Evite tamanho, cheiro e estilo muito pessoais",
+          "Prefira algo que se consome ou se usa sempre",
+          "Experiencias reduzem risco de gosto",
+          "Guarde nota fiscal quando fizer sentido"
+        ]
+      },
+      {
+        title: "Ideias seguras para perfis exigentes",
+        body: "Garrafa termica de qualidade, fone bluetooth, Kindle, kit cafe especial e jantar planejado sao escolhas boas porque entram na rotina ou viram experiencia. Para minimalistas, escolha algo discreto, duravel e sem excesso visual.",
+        image: {
+          src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=450&fit=crop",
+          alt: "Mesa organizada com objetos discretos"
+        },
+        tips: [
+          "Minimalista: garrafa ou caneca discreta",
+          "Leitor: Kindle ou livro muito bem escolhido",
+          "Pratico: fone, suporte ou organizador",
+          "Sensorial: cafe, chocolate ou jantar"
+        ]
+      },
+      {
+        title: "Perguntas que ajudam a decidir",
+        body: "Antes de comprar, pense: a pessoa usaria isso toda semana? Esse presente exige tamanho, cheiro ou estilo especifico? Ele combina com algo que ela ja faz? Se a resposta for sim para uso frequente e nao para risco de gosto, voce esta no caminho certo.",
+        tips: [
+          "Ela ja usa algo parecido?",
+          "Isso resolve uma irritacao real da rotina?",
+          "O presente depende de gosto visual forte?",
+          "Existe troca facil se nao funcionar?"
+        ]
+      },
+      {
+        title: "A carta faz o presente parecer pensado",
+        body: "Para pessoas dificeis de agradar, a justificativa do presente importa. Explique em uma carta curta por que voce escolheu aquilo. Quando a pessoa entende o raciocinio, o presente ganha valor emocional."
       }
     ]
   }
